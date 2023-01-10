@@ -33,18 +33,9 @@ namespace AliSign
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxWorkingFolder = new System.Windows.Forms.TextBox();
             this.textBoxDsaPrivateKey = new System.Windows.Forms.TextBox();
-            this.buttonWorkingFolder = new System.Windows.Forms.Button();
             this.buttonDsaPrivateKey = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxImageBios = new System.Windows.Forms.TextBox();
             this.textBoxSignedImageBios = new System.Windows.Forms.TextBox();
             this.textBoxUbiosVersion = new System.Windows.Forms.TextBox();
@@ -56,40 +47,49 @@ namespace AliSign
             this.buttonUbiosPublicKey = new System.Windows.Forms.Button();
             this.buttonUbcPublicKey = new System.Windows.Forms.Button();
             this.buttonBootLoaderPublicKey = new System.Windows.Forms.Button();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
             this.buttonHashAdd = new System.Windows.Forms.Button();
             this.buttonHashRemove = new System.Windows.Forms.Button();
             this.listBoxHashUbios = new System.Windows.Forms.ListBox();
             this.buttonSignBios = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxImageDisk = new System.Windows.Forms.TextBox();
             this.textBoxSignedImageDisk = new System.Windows.Forms.TextBox();
             this.buttonImageDisk = new System.Windows.Forms.Button();
             this.buttonSignedImageDisk = new System.Windows.Forms.Button();
             this.buttonSignDisk = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.textBoxImageUbc = new System.Windows.Forms.TextBox();
             this.textBoxSignedImageUbc = new System.Windows.Forms.TextBox();
             this.textBoxUbiosVersionUbc = new System.Windows.Forms.TextBox();
             this.textBoxUbcVersion = new System.Windows.Forms.TextBox();
             this.buttonImageUbc = new System.Windows.Forms.Button();
             this.buttonSignedImageUbc = new System.Windows.Forms.Button();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.label16 = new System.Windows.Forms.Label();
             this.buttonHashAddUbc = new System.Windows.Forms.Button();
             this.buttonHashRemoveUbc = new System.Windows.Forms.Button();
             this.listBoxHashUbc = new System.Windows.Forms.ListBox();
             this.buttonSignUbc = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonWorkingFolder = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label16 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -114,6 +114,442 @@ namespace AliSign
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textBoxWorkingFolder
+            // 
+            this.textBoxWorkingFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxWorkingFolder.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxWorkingFolder.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxWorkingFolder.Location = new System.Drawing.Point(123, 7);
+            this.textBoxWorkingFolder.Name = "textBoxWorkingFolder";
+            this.textBoxWorkingFolder.Size = new System.Drawing.Size(652, 22);
+            this.textBoxWorkingFolder.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.textBoxWorkingFolder, "All fields below will be guessed thru this folder if is blank.");
+            this.textBoxWorkingFolder.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxWorkingFolder_Validating);
+            // 
+            // textBoxDsaPrivateKey
+            // 
+            this.textBoxDsaPrivateKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxDsaPrivateKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxDsaPrivateKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxDsaPrivateKey.Location = new System.Drawing.Point(123, 44);
+            this.textBoxDsaPrivateKey.Name = "textBoxDsaPrivateKey";
+            this.textBoxDsaPrivateKey.Size = new System.Drawing.Size(652, 22);
+            this.textBoxDsaPrivateKey.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.textBoxDsaPrivateKey, "Input a valid DSA private key file.");
+            this.textBoxDsaPrivateKey.TextChanged += new System.EventHandler(this.textBoxDsaPrivateKey_TextChanged);
+            this.textBoxDsaPrivateKey.Leave += new System.EventHandler(this.textBoxDsaPrivateKey_Leave);
+            // 
+            // buttonDsaPrivateKey
+            // 
+            this.buttonDsaPrivateKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDsaPrivateKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonDsaPrivateKey.Location = new System.Drawing.Point(3, 40);
+            this.buttonDsaPrivateKey.Name = "buttonDsaPrivateKey";
+            this.buttonDsaPrivateKey.Size = new System.Drawing.Size(114, 31);
+            this.buttonDsaPrivateKey.TabIndex = 3;
+            this.buttonDsaPrivateKey.Text = "DSA Private Key";
+            this.buttonDsaPrivateKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonDsaPrivateKey, "Input a valid DSA private key file.");
+            this.buttonDsaPrivateKey.UseVisualStyleBackColor = true;
+            this.buttonDsaPrivateKey.Click += new System.EventHandler(this.buttonDsaPrivateKey_Click);
+            // 
+            // textBoxImageBios
+            // 
+            this.textBoxImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageBios.Location = new System.Drawing.Point(163, 8);
+            this.textBoxImageBios.Name = "textBoxImageBios";
+            this.textBoxImageBios.Size = new System.Drawing.Size(237, 22);
+            this.textBoxImageBios.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.textBoxImageBios, "A ADLink ALI BIOS image will enable all functions.");
+            this.textBoxImageBios.TextChanged += new System.EventHandler(this.textBoxImageBios_TextChanged);
+            // 
+            // textBoxSignedImageBios
+            // 
+            this.textBoxSignedImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxSignedImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageBios.Enabled = false;
+            this.textBoxSignedImageBios.Location = new System.Drawing.Point(163, 46);
+            this.textBoxSignedImageBios.Name = "textBoxSignedImageBios";
+            this.textBoxSignedImageBios.Size = new System.Drawing.Size(237, 22);
+            this.textBoxSignedImageBios.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.textBoxSignedImageBios, "Will be enabled with a valid UBIOS Image assigned.");
+            // 
+            // textBoxUbiosVersion
+            // 
+            this.textBoxUbiosVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbiosVersion.Enabled = false;
+            this.textBoxUbiosVersion.Location = new System.Drawing.Point(163, 84);
+            this.textBoxUbiosVersion.MaxLength = 24;
+            this.textBoxUbiosVersion.Name = "textBoxUbiosVersion";
+            this.textBoxUbiosVersion.Size = new System.Drawing.Size(237, 22);
+            this.textBoxUbiosVersion.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.textBoxUbiosVersion, "Will be enabled with a valid UBIOS Image assigned.");
+            // 
+            // textBoxUbiosPublicKey
+            // 
+            this.textBoxUbiosPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbiosPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxUbiosPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxUbiosPublicKey.Enabled = false;
+            this.textBoxUbiosPublicKey.Location = new System.Drawing.Point(163, 122);
+            this.textBoxUbiosPublicKey.Name = "textBoxUbiosPublicKey";
+            this.textBoxUbiosPublicKey.Size = new System.Drawing.Size(237, 22);
+            this.textBoxUbiosPublicKey.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.textBoxUbiosPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
+            // 
+            // textBoxUbcPublicKey
+            // 
+            this.textBoxUbcPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbcPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxUbcPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxUbcPublicKey.Enabled = false;
+            this.textBoxUbcPublicKey.Location = new System.Drawing.Point(163, 160);
+            this.textBoxUbcPublicKey.Name = "textBoxUbcPublicKey";
+            this.textBoxUbcPublicKey.Size = new System.Drawing.Size(237, 22);
+            this.textBoxUbcPublicKey.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.textBoxUbcPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
+            // 
+            // textBoxBootLoaderPublicKey
+            // 
+            this.textBoxBootLoaderPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBootLoaderPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxBootLoaderPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxBootLoaderPublicKey.Enabled = false;
+            this.textBoxBootLoaderPublicKey.Location = new System.Drawing.Point(163, 199);
+            this.textBoxBootLoaderPublicKey.Name = "textBoxBootLoaderPublicKey";
+            this.textBoxBootLoaderPublicKey.Size = new System.Drawing.Size(237, 22);
+            this.textBoxBootLoaderPublicKey.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.textBoxBootLoaderPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
+            // 
+            // buttonImageBios
+            // 
+            this.buttonImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageBios.Location = new System.Drawing.Point(3, 3);
+            this.buttonImageBios.Name = "buttonImageBios";
+            this.buttonImageBios.Size = new System.Drawing.Size(154, 32);
+            this.buttonImageBios.TabIndex = 6;
+            this.buttonImageBios.Text = "UBIOS Image";
+            this.buttonImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonImageBios, "A ADLink ALI BIOS image will enable all functions.");
+            this.buttonImageBios.UseVisualStyleBackColor = true;
+            this.buttonImageBios.Click += new System.EventHandler(this.buttonImageBios_Click);
+            // 
+            // buttonSignedImageBios
+            // 
+            this.buttonSignedImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageBios.Enabled = false;
+            this.buttonSignedImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageBios.Location = new System.Drawing.Point(3, 41);
+            this.buttonSignedImageBios.Name = "buttonSignedImageBios";
+            this.buttonSignedImageBios.Size = new System.Drawing.Size(154, 32);
+            this.buttonSignedImageBios.TabIndex = 7;
+            this.buttonSignedImageBios.Text = "Output Image";
+            this.buttonSignedImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonSignedImageBios, "Will be enabled with a valid UBIOS Image assigned.");
+            this.buttonSignedImageBios.UseVisualStyleBackColor = true;
+            this.buttonSignedImageBios.Click += new System.EventHandler(this.buttonSignedImageBios_Click);
+            // 
+            // buttonUbiosPublicKey
+            // 
+            this.buttonUbiosPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUbiosPublicKey.Enabled = false;
+            this.buttonUbiosPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonUbiosPublicKey.Location = new System.Drawing.Point(3, 117);
+            this.buttonUbiosPublicKey.Name = "buttonUbiosPublicKey";
+            this.buttonUbiosPublicKey.Size = new System.Drawing.Size(154, 32);
+            this.buttonUbiosPublicKey.TabIndex = 8;
+            this.buttonUbiosPublicKey.Text = "UBIOS Public Key";
+            this.buttonUbiosPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonUbiosPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
+            this.buttonUbiosPublicKey.UseVisualStyleBackColor = true;
+            this.buttonUbiosPublicKey.Click += new System.EventHandler(this.buttonUbiosPublicKey_Click);
+            // 
+            // buttonUbcPublicKey
+            // 
+            this.buttonUbcPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUbcPublicKey.Enabled = false;
+            this.buttonUbcPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonUbcPublicKey.Location = new System.Drawing.Point(3, 155);
+            this.buttonUbcPublicKey.Name = "buttonUbcPublicKey";
+            this.buttonUbcPublicKey.Size = new System.Drawing.Size(154, 32);
+            this.buttonUbcPublicKey.TabIndex = 9;
+            this.buttonUbcPublicKey.Text = "UBC Public Key";
+            this.buttonUbcPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonUbcPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
+            this.buttonUbcPublicKey.UseVisualStyleBackColor = true;
+            this.buttonUbcPublicKey.Click += new System.EventHandler(this.buttonUbcPublicKey_Click);
+            // 
+            // buttonBootLoaderPublicKey
+            // 
+            this.buttonBootLoaderPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonBootLoaderPublicKey.Enabled = false;
+            this.buttonBootLoaderPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonBootLoaderPublicKey.Location = new System.Drawing.Point(3, 193);
+            this.buttonBootLoaderPublicKey.Name = "buttonBootLoaderPublicKey";
+            this.buttonBootLoaderPublicKey.Size = new System.Drawing.Size(154, 34);
+            this.buttonBootLoaderPublicKey.TabIndex = 10;
+            this.buttonBootLoaderPublicKey.Text = "Boot Loader Public Key";
+            this.buttonBootLoaderPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonBootLoaderPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
+            this.buttonBootLoaderPublicKey.UseVisualStyleBackColor = true;
+            this.buttonBootLoaderPublicKey.Click += new System.EventHandler(this.buttonBootLoaderPublicKey_Click);
+            // 
+            // buttonHashAdd
+            // 
+            this.buttonHashAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashAdd.Enabled = false;
+            this.buttonHashAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashAdd.Location = new System.Drawing.Point(3, 33);
+            this.buttonHashAdd.Name = "buttonHashAdd";
+            this.buttonHashAdd.Size = new System.Drawing.Size(68, 91);
+            this.buttonHashAdd.TabIndex = 1;
+            this.buttonHashAdd.Text = "+";
+            this.toolTip1.SetToolTip(this.buttonHashAdd, "Add hash value files.");
+            this.buttonHashAdd.UseVisualStyleBackColor = true;
+            this.buttonHashAdd.Click += new System.EventHandler(this.buttonHashAdd_Click);
+            // 
+            // buttonHashRemove
+            // 
+            this.buttonHashRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashRemove.Enabled = false;
+            this.buttonHashRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashRemove.Location = new System.Drawing.Point(3, 130);
+            this.buttonHashRemove.Name = "buttonHashRemove";
+            this.buttonHashRemove.Size = new System.Drawing.Size(68, 91);
+            this.buttonHashRemove.TabIndex = 2;
+            this.buttonHashRemove.Text = "-";
+            this.toolTip1.SetToolTip(this.buttonHashRemove, "Remove selected hash value files.");
+            this.buttonHashRemove.UseVisualStyleBackColor = true;
+            this.buttonHashRemove.Click += new System.EventHandler(this.buttonHashRemove_Click);
+            // 
+            // listBoxHashUbios
+            // 
+            this.listBoxHashUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHashUbios.Enabled = false;
+            this.listBoxHashUbios.FormattingEnabled = true;
+            this.listBoxHashUbios.ItemHeight = 12;
+            this.listBoxHashUbios.Location = new System.Drawing.Point(83, 3);
+            this.listBoxHashUbios.Name = "listBoxHashUbios";
+            this.listBoxHashUbios.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxHashUbios.Size = new System.Drawing.Size(257, 224);
+            this.listBoxHashUbios.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.listBoxHashUbios, "Hash values binary file list.");
+            // 
+            // buttonSignBios
+            // 
+            this.buttonSignBios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignBios.Enabled = false;
+            this.buttonSignBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonSignBios.Location = new System.Drawing.Point(3, 245);
+            this.buttonSignBios.Name = "buttonSignBios";
+            this.buttonSignBios.Size = new System.Drawing.Size(758, 95);
+            this.buttonSignBios.TabIndex = 1;
+            this.buttonSignBios.Text = "Sign";
+            this.toolTip1.SetToolTip(this.buttonSignBios, "Will be enabled with a valid UBIOS Image assigned.");
+            this.buttonSignBios.UseVisualStyleBackColor = true;
+            this.buttonSignBios.Click += new System.EventHandler(this.buttonSignBios_Click);
+            // 
+            // textBoxImageDisk
+            // 
+            this.textBoxImageDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageDisk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageDisk.Location = new System.Drawing.Point(123, 10);
+            this.textBoxImageDisk.Name = "textBoxImageDisk";
+            this.textBoxImageDisk.Size = new System.Drawing.Size(632, 22);
+            this.textBoxImageDisk.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.textBoxImageDisk, "A Valid Disk sectors file will enable all functions.");
+            this.textBoxImageDisk.TextChanged += new System.EventHandler(this.textBoxImageDisk_TextChanged);
+            // 
+            // textBoxSignedImageDisk
+            // 
+            this.textBoxSignedImageDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageDisk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxSignedImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageDisk.Enabled = false;
+            this.textBoxSignedImageDisk.Location = new System.Drawing.Point(123, 52);
+            this.textBoxSignedImageDisk.Name = "textBoxSignedImageDisk";
+            this.textBoxSignedImageDisk.Size = new System.Drawing.Size(632, 22);
+            this.textBoxSignedImageDisk.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.textBoxSignedImageDisk, "Will be enabled with a valid Disk sectors Image assigned.");
+            // 
+            // buttonImageDisk
+            // 
+            this.buttonImageDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageDisk.Location = new System.Drawing.Point(3, 3);
+            this.buttonImageDisk.Name = "buttonImageDisk";
+            this.buttonImageDisk.Size = new System.Drawing.Size(114, 36);
+            this.buttonImageDisk.TabIndex = 2;
+            this.buttonImageDisk.Text = "Disk Image";
+            this.buttonImageDisk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonImageDisk, "A Valid Disk sectors file will enable all functions.");
+            this.buttonImageDisk.UseVisualStyleBackColor = true;
+            this.buttonImageDisk.Click += new System.EventHandler(this.buttonImageDisk_Click);
+            // 
+            // buttonSignedImageDisk
+            // 
+            this.buttonSignedImageDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageDisk.Enabled = false;
+            this.buttonSignedImageDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageDisk.Location = new System.Drawing.Point(3, 45);
+            this.buttonSignedImageDisk.Name = "buttonSignedImageDisk";
+            this.buttonSignedImageDisk.Size = new System.Drawing.Size(114, 36);
+            this.buttonSignedImageDisk.TabIndex = 3;
+            this.buttonSignedImageDisk.Text = "Output Image";
+            this.buttonSignedImageDisk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonSignedImageDisk, "Will be enabled with a valid Disk sectors Image assigned.");
+            this.buttonSignedImageDisk.UseVisualStyleBackColor = true;
+            this.buttonSignedImageDisk.Click += new System.EventHandler(this.buttonSignedImageDisk_Click);
+            // 
+            // buttonSignDisk
+            // 
+            this.buttonSignDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignDisk.Enabled = false;
+            this.buttonSignDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonSignDisk.Location = new System.Drawing.Point(3, 93);
+            this.buttonSignDisk.Name = "buttonSignDisk";
+            this.buttonSignDisk.Size = new System.Drawing.Size(758, 247);
+            this.buttonSignDisk.TabIndex = 1;
+            this.buttonSignDisk.Text = "Sign";
+            this.toolTip1.SetToolTip(this.buttonSignDisk, "Will be enabled with a valid Disk sectors Image assigned.");
+            this.buttonSignDisk.UseVisualStyleBackColor = true;
+            this.buttonSignDisk.Click += new System.EventHandler(this.buttonSignDisk_Click);
+            // 
+            // textBoxImageUbc
+            // 
+            this.textBoxImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageUbc.Location = new System.Drawing.Point(113, 7);
+            this.textBoxImageUbc.Name = "textBoxImageUbc";
+            this.textBoxImageUbc.Size = new System.Drawing.Size(287, 22);
+            this.textBoxImageUbc.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBoxImageUbc, "A valid UBC image will enable all functions.");
+            this.textBoxImageUbc.TextChanged += new System.EventHandler(this.textBoxImageUbc_TextChanged);
+            // 
+            // textBoxSignedImageUbc
+            // 
+            this.textBoxSignedImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxSignedImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageUbc.Enabled = false;
+            this.textBoxSignedImageUbc.Location = new System.Drawing.Point(113, 44);
+            this.textBoxSignedImageUbc.Name = "textBoxSignedImageUbc";
+            this.textBoxSignedImageUbc.Size = new System.Drawing.Size(287, 22);
+            this.textBoxSignedImageUbc.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.textBoxSignedImageUbc, "Will be enabled with a valid UBC Image assigned.");
+            // 
+            // textBoxUbiosVersionUbc
+            // 
+            this.textBoxUbiosVersionUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbiosVersionUbc.Enabled = false;
+            this.textBoxUbiosVersionUbc.Location = new System.Drawing.Point(113, 81);
+            this.textBoxUbiosVersionUbc.MaxLength = 24;
+            this.textBoxUbiosVersionUbc.Name = "textBoxUbiosVersionUbc";
+            this.textBoxUbiosVersionUbc.Size = new System.Drawing.Size(287, 22);
+            this.textBoxUbiosVersionUbc.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.textBoxUbiosVersionUbc, "Up to 24 bytes.");
+            // 
+            // textBoxUbcVersion
+            // 
+            this.textBoxUbcVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbcVersion.Enabled = false;
+            this.textBoxUbcVersion.Location = new System.Drawing.Point(113, 119);
+            this.textBoxUbcVersion.MaxLength = 6;
+            this.textBoxUbcVersion.Name = "textBoxUbcVersion";
+            this.textBoxUbcVersion.Size = new System.Drawing.Size(287, 22);
+            this.textBoxUbcVersion.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.textBoxUbcVersion, "Up to 6 bytes.");
+            // 
+            // buttonImageUbc
+            // 
+            this.buttonImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageUbc.Location = new System.Drawing.Point(3, 3);
+            this.buttonImageUbc.Name = "buttonImageUbc";
+            this.buttonImageUbc.Size = new System.Drawing.Size(104, 31);
+            this.buttonImageUbc.TabIndex = 4;
+            this.buttonImageUbc.Text = "UBC Image";
+            this.buttonImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonImageUbc, "A ADLink ALI BIOS image will enable all functions.");
+            this.buttonImageUbc.UseVisualStyleBackColor = true;
+            this.buttonImageUbc.Click += new System.EventHandler(this.buttonImageUbc_Click);
+            // 
+            // buttonSignedImageUbc
+            // 
+            this.buttonSignedImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageUbc.Enabled = false;
+            this.buttonSignedImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageUbc.Location = new System.Drawing.Point(3, 40);
+            this.buttonSignedImageUbc.Name = "buttonSignedImageUbc";
+            this.buttonSignedImageUbc.Size = new System.Drawing.Size(104, 31);
+            this.buttonSignedImageUbc.TabIndex = 5;
+            this.buttonSignedImageUbc.Text = "Output Image";
+            this.buttonSignedImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonSignedImageUbc, "Will be enabled with a valid UBC Image assigned.");
+            this.buttonSignedImageUbc.UseVisualStyleBackColor = true;
+            this.buttonSignedImageUbc.Click += new System.EventHandler(this.buttonSignedImageUbc_Click);
+            // 
+            // buttonHashAddUbc
+            // 
+            this.buttonHashAddUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashAddUbc.Enabled = false;
+            this.buttonHashAddUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashAddUbc.Location = new System.Drawing.Point(3, 33);
+            this.buttonHashAddUbc.Name = "buttonHashAddUbc";
+            this.buttonHashAddUbc.Size = new System.Drawing.Size(68, 50);
+            this.buttonHashAddUbc.TabIndex = 1;
+            this.buttonHashAddUbc.Text = "+";
+            this.toolTip1.SetToolTip(this.buttonHashAddUbc, "Add hash value files.");
+            this.buttonHashAddUbc.UseVisualStyleBackColor = true;
+            this.buttonHashAddUbc.Click += new System.EventHandler(this.buttonHashAddUbc_Click);
+            // 
+            // buttonHashRemoveUbc
+            // 
+            this.buttonHashRemoveUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashRemoveUbc.Enabled = false;
+            this.buttonHashRemoveUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashRemoveUbc.Location = new System.Drawing.Point(3, 89);
+            this.buttonHashRemoveUbc.Name = "buttonHashRemoveUbc";
+            this.buttonHashRemoveUbc.Size = new System.Drawing.Size(68, 51);
+            this.buttonHashRemoveUbc.TabIndex = 2;
+            this.buttonHashRemoveUbc.Text = "-";
+            this.toolTip1.SetToolTip(this.buttonHashRemoveUbc, "Remove selected hash value files.");
+            this.buttonHashRemoveUbc.UseVisualStyleBackColor = true;
+            this.buttonHashRemoveUbc.Click += new System.EventHandler(this.buttonHashRemoveUbc_Click);
+            // 
+            // listBoxHashUbc
+            // 
+            this.listBoxHashUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHashUbc.Enabled = false;
+            this.listBoxHashUbc.FormattingEnabled = true;
+            this.listBoxHashUbc.ItemHeight = 12;
+            this.listBoxHashUbc.Location = new System.Drawing.Point(83, 3);
+            this.listBoxHashUbc.Name = "listBoxHashUbc";
+            this.listBoxHashUbc.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxHashUbc.Size = new System.Drawing.Size(257, 143);
+            this.listBoxHashUbc.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.listBoxHashUbc, "Hash values binary file list.");
+            // 
+            // buttonSignUbc
+            // 
+            this.buttonSignUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignUbc.Enabled = false;
+            this.buttonSignUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSignUbc.Location = new System.Drawing.Point(3, 164);
+            this.buttonSignUbc.Name = "buttonSignUbc";
+            this.buttonSignUbc.Size = new System.Drawing.Size(758, 176);
+            this.buttonSignUbc.TabIndex = 1;
+            this.buttonSignUbc.Text = "Sign";
+            this.toolTip1.SetToolTip(this.buttonSignUbc, "Will be enabled with a valid UBC Image assigned.");
+            this.buttonSignUbc.UseVisualStyleBackColor = true;
+            this.buttonSignUbc.Click += new System.EventHandler(this.buttonSignUbc_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -150,28 +586,6 @@ namespace AliSign
             this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 74);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // textBoxWorkingFolder
-            // 
-            this.textBoxWorkingFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxWorkingFolder.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxWorkingFolder.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxWorkingFolder.Location = new System.Drawing.Point(123, 7);
-            this.textBoxWorkingFolder.Name = "textBoxWorkingFolder";
-            this.textBoxWorkingFolder.Size = new System.Drawing.Size(652, 22);
-            this.textBoxWorkingFolder.TabIndex = 4;
-            this.textBoxWorkingFolder.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxWorkingFolder_Validating);
-            // 
-            // textBoxDsaPrivateKey
-            // 
-            this.textBoxDsaPrivateKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxDsaPrivateKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxDsaPrivateKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxDsaPrivateKey.Location = new System.Drawing.Point(123, 44);
-            this.textBoxDsaPrivateKey.Name = "textBoxDsaPrivateKey";
-            this.textBoxDsaPrivateKey.Size = new System.Drawing.Size(652, 22);
-            this.textBoxDsaPrivateKey.TabIndex = 5;
-            this.textBoxDsaPrivateKey.TextChanged += new System.EventHandler(this.textBoxDsaPrivateKey_TextChanged);
-            // 
             // buttonWorkingFolder
             // 
             this.buttonWorkingFolder.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -184,19 +598,6 @@ namespace AliSign
             this.buttonWorkingFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonWorkingFolder.UseVisualStyleBackColor = true;
             this.buttonWorkingFolder.Click += new System.EventHandler(this.buttonWorkingFolder_Click);
-            // 
-            // buttonDsaPrivateKey
-            // 
-            this.buttonDsaPrivateKey.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonDsaPrivateKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonDsaPrivateKey.Location = new System.Drawing.Point(3, 40);
-            this.buttonDsaPrivateKey.Name = "buttonDsaPrivateKey";
-            this.buttonDsaPrivateKey.Size = new System.Drawing.Size(114, 31);
-            this.buttonDsaPrivateKey.TabIndex = 3;
-            this.buttonDsaPrivateKey.Text = "DSA Private Key";
-            this.buttonDsaPrivateKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonDsaPrivateKey.UseVisualStyleBackColor = true;
-            this.buttonDsaPrivateKey.Click += new System.EventHandler(this.buttonDsaPrivateKey_Click);
             // 
             // tabControl1
             // 
@@ -293,131 +694,6 @@ namespace AliSign
             this.label1.Text = "UBIOS Version";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBoxImageBios
-            // 
-            this.textBoxImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxImageBios.Location = new System.Drawing.Point(163, 8);
-            this.textBoxImageBios.Name = "textBoxImageBios";
-            this.textBoxImageBios.Size = new System.Drawing.Size(237, 22);
-            this.textBoxImageBios.TabIndex = 11;
-            this.textBoxImageBios.TextChanged += new System.EventHandler(this.textBoxImageBios_TextChanged);
-            // 
-            // textBoxSignedImageBios
-            // 
-            this.textBoxSignedImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSignedImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxSignedImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxSignedImageBios.Location = new System.Drawing.Point(163, 46);
-            this.textBoxSignedImageBios.Name = "textBoxSignedImageBios";
-            this.textBoxSignedImageBios.Size = new System.Drawing.Size(237, 22);
-            this.textBoxSignedImageBios.TabIndex = 12;
-            // 
-            // textBoxUbiosVersion
-            // 
-            this.textBoxUbiosVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUbiosVersion.Location = new System.Drawing.Point(163, 84);
-            this.textBoxUbiosVersion.MaxLength = 24;
-            this.textBoxUbiosVersion.Name = "textBoxUbiosVersion";
-            this.textBoxUbiosVersion.Size = new System.Drawing.Size(237, 22);
-            this.textBoxUbiosVersion.TabIndex = 13;
-            // 
-            // textBoxUbiosPublicKey
-            // 
-            this.textBoxUbiosPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUbiosPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxUbiosPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxUbiosPublicKey.Location = new System.Drawing.Point(163, 122);
-            this.textBoxUbiosPublicKey.Name = "textBoxUbiosPublicKey";
-            this.textBoxUbiosPublicKey.Size = new System.Drawing.Size(237, 22);
-            this.textBoxUbiosPublicKey.TabIndex = 14;
-            // 
-            // textBoxUbcPublicKey
-            // 
-            this.textBoxUbcPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUbcPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxUbcPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxUbcPublicKey.Location = new System.Drawing.Point(163, 160);
-            this.textBoxUbcPublicKey.Name = "textBoxUbcPublicKey";
-            this.textBoxUbcPublicKey.Size = new System.Drawing.Size(237, 22);
-            this.textBoxUbcPublicKey.TabIndex = 15;
-            // 
-            // textBoxBootLoaderPublicKey
-            // 
-            this.textBoxBootLoaderPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBootLoaderPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxBootLoaderPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxBootLoaderPublicKey.Location = new System.Drawing.Point(163, 199);
-            this.textBoxBootLoaderPublicKey.Name = "textBoxBootLoaderPublicKey";
-            this.textBoxBootLoaderPublicKey.Size = new System.Drawing.Size(237, 22);
-            this.textBoxBootLoaderPublicKey.TabIndex = 16;
-            // 
-            // buttonImageBios
-            // 
-            this.buttonImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonImageBios.Location = new System.Drawing.Point(3, 3);
-            this.buttonImageBios.Name = "buttonImageBios";
-            this.buttonImageBios.Size = new System.Drawing.Size(154, 32);
-            this.buttonImageBios.TabIndex = 6;
-            this.buttonImageBios.Text = "UBIOS Image";
-            this.buttonImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonImageBios.UseVisualStyleBackColor = true;
-            this.buttonImageBios.Click += new System.EventHandler(this.buttonImageBios_Click);
-            // 
-            // buttonSignedImageBios
-            // 
-            this.buttonSignedImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignedImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSignedImageBios.Location = new System.Drawing.Point(3, 41);
-            this.buttonSignedImageBios.Name = "buttonSignedImageBios";
-            this.buttonSignedImageBios.Size = new System.Drawing.Size(154, 32);
-            this.buttonSignedImageBios.TabIndex = 7;
-            this.buttonSignedImageBios.Text = "Output Image";
-            this.buttonSignedImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSignedImageBios.UseVisualStyleBackColor = true;
-            this.buttonSignedImageBios.Click += new System.EventHandler(this.buttonSignedImageBios_Click);
-            // 
-            // buttonUbiosPublicKey
-            // 
-            this.buttonUbiosPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonUbiosPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonUbiosPublicKey.Location = new System.Drawing.Point(3, 117);
-            this.buttonUbiosPublicKey.Name = "buttonUbiosPublicKey";
-            this.buttonUbiosPublicKey.Size = new System.Drawing.Size(154, 32);
-            this.buttonUbiosPublicKey.TabIndex = 8;
-            this.buttonUbiosPublicKey.Text = "UBIOS Public Key";
-            this.buttonUbiosPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonUbiosPublicKey.UseVisualStyleBackColor = true;
-            this.buttonUbiosPublicKey.Click += new System.EventHandler(this.buttonUbiosPublicKey_Click);
-            // 
-            // buttonUbcPublicKey
-            // 
-            this.buttonUbcPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonUbcPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonUbcPublicKey.Location = new System.Drawing.Point(3, 155);
-            this.buttonUbcPublicKey.Name = "buttonUbcPublicKey";
-            this.buttonUbcPublicKey.Size = new System.Drawing.Size(154, 32);
-            this.buttonUbcPublicKey.TabIndex = 9;
-            this.buttonUbcPublicKey.Text = "UBC Public Key";
-            this.buttonUbcPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonUbcPublicKey.UseVisualStyleBackColor = true;
-            this.buttonUbcPublicKey.Click += new System.EventHandler(this.buttonUbcPublicKey_Click);
-            // 
-            // buttonBootLoaderPublicKey
-            // 
-            this.buttonBootLoaderPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonBootLoaderPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonBootLoaderPublicKey.Location = new System.Drawing.Point(3, 193);
-            this.buttonBootLoaderPublicKey.Name = "buttonBootLoaderPublicKey";
-            this.buttonBootLoaderPublicKey.Size = new System.Drawing.Size(154, 34);
-            this.buttonBootLoaderPublicKey.TabIndex = 10;
-            this.buttonBootLoaderPublicKey.Text = "Boot Loader Public Key";
-            this.buttonBootLoaderPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonBootLoaderPublicKey.UseVisualStyleBackColor = true;
-            this.buttonBootLoaderPublicKey.Click += new System.EventHandler(this.buttonBootLoaderPublicKey_Click);
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -462,52 +738,6 @@ namespace AliSign
             this.label9.TabIndex = 0;
             this.label9.Text = "Hash List";
             // 
-            // buttonHashAdd
-            // 
-            this.buttonHashAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonHashAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonHashAdd.Location = new System.Drawing.Point(3, 33);
-            this.buttonHashAdd.Name = "buttonHashAdd";
-            this.buttonHashAdd.Size = new System.Drawing.Size(68, 91);
-            this.buttonHashAdd.TabIndex = 1;
-            this.buttonHashAdd.Text = "+";
-            this.buttonHashAdd.UseVisualStyleBackColor = true;
-            this.buttonHashAdd.Click += new System.EventHandler(this.buttonHashAdd_Click);
-            // 
-            // buttonHashRemove
-            // 
-            this.buttonHashRemove.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonHashRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonHashRemove.Location = new System.Drawing.Point(3, 130);
-            this.buttonHashRemove.Name = "buttonHashRemove";
-            this.buttonHashRemove.Size = new System.Drawing.Size(68, 91);
-            this.buttonHashRemove.TabIndex = 2;
-            this.buttonHashRemove.Text = "-";
-            this.buttonHashRemove.UseVisualStyleBackColor = true;
-            this.buttonHashRemove.Click += new System.EventHandler(this.buttonHashRemove_Click);
-            // 
-            // listBoxHashUbios
-            // 
-            this.listBoxHashUbios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxHashUbios.FormattingEnabled = true;
-            this.listBoxHashUbios.ItemHeight = 12;
-            this.listBoxHashUbios.Location = new System.Drawing.Point(83, 3);
-            this.listBoxHashUbios.Name = "listBoxHashUbios";
-            this.listBoxHashUbios.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxHashUbios.Size = new System.Drawing.Size(257, 224);
-            this.listBoxHashUbios.TabIndex = 1;
-            // 
-            // buttonSignBios
-            // 
-            this.buttonSignBios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonSignBios.Location = new System.Drawing.Point(3, 245);
-            this.buttonSignBios.Name = "buttonSignBios";
-            this.buttonSignBios.Size = new System.Drawing.Size(758, 95);
-            this.buttonSignBios.TabIndex = 1;
-            this.buttonSignBios.Text = "Sign";
-            this.buttonSignBios.UseVisualStyleBackColor = true;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel8);
@@ -551,64 +781,6 @@ namespace AliSign
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(758, 84);
             this.tableLayoutPanel9.TabIndex = 0;
-            // 
-            // textBoxImageDisk
-            // 
-            this.textBoxImageDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxImageDisk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxImageDisk.Location = new System.Drawing.Point(123, 10);
-            this.textBoxImageDisk.Name = "textBoxImageDisk";
-            this.textBoxImageDisk.Size = new System.Drawing.Size(632, 22);
-            this.textBoxImageDisk.TabIndex = 4;
-            this.textBoxImageDisk.TextChanged += new System.EventHandler(this.textBoxImageDisk_TextChanged);
-            // 
-            // textBoxSignedImageDisk
-            // 
-            this.textBoxSignedImageDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSignedImageDisk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxSignedImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxSignedImageDisk.Location = new System.Drawing.Point(123, 52);
-            this.textBoxSignedImageDisk.Name = "textBoxSignedImageDisk";
-            this.textBoxSignedImageDisk.Size = new System.Drawing.Size(632, 22);
-            this.textBoxSignedImageDisk.TabIndex = 5;
-            // 
-            // buttonImageDisk
-            // 
-            this.buttonImageDisk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonImageDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonImageDisk.Location = new System.Drawing.Point(3, 3);
-            this.buttonImageDisk.Name = "buttonImageDisk";
-            this.buttonImageDisk.Size = new System.Drawing.Size(114, 36);
-            this.buttonImageDisk.TabIndex = 2;
-            this.buttonImageDisk.Text = "Disk Image";
-            this.buttonImageDisk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonImageDisk.UseVisualStyleBackColor = true;
-            this.buttonImageDisk.Click += new System.EventHandler(this.buttonImageDisk_Click);
-            // 
-            // buttonSignedImageDisk
-            // 
-            this.buttonSignedImageDisk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignedImageDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSignedImageDisk.Location = new System.Drawing.Point(3, 45);
-            this.buttonSignedImageDisk.Name = "buttonSignedImageDisk";
-            this.buttonSignedImageDisk.Size = new System.Drawing.Size(114, 36);
-            this.buttonSignedImageDisk.TabIndex = 3;
-            this.buttonSignedImageDisk.Text = "Output Image";
-            this.buttonSignedImageDisk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSignedImageDisk.UseVisualStyleBackColor = true;
-            this.buttonSignedImageDisk.Click += new System.EventHandler(this.buttonSignedImageDisk_Click);
-            // 
-            // buttonSignDisk
-            // 
-            this.buttonSignDisk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonSignDisk.Location = new System.Drawing.Point(3, 93);
-            this.buttonSignDisk.Name = "buttonSignDisk";
-            this.buttonSignDisk.Size = new System.Drawing.Size(758, 247);
-            this.buttonSignDisk.TabIndex = 1;
-            this.buttonSignDisk.Text = "Sign";
-            this.buttonSignDisk.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -698,71 +870,6 @@ namespace AliSign
             this.label15.TabIndex = 3;
             this.label15.Text = "UBC Version";
             // 
-            // textBoxImageUbc
-            // 
-            this.textBoxImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxImageUbc.Location = new System.Drawing.Point(113, 7);
-            this.textBoxImageUbc.Name = "textBoxImageUbc";
-            this.textBoxImageUbc.Size = new System.Drawing.Size(287, 22);
-            this.textBoxImageUbc.TabIndex = 6;
-            this.textBoxImageUbc.TextChanged += new System.EventHandler(this.textBoxImageUbc_TextChanged);
-            // 
-            // textBoxSignedImageUbc
-            // 
-            this.textBoxSignedImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSignedImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxSignedImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxSignedImageUbc.Location = new System.Drawing.Point(113, 44);
-            this.textBoxSignedImageUbc.Name = "textBoxSignedImageUbc";
-            this.textBoxSignedImageUbc.Size = new System.Drawing.Size(287, 22);
-            this.textBoxSignedImageUbc.TabIndex = 7;
-            // 
-            // textBoxUbiosVersionUbc
-            // 
-            this.textBoxUbiosVersionUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUbiosVersionUbc.Location = new System.Drawing.Point(113, 81);
-            this.textBoxUbiosVersionUbc.MaxLength = 24;
-            this.textBoxUbiosVersionUbc.Name = "textBoxUbiosVersionUbc";
-            this.textBoxUbiosVersionUbc.Size = new System.Drawing.Size(287, 22);
-            this.textBoxUbiosVersionUbc.TabIndex = 8;
-            // 
-            // textBoxUbcVersion
-            // 
-            this.textBoxUbcVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUbcVersion.Location = new System.Drawing.Point(113, 119);
-            this.textBoxUbcVersion.MaxLength = 6;
-            this.textBoxUbcVersion.Name = "textBoxUbcVersion";
-            this.textBoxUbcVersion.Size = new System.Drawing.Size(287, 22);
-            this.textBoxUbcVersion.TabIndex = 9;
-            // 
-            // buttonImageUbc
-            // 
-            this.buttonImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonImageUbc.Location = new System.Drawing.Point(3, 3);
-            this.buttonImageUbc.Name = "buttonImageUbc";
-            this.buttonImageUbc.Size = new System.Drawing.Size(104, 31);
-            this.buttonImageUbc.TabIndex = 4;
-            this.buttonImageUbc.Text = "UBC Image";
-            this.buttonImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonImageUbc.UseVisualStyleBackColor = true;
-            this.buttonImageUbc.Click += new System.EventHandler(this.buttonImageUbc_Click);
-            // 
-            // buttonSignedImageUbc
-            // 
-            this.buttonSignedImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignedImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSignedImageUbc.Location = new System.Drawing.Point(3, 40);
-            this.buttonSignedImageUbc.Name = "buttonSignedImageUbc";
-            this.buttonSignedImageUbc.Size = new System.Drawing.Size(104, 31);
-            this.buttonSignedImageUbc.TabIndex = 5;
-            this.buttonSignedImageUbc.Text = "Output Image";
-            this.buttonSignedImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSignedImageUbc.UseVisualStyleBackColor = true;
-            this.buttonSignedImageUbc.Click += new System.EventHandler(this.buttonSignedImageUbc_Click);
-            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.ColumnCount = 2;
@@ -805,53 +912,6 @@ namespace AliSign
             this.label16.Size = new System.Drawing.Size(48, 12);
             this.label16.TabIndex = 0;
             this.label16.Text = "Hash List";
-            // 
-            // buttonHashAddUbc
-            // 
-            this.buttonHashAddUbc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonHashAddUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonHashAddUbc.Location = new System.Drawing.Point(3, 33);
-            this.buttonHashAddUbc.Name = "buttonHashAddUbc";
-            this.buttonHashAddUbc.Size = new System.Drawing.Size(68, 50);
-            this.buttonHashAddUbc.TabIndex = 1;
-            this.buttonHashAddUbc.Text = "+";
-            this.buttonHashAddUbc.UseVisualStyleBackColor = true;
-            this.buttonHashAddUbc.Click += new System.EventHandler(this.buttonHashAddUbc_Click);
-            // 
-            // buttonHashRemoveUbc
-            // 
-            this.buttonHashRemoveUbc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonHashRemoveUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonHashRemoveUbc.Location = new System.Drawing.Point(3, 89);
-            this.buttonHashRemoveUbc.Name = "buttonHashRemoveUbc";
-            this.buttonHashRemoveUbc.Size = new System.Drawing.Size(68, 51);
-            this.buttonHashRemoveUbc.TabIndex = 2;
-            this.buttonHashRemoveUbc.Text = "-";
-            this.buttonHashRemoveUbc.UseVisualStyleBackColor = true;
-            this.buttonHashRemoveUbc.Click += new System.EventHandler(this.buttonHashRemoveUbc_Click);
-            // 
-            // listBoxHashUbc
-            // 
-            this.listBoxHashUbc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxHashUbc.FormattingEnabled = true;
-            this.listBoxHashUbc.ItemHeight = 12;
-            this.listBoxHashUbc.Location = new System.Drawing.Point(83, 3);
-            this.listBoxHashUbc.Name = "listBoxHashUbc";
-            this.listBoxHashUbc.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxHashUbc.Size = new System.Drawing.Size(257, 143);
-            this.listBoxHashUbc.TabIndex = 1;
-            // 
-            // buttonSignUbc
-            // 
-            this.buttonSignUbc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSignUbc.Location = new System.Drawing.Point(3, 164);
-            this.buttonSignUbc.Name = "buttonSignUbc";
-            this.buttonSignUbc.Size = new System.Drawing.Size(758, 176);
-            this.buttonSignUbc.TabIndex = 1;
-            this.buttonSignUbc.Text = "Sign";
-            this.buttonSignUbc.UseVisualStyleBackColor = true;
-            this.buttonSignUbc.Click += new System.EventHandler(this.buttonSignUbc_Click);
             // 
             // Form1
             // 

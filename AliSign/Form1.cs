@@ -45,6 +45,8 @@ namespace AliSign
         public const int OFFSET_UBIOS_VERSION_UBC = 0x7fa6;
         public const int OFFSET_UBC_VERSION = 0x7fbe;
 
+        public const int SIZE_DISK_SECTOR = 512;
+
         // Common encripto variables
         IDigest hashFunction;
         IDsa signer;
@@ -347,6 +349,19 @@ namespace AliSign
             return -1;
         }
 
+        private void enableControlsDsa(bool isValid)
+        {
+            textBoxImageBios.Enabled = isValid;
+            buttonImageBios.Enabled = isValid;
+            enableControlsBios(isValid);
+            textBoxImageDisk.Enabled = isValid;
+            buttonImageDisk.Enabled = isValid;
+            enableControlsDisk(isValid);
+            textBoxImageUbc.Enabled = isValid;
+            buttonImageUbc.Enabled = isValid;
+            enableControlsUbc(isValid);
+        }
+
         private void enableControlsBios(bool isValid)
         {
             textBoxSignedImageBios.Enabled = isValid;
@@ -552,7 +567,7 @@ namespace AliSign
         private void enableControlsDisk(bool isValid)
         {
             textBoxSignedImageDisk.Enabled = isValid;
-            buttonSignDisk.Enabled = isValid;
+            buttonSignedImageDisk.Enabled = isValid;
             buttonSignDisk.Enabled = isValid;
         }
 
@@ -794,27 +809,202 @@ namespace AliSign
 
         private void textBoxDsaPrivateKey_TextChanged(object sender, EventArgs e)
         {
-            if (!File.Exists(textBoxDsaPrivateKey.Text)) { return; }
+            System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
+            string text = textBox.Text;
 
-            string pem = File.ReadAllText(textBoxDsaPrivateKey.Text);
+            if (File.Exists(text))
+            {
+                string pem = File.ReadAllText(text);
 
-            // Create a PemReader to parse the PEM file
-            var reader = new PemReader(new StringReader(pem));
+                // Create a PemReader to parse the PEM file
+                var reader = new PemReader(new StringReader(pem));
 
-            // Read the private key from the PEM file
-            AsymmetricCipherKeyPair keyPair = (AsymmetricCipherKeyPair)reader.ReadObject();
+                // Read the private key from the PEM file
+                AsymmetricCipherKeyPair keyPair = (AsymmetricCipherKeyPair)reader.ReadObject();
 
-            // Get the DSA private key from the key pair
-            DsaPrivateKeyParameters dsaPrivateKey = (DsaPrivateKeyParameters)keyPair.Private;
+                if (keyPair == null)
+                {
+                    enableControlsDsa(false);
+                    return;
+                }
 
-            // Create a SHA1 hash function
-            hashFunction = new Sha1Digest();
+                // Get the DSA private key from the key pair
+                DsaPrivateKeyParameters dsaPrivateKey = (DsaPrivateKeyParameters)keyPair.Private;
 
-            // Create a DSA signer object
-            signer = new DsaSigner();
+                // Create a SHA1 hash function
+                hashFunction = new Sha1Digest();
 
-            // Initialize the signer with the DSA private key
-            signer.Init(true, dsaPrivateKey);
+                // Create a DSA signer object
+                signer = new DsaSigner();
+
+                // Initialize the signer with the DSA private key
+                signer.Init(true, dsaPrivateKey);
+
+                enableControlsDsa(true);
+            }
+            else
+            {
+                enableControlsDsa(false);
+            }
+        }
+
+        private void textBoxDsaPrivateKey_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSignDisk_Click(object sender, EventArgs e)
+        {
+            byte[] signature;
+            byte[] hash;
+            int retryCount;
+
+            //
+            // 1. sign MBR
+            // 
+            short BL_Ss = 1; // GRUB Boot Loader Start Sector; 
+            Buffer.BlockCopy(BitConverter.GetBytes(BL_Ss), 0, bytesImageDisk, 0x1b4, sizeof(short));
+
+            short BL_Si = (short)(BitConverter.ToInt16(bytesImageDisk, 0x1c6) - 2); // BL Si = GRUB Boot Loader Sector Size
+            Buffer.BlockCopy(BitConverter.GetBytes(BL_Si), 0, bytesImageDisk, 0x1b6, sizeof(short));
+
+            // assemble a blobMbr
+            byte[] blobMbr = subByteArray(bytesImageDisk, 0, 0x178).Concat(subByteArray(bytesImageDisk, 0x1b4, SIZE_DISK_SECTOR)).ToArray();
+
+            // Compute the hash of the blobMbr
+            hashFunction.BlockUpdate(blobMbr, 0, blobMbr.Length);
+            hash = new byte[hashFunction.GetDigestSize()];
+            hashFunction.DoFinal(hash, 0);
+            // Convert the signature to an byte array
+            retryCount = 0;
+            do
+            {
+                signature = bigIntegersToBytes(signer.GenerateSignature(hash));
+                retryCount++;
+            } while (signature.Length != 40 && retryCount < RETRY_SIGN);
+            if (retryCount >= RETRY_SIGN) { return; }
+
+            // patch signature & hash
+            Buffer.BlockCopy(signature, 0, bytesImageDisk, 0x178, signature.Length); // length = 0x28
+            Buffer.BlockCopy(hash, 0, bytesImageDisk, 0x178 + signature.Length, hash.Length); // length = 0x14
+            //
+            // 2. sign GRUB
+            //
+            byte[] blobGrub = subByteArray(bytesImageDisk, SIZE_DISK_SECTOR, (bytesImageDisk.Length - SIZE_DISK_SECTOR)); // 2nd~eof-1 sector sectors
+
+            // Compute the hash of the blobGrub
+            hashFunction.BlockUpdate(blobGrub, 0, blobGrub.Length);
+            hashFunction.DoFinal(hash, 0);
+            // Convert the signature to an byte array
+            retryCount = 0;
+            do
+            {
+                signature = bigIntegersToBytes(signer.GenerateSignature(hash));
+                retryCount++;
+            } while (signature.Length != 40 && retryCount < RETRY_SIGN);
+            if (retryCount >= RETRY_SIGN) { return; }
+
+            // patch signature & hash
+            Buffer.BlockCopy(hash, 0, bytesImageDisk, bytesImageDisk.Length - SIZE_DISK_SECTOR, hash.Length); // length = 0x14
+            Buffer.BlockCopy(signature, 0, bytesImageDisk, bytesImageDisk.Length - SIZE_DISK_SECTOR + hash.Length, signature.Length); // length = 0x28
+            //
+            //  3. Write to output file
+            //
+            try
+            {
+                MessageBox.Show("Write to " + textBoxSignedImageDisk.Text);
+                File.WriteAllBytes(textBoxSignedImageDisk.Text, bytesImageDisk);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("An error occurred while writing to the file: " + ex.Message);
+            }
+        }
+
+        private void buttonSignBios_Click(object sender, EventArgs e)
+        {
+            //
+            // 1. patch UBC Public key @ 0x3c (Length 0x194)
+            //
+            byte[] UbcPublicKey;
+            if (!File.Exists(textBoxUbcPublicKey.Text)) { return; }
+            UbcPublicKey = File.ReadAllBytes(textBoxUbcPublicKey.Text);
+            Buffer.BlockCopy(UbcPublicKey, 0, bytesImageBios, OFFSET_UBC_PUBLIC_KEY, UbcPublicKey.Length);
+            //
+            // 2. patch MBR_GPT_BL_PUBLIC_KEY Public key @ 0x1d0 (Length 0x194)
+            //
+            byte[] BootLoaderPublicKey;
+            if (!File.Exists(textBoxBootLoaderPublicKey.Text)) { return; }
+            BootLoaderPublicKey = File.ReadAllBytes(textBoxBootLoaderPublicKey.Text);
+            Buffer.BlockCopy(BootLoaderPublicKey, 0, bytesImageBios, OFFSET_BOOT_LOADER_PUBLIC_KEY, BootLoaderPublicKey.Length);
+            //
+            // 3. patch UBIOS version string @ OFFSET_UBIOS_VERSION (length 0x18)
+            //
+            byte[] VersionString = new byte[0x18];
+            byte[] VersionStringInput = Encoding.ASCII.GetBytes(textBoxUbiosVersion.Text);
+            // copy input to target array
+            Buffer.BlockCopy(VersionStringInput, 0, VersionString, 0, VersionStringInput.Length);
+            // override to Image buffer
+            Buffer.BlockCopy(VersionString, 0, bytesImageBios, OFFSET_UBIOS_VERSION, VersionString.Length);
+            //
+            // 4. patch Hash list @OFFSET_HASH_LIST_START ~ OFFSET_HASH_LIST_END_PLUS1)
+            //
+            Array.Clear(bytesImageBios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1 - OFFSET_HASH_LIST_START);
+            byte[] hash;
+            int offsetRomImage = OFFSET_HASH_LIST_START;
+            foreach (string hashFile in listBoxHashUbios.Items)
+            {
+                if (!File.Exists(hashFile)) { return; }
+                hash = File.ReadAllBytes(hashFile);
+                Buffer.BlockCopy(hash, 0, bytesImageBios, offsetRomImage, hash.Length);
+                offsetRomImage += hash.Length;
+                // ignore hash files after offset OFFSET_HASH_LIST_END_PLUS1
+                if (offsetRomImage > OFFSET_HASH_LIST_END_PLUS1 - hash.Length) { break; }
+            }
+            //
+            // 5. patch UBIOS public key and it's double word - byte checksum to OFFSET_UBIOS_PUBLIC_KEY
+            //
+            byte[] UbiosPublicKey;
+            int checksum = 0;
+            if (!File.Exists(textBoxUbiosPublicKey.Text)) { return; }
+            UbiosPublicKey = File.ReadAllBytes(textBoxUbiosPublicKey.Text);
+            for (int i = 0; i < UbiosPublicKey.Length; i++)
+            {
+                bytesImageBios[OFFSET_UBIOS_PUBLIC_KEY + i] = UbiosPublicKey[i];
+                checksum += UbiosPublicKey[i];
+            }
+            // override checksum after UBIOS Public key
+            byte[] bytes = BitConverter.GetBytes(checksum);
+            Buffer.BlockCopy(bytes, 0, bytesImageBios, OFFSET_UBIOS_PUBLIC_KEY + UbiosPublicKey.Length, sizeof(int));
+            //
+            // 6. get hash and sign the blob from offset 0x3c~EOF of the image.
+            //
+            // Dotnet's DSA class doesn't support loading DSA private keys refer to: https://www.reddit.com/r/dotnetcore/comments/tg5pqg/creating_dsa_signature_with_private_key/
+            // Switch to BouncyCastle library
+
+            // Compute the hash of the blob
+            hashFunction.BlockUpdate(bytesImageBios, 0x3c, bytesImageBios.Length - 0x3c);
+            hash = new byte[hashFunction.GetDigestSize()];
+            hashFunction.DoFinal(hash, 0);
+
+            // Convert the signature to an byte array
+            byte[] signature = bigIntegersToBytes(signer.GenerateSignature(hash));
+
+            // patch signature & hash to the head of ROM Image
+            Buffer.BlockCopy(signature, 0, bytesImageBios, 0, signature.Length); // length = 0x28
+            Buffer.BlockCopy(hash, 0, bytesImageBios, signature.Length, hash.Length); // length = 0x14
+            //
+            //  7. Write to output file
+            //
+            try
+            {
+                MessageBox.Show("Write to " + textBoxSignedImageBios.Text);
+                File.WriteAllBytes(textBoxSignedImageBios.Text, bytesImageBios);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("An error occurred while writing to the file: " + ex.Message);
+            }
         }
     }
 
