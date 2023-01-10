@@ -30,12 +30,931 @@ namespace AliSign
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxWorkingFolder = new System.Windows.Forms.TextBox();
+            this.textBoxDsaPrivateKey = new System.Windows.Forms.TextBox();
+            this.buttonWorkingFolder = new System.Windows.Forms.Button();
+            this.buttonDsaPrivateKey = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxImageBios = new System.Windows.Forms.TextBox();
+            this.textBoxSignedImageBios = new System.Windows.Forms.TextBox();
+            this.textBoxUbiosVersion = new System.Windows.Forms.TextBox();
+            this.textBoxUbiosPublicKey = new System.Windows.Forms.TextBox();
+            this.textBoxUbcPublicKey = new System.Windows.Forms.TextBox();
+            this.textBoxBootLoaderPublicKey = new System.Windows.Forms.TextBox();
+            this.buttonImageBios = new System.Windows.Forms.Button();
+            this.buttonSignedImageBios = new System.Windows.Forms.Button();
+            this.buttonUbiosPublicKey = new System.Windows.Forms.Button();
+            this.buttonUbcPublicKey = new System.Windows.Forms.Button();
+            this.buttonBootLoaderPublicKey = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.buttonHashAdd = new System.Windows.Forms.Button();
+            this.buttonHashRemove = new System.Windows.Forms.Button();
+            this.listBoxHashUbios = new System.Windows.Forms.ListBox();
+            this.buttonSignBios = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxImageDisk = new System.Windows.Forms.TextBox();
+            this.textBoxSignedImageDisk = new System.Windows.Forms.TextBox();
+            this.buttonImageDisk = new System.Windows.Forms.Button();
+            this.buttonSignedImageDisk = new System.Windows.Forms.Button();
+            this.buttonSignDisk = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxImageUbc = new System.Windows.Forms.TextBox();
+            this.textBoxSignedImageUbc = new System.Windows.Forms.TextBox();
+            this.textBoxUbiosVersionUbc = new System.Windows.Forms.TextBox();
+            this.textBoxUbcVersion = new System.Windows.Forms.TextBox();
+            this.buttonImageUbc = new System.Windows.Forms.Button();
+            this.buttonSignedImageUbc = new System.Windows.Forms.Button();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.buttonHashAddUbc = new System.Windows.Forms.Button();
+            this.buttonHashRemoveUbc = new System.Windows.Forms.Button();
+            this.listBoxHashUbc = new System.Windows.Forms.ListBox();
+            this.buttonSignUbc = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tabControl1, 0, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(784, 461);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.textBoxWorkingFolder, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxDsaPrivateKey, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonWorkingFolder, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonDsaPrivateKey, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 74);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // textBoxWorkingFolder
+            // 
+            this.textBoxWorkingFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxWorkingFolder.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxWorkingFolder.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxWorkingFolder.Location = new System.Drawing.Point(123, 7);
+            this.textBoxWorkingFolder.Name = "textBoxWorkingFolder";
+            this.textBoxWorkingFolder.Size = new System.Drawing.Size(652, 22);
+            this.textBoxWorkingFolder.TabIndex = 4;
+            this.textBoxWorkingFolder.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxWorkingFolder_Validating);
+            // 
+            // textBoxDsaPrivateKey
+            // 
+            this.textBoxDsaPrivateKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxDsaPrivateKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxDsaPrivateKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxDsaPrivateKey.Location = new System.Drawing.Point(123, 44);
+            this.textBoxDsaPrivateKey.Name = "textBoxDsaPrivateKey";
+            this.textBoxDsaPrivateKey.Size = new System.Drawing.Size(652, 22);
+            this.textBoxDsaPrivateKey.TabIndex = 5;
+            this.textBoxDsaPrivateKey.TextChanged += new System.EventHandler(this.textBoxDsaPrivateKey_TextChanged);
+            // 
+            // buttonWorkingFolder
+            // 
+            this.buttonWorkingFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonWorkingFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonWorkingFolder.Location = new System.Drawing.Point(3, 3);
+            this.buttonWorkingFolder.Name = "buttonWorkingFolder";
+            this.buttonWorkingFolder.Size = new System.Drawing.Size(114, 31);
+            this.buttonWorkingFolder.TabIndex = 2;
+            this.buttonWorkingFolder.Text = "Working Folder";
+            this.buttonWorkingFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonWorkingFolder.UseVisualStyleBackColor = true;
+            this.buttonWorkingFolder.Click += new System.EventHandler(this.buttonWorkingFolder_Click);
+            // 
+            // buttonDsaPrivateKey
+            // 
+            this.buttonDsaPrivateKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDsaPrivateKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonDsaPrivateKey.Location = new System.Drawing.Point(3, 40);
+            this.buttonDsaPrivateKey.Name = "buttonDsaPrivateKey";
+            this.buttonDsaPrivateKey.Size = new System.Drawing.Size(114, 31);
+            this.buttonDsaPrivateKey.TabIndex = 3;
+            this.buttonDsaPrivateKey.Text = "DSA Private Key";
+            this.buttonDsaPrivateKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonDsaPrivateKey.UseVisualStyleBackColor = true;
+            this.buttonDsaPrivateKey.Click += new System.EventHandler(this.buttonDsaPrivateKey_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(3, 83);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(778, 375);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(770, 349);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "UBIOS";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonSignBios, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70.55393F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.44606F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(764, 343);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(758, 236);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxImageBios, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxSignedImageBios, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxUbiosVersion, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxUbiosPublicKey, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxUbcPublicKey, 1, 4);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxBootLoaderPublicKey, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.buttonImageBios, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.buttonSignedImageBios, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.buttonUbiosPublicKey, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.buttonUbcPublicKey, 0, 4);
+            this.tableLayoutPanel4.Controls.Add(this.buttonBootLoaderPublicKey, 0, 5);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 6;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(403, 230);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(79, 89);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 12);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "UBIOS Version";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxImageBios
+            // 
+            this.textBoxImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageBios.Location = new System.Drawing.Point(163, 8);
+            this.textBoxImageBios.Name = "textBoxImageBios";
+            this.textBoxImageBios.Size = new System.Drawing.Size(237, 22);
+            this.textBoxImageBios.TabIndex = 11;
+            this.textBoxImageBios.TextChanged += new System.EventHandler(this.textBoxImageBios_TextChanged);
+            // 
+            // textBoxSignedImageBios
+            // 
+            this.textBoxSignedImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxSignedImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageBios.Location = new System.Drawing.Point(163, 46);
+            this.textBoxSignedImageBios.Name = "textBoxSignedImageBios";
+            this.textBoxSignedImageBios.Size = new System.Drawing.Size(237, 22);
+            this.textBoxSignedImageBios.TabIndex = 12;
+            // 
+            // textBoxUbiosVersion
+            // 
+            this.textBoxUbiosVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbiosVersion.Location = new System.Drawing.Point(163, 84);
+            this.textBoxUbiosVersion.MaxLength = 24;
+            this.textBoxUbiosVersion.Name = "textBoxUbiosVersion";
+            this.textBoxUbiosVersion.Size = new System.Drawing.Size(237, 22);
+            this.textBoxUbiosVersion.TabIndex = 13;
+            // 
+            // textBoxUbiosPublicKey
+            // 
+            this.textBoxUbiosPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbiosPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxUbiosPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxUbiosPublicKey.Location = new System.Drawing.Point(163, 122);
+            this.textBoxUbiosPublicKey.Name = "textBoxUbiosPublicKey";
+            this.textBoxUbiosPublicKey.Size = new System.Drawing.Size(237, 22);
+            this.textBoxUbiosPublicKey.TabIndex = 14;
+            // 
+            // textBoxUbcPublicKey
+            // 
+            this.textBoxUbcPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbcPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxUbcPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxUbcPublicKey.Location = new System.Drawing.Point(163, 160);
+            this.textBoxUbcPublicKey.Name = "textBoxUbcPublicKey";
+            this.textBoxUbcPublicKey.Size = new System.Drawing.Size(237, 22);
+            this.textBoxUbcPublicKey.TabIndex = 15;
+            // 
+            // textBoxBootLoaderPublicKey
+            // 
+            this.textBoxBootLoaderPublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBootLoaderPublicKey.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxBootLoaderPublicKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxBootLoaderPublicKey.Location = new System.Drawing.Point(163, 199);
+            this.textBoxBootLoaderPublicKey.Name = "textBoxBootLoaderPublicKey";
+            this.textBoxBootLoaderPublicKey.Size = new System.Drawing.Size(237, 22);
+            this.textBoxBootLoaderPublicKey.TabIndex = 16;
+            // 
+            // buttonImageBios
+            // 
+            this.buttonImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageBios.Location = new System.Drawing.Point(3, 3);
+            this.buttonImageBios.Name = "buttonImageBios";
+            this.buttonImageBios.Size = new System.Drawing.Size(154, 32);
+            this.buttonImageBios.TabIndex = 6;
+            this.buttonImageBios.Text = "UBIOS Image";
+            this.buttonImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonImageBios.UseVisualStyleBackColor = true;
+            this.buttonImageBios.Click += new System.EventHandler(this.buttonImageBios_Click);
+            // 
+            // buttonSignedImageBios
+            // 
+            this.buttonSignedImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageBios.Location = new System.Drawing.Point(3, 41);
+            this.buttonSignedImageBios.Name = "buttonSignedImageBios";
+            this.buttonSignedImageBios.Size = new System.Drawing.Size(154, 32);
+            this.buttonSignedImageBios.TabIndex = 7;
+            this.buttonSignedImageBios.Text = "Output Image";
+            this.buttonSignedImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSignedImageBios.UseVisualStyleBackColor = true;
+            this.buttonSignedImageBios.Click += new System.EventHandler(this.buttonSignedImageBios_Click);
+            // 
+            // buttonUbiosPublicKey
+            // 
+            this.buttonUbiosPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUbiosPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonUbiosPublicKey.Location = new System.Drawing.Point(3, 117);
+            this.buttonUbiosPublicKey.Name = "buttonUbiosPublicKey";
+            this.buttonUbiosPublicKey.Size = new System.Drawing.Size(154, 32);
+            this.buttonUbiosPublicKey.TabIndex = 8;
+            this.buttonUbiosPublicKey.Text = "UBIOS Public Key";
+            this.buttonUbiosPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonUbiosPublicKey.UseVisualStyleBackColor = true;
+            this.buttonUbiosPublicKey.Click += new System.EventHandler(this.buttonUbiosPublicKey_Click);
+            // 
+            // buttonUbcPublicKey
+            // 
+            this.buttonUbcPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUbcPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonUbcPublicKey.Location = new System.Drawing.Point(3, 155);
+            this.buttonUbcPublicKey.Name = "buttonUbcPublicKey";
+            this.buttonUbcPublicKey.Size = new System.Drawing.Size(154, 32);
+            this.buttonUbcPublicKey.TabIndex = 9;
+            this.buttonUbcPublicKey.Text = "UBC Public Key";
+            this.buttonUbcPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonUbcPublicKey.UseVisualStyleBackColor = true;
+            this.buttonUbcPublicKey.Click += new System.EventHandler(this.buttonUbcPublicKey_Click);
+            // 
+            // buttonBootLoaderPublicKey
+            // 
+            this.buttonBootLoaderPublicKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonBootLoaderPublicKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonBootLoaderPublicKey.Location = new System.Drawing.Point(3, 193);
+            this.buttonBootLoaderPublicKey.Name = "buttonBootLoaderPublicKey";
+            this.buttonBootLoaderPublicKey.Size = new System.Drawing.Size(154, 34);
+            this.buttonBootLoaderPublicKey.TabIndex = 10;
+            this.buttonBootLoaderPublicKey.Text = "Boot Loader Public Key";
+            this.buttonBootLoaderPublicKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonBootLoaderPublicKey.UseVisualStyleBackColor = true;
+            this.buttonBootLoaderPublicKey.Click += new System.EventHandler(this.buttonBootLoaderPublicKey_Click);
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.listBoxHashUbios, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(412, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(343, 230);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Controls.Add(this.label9, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.buttonHashAdd, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.buttonHashRemove, 0, 2);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(74, 224);
+            this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(23, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 12);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Hash List";
+            // 
+            // buttonHashAdd
+            // 
+            this.buttonHashAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashAdd.Location = new System.Drawing.Point(3, 33);
+            this.buttonHashAdd.Name = "buttonHashAdd";
+            this.buttonHashAdd.Size = new System.Drawing.Size(68, 91);
+            this.buttonHashAdd.TabIndex = 1;
+            this.buttonHashAdd.Text = "+";
+            this.buttonHashAdd.UseVisualStyleBackColor = true;
+            this.buttonHashAdd.Click += new System.EventHandler(this.buttonHashAdd_Click);
+            // 
+            // buttonHashRemove
+            // 
+            this.buttonHashRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashRemove.Location = new System.Drawing.Point(3, 130);
+            this.buttonHashRemove.Name = "buttonHashRemove";
+            this.buttonHashRemove.Size = new System.Drawing.Size(68, 91);
+            this.buttonHashRemove.TabIndex = 2;
+            this.buttonHashRemove.Text = "-";
+            this.buttonHashRemove.UseVisualStyleBackColor = true;
+            this.buttonHashRemove.Click += new System.EventHandler(this.buttonHashRemove_Click);
+            // 
+            // listBoxHashUbios
+            // 
+            this.listBoxHashUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHashUbios.FormattingEnabled = true;
+            this.listBoxHashUbios.ItemHeight = 12;
+            this.listBoxHashUbios.Location = new System.Drawing.Point(83, 3);
+            this.listBoxHashUbios.Name = "listBoxHashUbios";
+            this.listBoxHashUbios.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxHashUbios.Size = new System.Drawing.Size(257, 224);
+            this.listBoxHashUbios.TabIndex = 1;
+            // 
+            // buttonSignBios
+            // 
+            this.buttonSignBios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonSignBios.Location = new System.Drawing.Point(3, 245);
+            this.buttonSignBios.Name = "buttonSignBios";
+            this.buttonSignBios.Size = new System.Drawing.Size(758, 95);
+            this.buttonSignBios.TabIndex = 1;
+            this.buttonSignBios.Text = "Sign";
+            this.buttonSignBios.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tableLayoutPanel8);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(770, 349);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Disk";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.buttonSignDisk, 0, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(764, 343);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.textBoxImageDisk, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.textBoxSignedImageDisk, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.buttonImageDisk, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.buttonSignedImageDisk, 0, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(758, 84);
+            this.tableLayoutPanel9.TabIndex = 0;
+            // 
+            // textBoxImageDisk
+            // 
+            this.textBoxImageDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageDisk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageDisk.Location = new System.Drawing.Point(123, 10);
+            this.textBoxImageDisk.Name = "textBoxImageDisk";
+            this.textBoxImageDisk.Size = new System.Drawing.Size(632, 22);
+            this.textBoxImageDisk.TabIndex = 4;
+            this.textBoxImageDisk.TextChanged += new System.EventHandler(this.textBoxImageDisk_TextChanged);
+            // 
+            // textBoxSignedImageDisk
+            // 
+            this.textBoxSignedImageDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageDisk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxSignedImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageDisk.Location = new System.Drawing.Point(123, 52);
+            this.textBoxSignedImageDisk.Name = "textBoxSignedImageDisk";
+            this.textBoxSignedImageDisk.Size = new System.Drawing.Size(632, 22);
+            this.textBoxSignedImageDisk.TabIndex = 5;
+            // 
+            // buttonImageDisk
+            // 
+            this.buttonImageDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageDisk.Location = new System.Drawing.Point(3, 3);
+            this.buttonImageDisk.Name = "buttonImageDisk";
+            this.buttonImageDisk.Size = new System.Drawing.Size(114, 36);
+            this.buttonImageDisk.TabIndex = 2;
+            this.buttonImageDisk.Text = "Disk Image";
+            this.buttonImageDisk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonImageDisk.UseVisualStyleBackColor = true;
+            this.buttonImageDisk.Click += new System.EventHandler(this.buttonImageDisk_Click);
+            // 
+            // buttonSignedImageDisk
+            // 
+            this.buttonSignedImageDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageDisk.Location = new System.Drawing.Point(3, 45);
+            this.buttonSignedImageDisk.Name = "buttonSignedImageDisk";
+            this.buttonSignedImageDisk.Size = new System.Drawing.Size(114, 36);
+            this.buttonSignedImageDisk.TabIndex = 3;
+            this.buttonSignedImageDisk.Text = "Output Image";
+            this.buttonSignedImageDisk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSignedImageDisk.UseVisualStyleBackColor = true;
+            this.buttonSignedImageDisk.Click += new System.EventHandler(this.buttonSignedImageDisk_Click);
+            // 
+            // buttonSignDisk
+            // 
+            this.buttonSignDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonSignDisk.Location = new System.Drawing.Point(3, 93);
+            this.buttonSignDisk.Name = "buttonSignDisk";
+            this.buttonSignDisk.Size = new System.Drawing.Size(758, 247);
+            this.buttonSignDisk.TabIndex = 1;
+            this.buttonSignDisk.Text = "Sign";
+            this.buttonSignDisk.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel10);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(770, 349);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "UBC";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 1;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.buttonSignUbc, 0, 1);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 2;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 161F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(764, 343);
+            this.tableLayoutPanel10.TabIndex = 0;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 2;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel12, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel13, 1, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(758, 155);
+            this.tableLayoutPanel11.TabIndex = 0;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel12.Controls.Add(this.label14, 0, 2);
+            this.tableLayoutPanel12.Controls.Add(this.label15, 0, 3);
+            this.tableLayoutPanel12.Controls.Add(this.textBoxImageUbc, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.textBoxSignedImageUbc, 1, 1);
+            this.tableLayoutPanel12.Controls.Add(this.textBoxUbiosVersionUbc, 1, 2);
+            this.tableLayoutPanel12.Controls.Add(this.textBoxUbcVersion, 1, 3);
+            this.tableLayoutPanel12.Controls.Add(this.buttonImageUbc, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.buttonSignedImageUbc, 0, 1);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 4;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(403, 149);
+            this.tableLayoutPanel12.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(29, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 12);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "UBIOS Version";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(39, 124);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 12);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "UBC Version";
+            // 
+            // textBoxImageUbc
+            // 
+            this.textBoxImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageUbc.Location = new System.Drawing.Point(113, 7);
+            this.textBoxImageUbc.Name = "textBoxImageUbc";
+            this.textBoxImageUbc.Size = new System.Drawing.Size(287, 22);
+            this.textBoxImageUbc.TabIndex = 6;
+            this.textBoxImageUbc.TextChanged += new System.EventHandler(this.textBoxImageUbc_TextChanged);
+            // 
+            // textBoxSignedImageUbc
+            // 
+            this.textBoxSignedImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxSignedImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageUbc.Location = new System.Drawing.Point(113, 44);
+            this.textBoxSignedImageUbc.Name = "textBoxSignedImageUbc";
+            this.textBoxSignedImageUbc.Size = new System.Drawing.Size(287, 22);
+            this.textBoxSignedImageUbc.TabIndex = 7;
+            // 
+            // textBoxUbiosVersionUbc
+            // 
+            this.textBoxUbiosVersionUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbiosVersionUbc.Location = new System.Drawing.Point(113, 81);
+            this.textBoxUbiosVersionUbc.MaxLength = 24;
+            this.textBoxUbiosVersionUbc.Name = "textBoxUbiosVersionUbc";
+            this.textBoxUbiosVersionUbc.Size = new System.Drawing.Size(287, 22);
+            this.textBoxUbiosVersionUbc.TabIndex = 8;
+            // 
+            // textBoxUbcVersion
+            // 
+            this.textBoxUbcVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUbcVersion.Location = new System.Drawing.Point(113, 119);
+            this.textBoxUbcVersion.MaxLength = 6;
+            this.textBoxUbcVersion.Name = "textBoxUbcVersion";
+            this.textBoxUbcVersion.Size = new System.Drawing.Size(287, 22);
+            this.textBoxUbcVersion.TabIndex = 9;
+            // 
+            // buttonImageUbc
+            // 
+            this.buttonImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageUbc.Location = new System.Drawing.Point(3, 3);
+            this.buttonImageUbc.Name = "buttonImageUbc";
+            this.buttonImageUbc.Size = new System.Drawing.Size(104, 31);
+            this.buttonImageUbc.TabIndex = 4;
+            this.buttonImageUbc.Text = "UBC Image";
+            this.buttonImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonImageUbc.UseVisualStyleBackColor = true;
+            this.buttonImageUbc.Click += new System.EventHandler(this.buttonImageUbc_Click);
+            // 
+            // buttonSignedImageUbc
+            // 
+            this.buttonSignedImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageUbc.Location = new System.Drawing.Point(3, 40);
+            this.buttonSignedImageUbc.Name = "buttonSignedImageUbc";
+            this.buttonSignedImageUbc.Size = new System.Drawing.Size(104, 31);
+            this.buttonSignedImageUbc.TabIndex = 5;
+            this.buttonSignedImageUbc.Text = "Output Image";
+            this.buttonSignedImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSignedImageUbc.UseVisualStyleBackColor = true;
+            this.buttonSignedImageUbc.Click += new System.EventHandler(this.buttonSignedImageUbc_Click);
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 2;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.listBoxHashUbc, 1, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(412, 3);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 1;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(343, 149);
+            this.tableLayoutPanel13.TabIndex = 1;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 1;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel14.Controls.Add(this.label16, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.buttonHashAddUbc, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.buttonHashRemoveUbc, 0, 2);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 3;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(74, 143);
+            this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(23, 9);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(48, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Hash List";
+            // 
+            // buttonHashAddUbc
+            // 
+            this.buttonHashAddUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashAddUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashAddUbc.Location = new System.Drawing.Point(3, 33);
+            this.buttonHashAddUbc.Name = "buttonHashAddUbc";
+            this.buttonHashAddUbc.Size = new System.Drawing.Size(68, 50);
+            this.buttonHashAddUbc.TabIndex = 1;
+            this.buttonHashAddUbc.Text = "+";
+            this.buttonHashAddUbc.UseVisualStyleBackColor = true;
+            this.buttonHashAddUbc.Click += new System.EventHandler(this.buttonHashAddUbc_Click);
+            // 
+            // buttonHashRemoveUbc
+            // 
+            this.buttonHashRemoveUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashRemoveUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonHashRemoveUbc.Location = new System.Drawing.Point(3, 89);
+            this.buttonHashRemoveUbc.Name = "buttonHashRemoveUbc";
+            this.buttonHashRemoveUbc.Size = new System.Drawing.Size(68, 51);
+            this.buttonHashRemoveUbc.TabIndex = 2;
+            this.buttonHashRemoveUbc.Text = "-";
+            this.buttonHashRemoveUbc.UseVisualStyleBackColor = true;
+            this.buttonHashRemoveUbc.Click += new System.EventHandler(this.buttonHashRemoveUbc_Click);
+            // 
+            // listBoxHashUbc
+            // 
+            this.listBoxHashUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHashUbc.FormattingEnabled = true;
+            this.listBoxHashUbc.ItemHeight = 12;
+            this.listBoxHashUbc.Location = new System.Drawing.Point(83, 3);
+            this.listBoxHashUbc.Name = "listBoxHashUbc";
+            this.listBoxHashUbc.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxHashUbc.Size = new System.Drawing.Size(257, 143);
+            this.listBoxHashUbc.TabIndex = 1;
+            // 
+            // buttonSignUbc
+            // 
+            this.buttonSignUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSignUbc.Location = new System.Drawing.Point(3, 164);
+            this.buttonSignUbc.Name = "buttonSignUbc";
+            this.buttonSignUbc.Size = new System.Drawing.Size(758, 176);
+            this.buttonSignUbc.TabIndex = 1;
+            this.buttonSignUbc.Text = "Sign";
+            this.buttonSignUbc.UseVisualStyleBackColor = true;
+            this.buttonSignUbc.Click += new System.EventHandler(this.buttonSignUbc_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.tableLayoutPanel6);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(800, 500);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button buttonWorkingFolder;
+        private System.Windows.Forms.Button buttonDsaPrivateKey;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button buttonImageBios;
+        private System.Windows.Forms.Button buttonSignedImageBios;
+        private System.Windows.Forms.Button buttonBootLoaderPublicKey;
+        private System.Windows.Forms.Button buttonUbcPublicKey;
+        private System.Windows.Forms.Button buttonUbiosPublicKey;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonHashAdd;
+        private System.Windows.Forms.Button buttonHashRemove;
+        private System.Windows.Forms.Button buttonSignBios;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Button buttonImageDisk;
+        private System.Windows.Forms.Button buttonSignedImageDisk;
+        private System.Windows.Forms.Button buttonSignDisk;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button buttonImageUbc;
+        private System.Windows.Forms.Button buttonSignedImageUbc;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonHashAddUbc;
+        private System.Windows.Forms.Button buttonHashRemoveUbc;
+        private System.Windows.Forms.Button buttonSignUbc;
+        private System.Windows.Forms.TextBox textBoxWorkingFolder;
+        private System.Windows.Forms.TextBox textBoxDsaPrivateKey;
+        private System.Windows.Forms.TextBox textBoxImageBios;
+        private System.Windows.Forms.TextBox textBoxSignedImageBios;
+        private System.Windows.Forms.TextBox textBoxUbiosVersion;
+        private System.Windows.Forms.TextBox textBoxUbiosPublicKey;
+        private System.Windows.Forms.TextBox textBoxUbcPublicKey;
+        private System.Windows.Forms.TextBox textBoxBootLoaderPublicKey;
+        private System.Windows.Forms.TextBox textBoxImageDisk;
+        private System.Windows.Forms.TextBox textBoxSignedImageDisk;
+        private System.Windows.Forms.TextBox textBoxImageUbc;
+        private System.Windows.Forms.TextBox textBoxSignedImageUbc;
+        private System.Windows.Forms.TextBox textBoxUbiosVersionUbc;
+        private System.Windows.Forms.TextBox textBoxUbcVersion;
+        private System.Windows.Forms.ListBox listBoxHashUbios;
+        private System.Windows.Forms.ListBox listBoxHashUbc;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

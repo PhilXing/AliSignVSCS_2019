@@ -46,5 +46,197 @@ namespace AliSign.Properties {
                 this["F1Size"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string listBoxHashUbios {
+            get {
+                return ((string)(this["listBoxHashUbios"]));
+            }
+            set {
+                this["listBoxHashUbios"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string listBoxHashUbc {
+            get {
+                return ((string)(this["listBoxHashUbc"]));
+            }
+            set {
+                this["listBoxHashUbc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxWorkingFolder {
+            get {
+                return ((string)(this["textBoxWorkingFolder"]));
+            }
+            set {
+                this["textBoxWorkingFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxImageBios {
+            get {
+                return ((string)(this["textBoxImageBios"]));
+            }
+            set {
+                this["textBoxImageBios"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxSignedImageBios {
+            get {
+                return ((string)(this["textBoxSignedImageBios"]));
+            }
+            set {
+                this["textBoxSignedImageBios"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxDsaPrivateKey {
+            get {
+                return ((string)(this["textBoxDsaPrivateKey"]));
+            }
+            set {
+                this["textBoxDsaPrivateKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxUbiosVersion {
+            get {
+                return ((string)(this["textBoxUbiosVersion"]));
+            }
+            set {
+                this["textBoxUbiosVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxUbiosPublicKey {
+            get {
+                return ((string)(this["textBoxUbiosPublicKey"]));
+            }
+            set {
+                this["textBoxUbiosPublicKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxUbcPublicKey {
+            get {
+                return ((string)(this["textBoxUbcPublicKey"]));
+            }
+            set {
+                this["textBoxUbcPublicKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxBootLoaderPublicKey {
+            get {
+                return ((string)(this["textBoxBootLoaderPublicKey"]));
+            }
+            set {
+                this["textBoxBootLoaderPublicKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxImageDisk {
+            get {
+                return ((string)(this["textBoxImageDisk"]));
+            }
+            set {
+                this["textBoxImageDisk"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxSignedImageDisk {
+            get {
+                return ((string)(this["textBoxSignedImageDisk"]));
+            }
+            set {
+                this["textBoxSignedImageDisk"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxImageUbc {
+            get {
+                return ((string)(this["textBoxImageUbc"]));
+            }
+            set {
+                this["textBoxImageUbc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxSignedImageUbc {
+            get {
+                return ((string)(this["textBoxSignedImageUbc"]));
+            }
+            set {
+                this["textBoxSignedImageUbc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxUbiosVersionUbc {
+            get {
+                return ((string)(this["textBoxUbiosVersionUbc"]));
+            }
+            set {
+                this["textBoxUbiosVersionUbc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxUbcVersion {
+            get {
+                return ((string)(this["textBoxUbcVersion"]));
+            }
+            set {
+                this["textBoxUbcVersion"] = value;
+            }
+        }
     }
 }
