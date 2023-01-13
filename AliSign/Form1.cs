@@ -560,7 +560,7 @@ namespace AliSign
             // update title text
             string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             string projectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
-            this.Text = projectName + " " + assemblyVersion;
+            this.Text = projectName + " " + assemblyVersion + " beta";
 
         }
 

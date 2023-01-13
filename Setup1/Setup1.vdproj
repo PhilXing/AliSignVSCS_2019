@@ -21,14 +21,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3082DD23F6A2781440E08D7CFCA66B7B"
+        "MsmKey" = "8:_7DDBA1A64495D803B1CE37702698E3BA"
         "OwnerKey" = "8:_00146A21AE8D494BB6C68AAA02C42759"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A315E9D8C5C74D65A400027E180D25BE"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,19 +34,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D6ABC81435CBFEA840793F08CA5C0DE8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_00146A21AE8D494BB6C68AAA02C42759"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3082DD23F6A2781440E08D7CFCA66B7B"
+        "OwnerKey" = "8:_7DDBA1A64495D803B1CE37702698E3BA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D6ABC81435CBFEA840793F08CA5C0DE8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -73,6 +67,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -89,6 +91,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -118,14 +128,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3082DD23F6A2781440E08D7CFCA66B7B"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7DDBA1A64495D803B1CE37702698E3BA"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942"
                 "ScatterAssemblies"
                 {
-                    "_3082DD23F6A2781440E08D7CFCA66B7B"
+                    "_7DDBA1A64495D803B1CE37702698E3BA"
                     {
                     "Name" = "8:BouncyCastle.Crypto.dll"
                     "Attributes" = "3:512"
@@ -147,26 +157,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A315E9D8C5C74D65A400027E180D25BE"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\digital-signature.ico"
-            "TargetName" = "8:digital-signature.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_8F09B99F7CEA477181E6A1D8DB614C51"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D6ABC81435CBFEA840793F08CA5C0DE8"
@@ -388,7 +378,7 @@
             "Target" = "8:_00146A21AE8D494BB6C68AAA02C42759"
             "Folder" = "8:_E0CD5D1C5C634581B331404FEEFA6B2B"
             "WorkingFolder" = "8:_8F09B99F7CEA477181E6A1D8DB614C51"
-            "Icon" = "8:_A315E9D8C5C74D65A400027E180D25BE"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E2292678C33B4B8ABD53DC8CA03036E8"
@@ -402,7 +392,7 @@
             "Target" = "8:_00146A21AE8D494BB6C68AAA02C42759"
             "Folder" = "8:_F8D991EF346F4FC7BA847F0AC353830A"
             "WorkingFolder" = "8:_8F09B99F7CEA477181E6A1D8DB614C51"
-            "Icon" = "8:_A315E9D8C5C74D65A400027E180D25BE"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
