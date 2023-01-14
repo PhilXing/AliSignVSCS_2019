@@ -51,13 +51,15 @@ namespace AliSign
         IDigest hashFunction;
         IDsa signer;
         // for BIOS sign
-        public byte[] bytesImageBios;
+        public byte[] bytesImageUbios;
+        public List<string> listHashUbiosString = new List<string>();
         public int identificationAlignment = 16;
         public bool is1stTime = true;
         // for Disk sign
         public byte[] bytesImageDisk;
         // for UBC sign
         public byte[] bytesImageUbc;
+        public List<string> listHashUbcString = new List<string>();
 
         public Form1()
         {
@@ -230,10 +232,10 @@ namespace AliSign
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxWorkingFolder.Text = folderBrowserDialog1.SelectedPath;
-                resetInputFiles();
+                ResetInputFiles();
             }
         }
-        
+
         private void textBoxWorkingFolder_Validating(object sender, CancelEventArgs e)
         {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
@@ -242,11 +244,11 @@ namespace AliSign
             // Check if the specified folder exists
             if (Directory.Exists(text))
             {
-                resetInputFiles();
+                ResetInputFiles();
             }
         }
 
-        private void resetInputFiles()
+        private void ResetInputFiles()
         {
             if (textBoxWorkingFolder.Text == currentWorkingFolder)
             {
@@ -329,31 +331,31 @@ namespace AliSign
             return;
         }
 
-        private long searchBytes(byte[] needle)
+        private long SearchBytes(byte[] needle)
         {
-            if (bytesImageBios == null)
+            if (bytesImageUbios == null)
             {
                 return -1;
             }
             var len = needle.Length;
-            var limit = bytesImageBios.Length - len;
+            var limit = bytesImageUbios.Length - len;
             for (var i = 0; i <= limit; i += identificationAlignment)
             {
                 var k = 0;
                 for (; k < len; k++)
                 {
-                    if (needle[k] != bytesImageBios[i + k]) break;
+                    if (needle[k] != bytesImageUbios[i + k]) break;
                 }
                 if (k == len) return i;
             }
             return -1;
         }
 
-        private void enableControlsDsa(bool isValid)
+        private void EnableControlsDsa(bool isValid)
         {
             textBoxImageBios.Enabled = isValid;
             buttonImageBios.Enabled = isValid;
-            enableControlsBios(isValid);
+            EnableControlsBios(isValid);
             textBoxImageDisk.Enabled = isValid;
             buttonImageDisk.Enabled = isValid;
             enableControlsDisk(isValid);
@@ -362,7 +364,7 @@ namespace AliSign
             enableControlsUbc(isValid);
         }
 
-        private void enableControlsBios(bool isValid)
+        private void EnableControlsBios(bool isValid)
         {
             textBoxSignedImageBios.Enabled = isValid;
             buttonSignedImageBios.Enabled = isValid;
@@ -388,12 +390,12 @@ namespace AliSign
             //byte[] AdlinkBiosIdentification1 = Encoding.ASCII.GetBytes("BIOS_MADE_BY_ADLINX");
             var AdlinkBiosIdentification2 = new byte[] { 0x0e, 0x0e, 0x15, 0x23, 0x3e, 0x25, 0x1e, 0x5f, 0x04, 0x58, 0x01, 0x44, 0x57, 0x18, 0x14, 0x61 };
             //var AdlinkBiosIdentification2 = new byte[] { 0x0e, 0x0e, 0x15, 0x23, 0x3e, 0x25, 0x1e, 0x5f, 0x04, 0x58, 0x01, 0x44, 0x57, 0x18, 0x14, 0x60 };
-            if (searchBytes(AdlinkBiosIdentification1) == -1)
+            if (SearchBytes(AdlinkBiosIdentification1) == -1)
             {
                 //MessageBox.Show("This ROM image is not supported 1.");
                 return false;
             }
-            if (searchBytes(AdlinkBiosIdentification2) == -1)
+            if (SearchBytes(AdlinkBiosIdentification2) == -1)
             {
                 //MessageBox.Show("This ROM image is not supported 2.");
                 return false;
@@ -404,11 +406,11 @@ namespace AliSign
             byte[] validSignature = new byte[] { 0x90, 0x90, 0xe9 };
             //byte[] validSignature = new byte[] { 0x90, 0x90, 0xe8 };
             var len = validSignature.Length;
-            var validSignarueOffset = bytesImageBios.Length - 16;
+            var validSignarueOffset = bytesImageUbios.Length - 16;
             var i = 0;
             for (; i < len; i++)
             {
-                if (validSignature[i] != bytesImageBios[i + validSignarueOffset]) break;
+                if (validSignature[i] != bytesImageUbios[i + validSignarueOffset]) break;
             }
             if (i < len)
             {
@@ -450,6 +452,10 @@ namespace AliSign
                 enableControlsUbc(false);
                 return;
             }
+            //
+            // read embedded hashes
+            //
+            RevertHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString, bytesImageUbc, OFFSET_HASH_LIST_START_UBC, OFFSET_HASH_LIST_END_PLUS1_UBC);
             //
             // default output file name
             //
@@ -499,6 +505,41 @@ namespace AliSign
             return subsetArray;
         }
 
+        private void RevertHashEmbedded(ListBox listBoxHash, List<string> listHashString, byte[] bytesImage, int OffsetStart, int OffsetEnd)
+        {
+            // clear data source
+            listBoxHash.DataSource = null;
+            // rebuild data source
+            listHashString.Clear();
+            // hash by hash
+            for (int i = OffsetStart; i < OffsetEnd - HASH_SIZE + 1; i += HASH_SIZE)
+            {
+                // if all 0?
+                int j;
+                for (j = 0; j < HASH_SIZE; j++)
+                {
+                    if (bytesImage[i + j] != 0 && bytesImage[i + j] != 0xff)
+                    {
+                        break;
+                    }
+                }
+
+                if (j < HASH_SIZE) // if not all 0
+                {
+                    byte[] hash = new byte[HASH_SIZE];
+                    Buffer.BlockCopy(bytesImage, i, hash, 0, HASH_SIZE);
+                    string hexString = BitConverter.ToString(hash);
+                    listHashString.Add(hexString);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            // reassign data source
+            listBoxHash.DataSource = listHashString;
+        }
+
         private void textBoxImageBios_TextChanged(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
@@ -507,13 +548,17 @@ namespace AliSign
             if (File.Exists(text))
             {
                 //
-                // Read Image file to bytes[] bytesImageBios
+                // Read Image file to bytes[] bytesImageUbios
                 //
-                bytesImageBios = File.ReadAllBytes(text);
+                bytesImageUbios = File.ReadAllBytes(text);
+                //
+                // read embedded hashes
+                //
+                RevertHashEmbedded(listBoxHashUbiosEmbedded, listHashUbiosString, bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1);
                 //
                 // support old project which size is 4MB and the identification is not 16 bytes aligned
                 //
-                //if (bytesImageBios.Length >= 0x800000)
+                //if (bytesImageUbios.Length >= 0x800000)
                 //{
                 //    identificationAlignment = 16;
                 //}
@@ -530,13 +575,13 @@ namespace AliSign
                 //
                 if (textBoxUbiosVersion.Text.Length == 0)
                 {
-                    textBoxUbiosVersion.Text = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageBios, OFFSET_UBIOS_VERSION, (OFFSET_UBIOS_VERSION + textBoxUbiosVersion.MaxLength))).Replace("\0", string.Empty);
+                    textBoxUbiosVersion.Text = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbios, OFFSET_UBIOS_VERSION, (OFFSET_UBIOS_VERSION + textBoxUbiosVersion.MaxLength))).Replace("\0", string.Empty);
                 }
-                enableControlsBios(isValidImageBios());
+                EnableControlsBios(isValidImageBios());
             }
             else
             {
-                enableControlsBios(false);
+                EnableControlsBios(false);
             }
         }
 
@@ -634,15 +679,20 @@ namespace AliSign
             textBoxBootLoaderPublicKey.Text = buttonFilePath_Click(textBoxBootLoaderPublicKey.Text);
         }
 
-        private void buttonHashRemove_Click(object sender, EventArgs e)
+        private void ListBoxRemoveSelected(ListBox listBox)
         {
-            if (listBoxHashUbios.SelectedItems.Count > 0)
+            if (listBox.SelectedItems.Count > 0)
             {
-                while (listBoxHashUbios.SelectedItems.Count > 0)
+                while (listBox.SelectedItems.Count > 0)
                 {
-                    listBoxHashUbios.Items.Remove(listBoxHashUbios.SelectedItems[0]);
+                    listBox.Items.Remove(listBox.SelectedItems[0]);
                 }
             }
+        }
+
+        private void buttonHashRemove_Click(object sender, EventArgs e)
+        {
+            ListBoxRemoveSelected(listBoxHashUbios);
         }
 
         private void buttonImageDisk_Click(object sender, EventArgs e)
@@ -701,13 +751,7 @@ namespace AliSign
 
         private void buttonHashRemoveUbc_Click(object sender, EventArgs e)
         {
-            if (listBoxHashUbc.SelectedItems.Count > 0)
-            {
-                while (listBoxHashUbc.SelectedItems.Count > 0)
-                {
-                    listBoxHashUbc.Items.Remove(listBoxHashUbc.SelectedItems[0]);
-                }
-            }
+            ListBoxRemoveSelected(listBoxHashUbc);
         }
 
         private byte[] bigIntegersToBytes(Org.BouncyCastle.Math.BigInteger[] bigIntArray)
@@ -742,9 +786,18 @@ namespace AliSign
             //
             byte[] hash;
             int offsetRomImage = OFFSET_HASH_LIST_START_UBC;
+            // patch embbedded hashes
+            foreach (string hexString in listBoxHashUbcEmbedded.Items)
+            {
+                string[] hexArray = hexString.Split('-');
+                hash = hexArray.Select(s => byte.Parse(s, System.Globalization.NumberStyles.HexNumber)).ToArray();
+                Buffer.BlockCopy(hash, 0, bytesImageUbc, offsetRomImage, hash.Length);
+                offsetRomImage += hash.Length;
+            }
+            // patch input hash files
             foreach (string hashFile in listBoxHashUbc.Items)
             {
-                if (File.Exists(hashFile)) 
+                if (File.Exists(hashFile))
                 {
                     hash = File.ReadAllBytes(hashFile);
                     Buffer.BlockCopy(hash, 0, bytesImageUbc, offsetRomImage, hash.Length);
@@ -824,7 +877,7 @@ namespace AliSign
 
                 if (keyPair == null)
                 {
-                    enableControlsDsa(false);
+                    EnableControlsDsa(false);
                     return;
                 }
 
@@ -840,17 +893,12 @@ namespace AliSign
                 // Initialize the signer with the DSA private key
                 signer.Init(true, dsaPrivateKey);
 
-                enableControlsDsa(true);
+                EnableControlsDsa(true);
             }
             else
             {
-                enableControlsDsa(false);
+                EnableControlsDsa(false);
             }
-        }
-
-        private void textBoxDsaPrivateKey_Leave(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonSignDisk_Click(object sender, EventArgs e)
@@ -929,14 +977,14 @@ namespace AliSign
             byte[] UbcPublicKey;
             if (!File.Exists(textBoxUbcPublicKey.Text)) { return; }
             UbcPublicKey = File.ReadAllBytes(textBoxUbcPublicKey.Text);
-            Buffer.BlockCopy(UbcPublicKey, 0, bytesImageBios, OFFSET_UBC_PUBLIC_KEY, UbcPublicKey.Length);
+            Buffer.BlockCopy(UbcPublicKey, 0, bytesImageUbios, OFFSET_UBC_PUBLIC_KEY, UbcPublicKey.Length);
             //
             // 2. patch MBR_GPT_BL_PUBLIC_KEY Public key @ 0x1d0 (Length 0x194)
             //
             byte[] BootLoaderPublicKey;
             if (!File.Exists(textBoxBootLoaderPublicKey.Text)) { return; }
             BootLoaderPublicKey = File.ReadAllBytes(textBoxBootLoaderPublicKey.Text);
-            Buffer.BlockCopy(BootLoaderPublicKey, 0, bytesImageBios, OFFSET_BOOT_LOADER_PUBLIC_KEY, BootLoaderPublicKey.Length);
+            Buffer.BlockCopy(BootLoaderPublicKey, 0, bytesImageUbios, OFFSET_BOOT_LOADER_PUBLIC_KEY, BootLoaderPublicKey.Length);
             //
             // 3. patch UBIOS version string @ OFFSET_UBIOS_VERSION (length 0x18)
             //
@@ -945,18 +993,27 @@ namespace AliSign
             // copy input to target array
             Buffer.BlockCopy(VersionStringInput, 0, VersionString, 0, VersionStringInput.Length);
             // override to Image buffer
-            Buffer.BlockCopy(VersionString, 0, bytesImageBios, OFFSET_UBIOS_VERSION, VersionString.Length);
+            Buffer.BlockCopy(VersionString, 0, bytesImageUbios, OFFSET_UBIOS_VERSION, VersionString.Length);
             //
             // 4. patch Hash list @OFFSET_HASH_LIST_START ~ OFFSET_HASH_LIST_END_PLUS1)
             //
-            Array.Clear(bytesImageBios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1 - OFFSET_HASH_LIST_START);
+            Array.Clear(bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1 - OFFSET_HASH_LIST_START);
             byte[] hash;
             int offsetRomImage = OFFSET_HASH_LIST_START;
+            // patch embbedded hashes
+            foreach (string hexString in listBoxHashUbiosEmbedded.Items)
+            {
+                string[] hexArray = hexString.Split('-');
+                hash = hexArray.Select(s => byte.Parse(s, System.Globalization.NumberStyles.HexNumber)).ToArray();
+                Buffer.BlockCopy(hash, 0, bytesImageUbios, offsetRomImage, hash.Length);
+                offsetRomImage += hash.Length;
+            }
+            // patch input hash files
             foreach (string hashFile in listBoxHashUbios.Items)
             {
                 if (!File.Exists(hashFile)) { return; }
                 hash = File.ReadAllBytes(hashFile);
-                Buffer.BlockCopy(hash, 0, bytesImageBios, offsetRomImage, hash.Length);
+                Buffer.BlockCopy(hash, 0, bytesImageUbios, offsetRomImage, hash.Length);
                 offsetRomImage += hash.Length;
                 // ignore hash files after offset OFFSET_HASH_LIST_END_PLUS1
                 if (offsetRomImage > OFFSET_HASH_LIST_END_PLUS1 - hash.Length) { break; }
@@ -970,12 +1027,12 @@ namespace AliSign
             UbiosPublicKey = File.ReadAllBytes(textBoxUbiosPublicKey.Text);
             for (int i = 0; i < UbiosPublicKey.Length; i++)
             {
-                bytesImageBios[OFFSET_UBIOS_PUBLIC_KEY + i] = UbiosPublicKey[i];
+                bytesImageUbios[OFFSET_UBIOS_PUBLIC_KEY + i] = UbiosPublicKey[i];
                 checksum += UbiosPublicKey[i];
             }
             // override checksum after UBIOS Public key
             byte[] bytes = BitConverter.GetBytes(checksum);
-            Buffer.BlockCopy(bytes, 0, bytesImageBios, OFFSET_UBIOS_PUBLIC_KEY + UbiosPublicKey.Length, sizeof(int));
+            Buffer.BlockCopy(bytes, 0, bytesImageUbios, OFFSET_UBIOS_PUBLIC_KEY + UbiosPublicKey.Length, sizeof(int));
             //
             // 6. get hash and sign the blob from offset 0x3c~EOF of the image.
             //
@@ -983,7 +1040,7 @@ namespace AliSign
             // Switch to BouncyCastle library
 
             // Compute the hash of the blob
-            hashFunction.BlockUpdate(bytesImageBios, 0x3c, bytesImageBios.Length - 0x3c);
+            hashFunction.BlockUpdate(bytesImageUbios, 0x3c, bytesImageUbios.Length - 0x3c);
             hash = new byte[hashFunction.GetDigestSize()];
             hashFunction.DoFinal(hash, 0);
 
@@ -991,21 +1048,72 @@ namespace AliSign
             byte[] signature = bigIntegersToBytes(signer.GenerateSignature(hash));
 
             // patch signature & hash to the head of ROM Image
-            Buffer.BlockCopy(signature, 0, bytesImageBios, 0, signature.Length); // length = 0x28
-            Buffer.BlockCopy(hash, 0, bytesImageBios, signature.Length, hash.Length); // length = 0x14
+            Buffer.BlockCopy(signature, 0, bytesImageUbios, 0, signature.Length); // length = 0x28
+            Buffer.BlockCopy(hash, 0, bytesImageUbios, signature.Length, hash.Length); // length = 0x14
             //
             //  7. Write to output file
             //
             try
             {
                 MessageBox.Show("Write to " + textBoxSignedImageBios.Text);
-                File.WriteAllBytes(textBoxSignedImageBios.Text, bytesImageBios);
+                File.WriteAllBytes(textBoxSignedImageBios.Text, bytesImageUbios);
             }
             catch (IOException ex)
             {
                 MessageBox.Show("An error occurred while writing to the file: " + ex.Message);
             }
         }
-    }
 
+        private void listBoxHashUbios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ListBox listBox = (System.Windows.Forms.ListBox)sender;
+            int index = listBox.SelectedIndex;
+            if (index != -1)
+            {
+                string hashFile = listBox.Items[index].ToString();
+                if (File.Exists(hashFile))
+                {
+                    byte[] hash = File.ReadAllBytes(hashFile);
+                    string hexString = BitConverter.ToString(hash);
+                    toolTip1.SetToolTip(listBox, hexString);
+                }
+            }
+        }
+
+        private void RemoveSelectedHashEmbedded(ListBox listBoxHashEmbedded, List<string> listHashString)
+        {
+            List<int> selectedIndices = new List<int>();
+            foreach (int index in listBoxHashEmbedded.SelectedIndices)
+            {
+                selectedIndices.Add(index);
+            }
+            selectedIndices.Reverse();
+            foreach (int index in selectedIndices)
+            {
+                listHashString.RemoveAt(index);
+            }
+            listBoxHashEmbedded.DataSource = null;
+            listBoxHashEmbedded.DataSource = listHashString;
+        }
+
+        private void buttonHashEmbeddedRemove_Click(object sender, EventArgs e)
+        {
+            RemoveSelectedHashEmbedded(listBoxHashUbiosEmbedded, listHashUbiosString);
+        }
+
+        private void buttonRevertHashUbios_Click(object sender, EventArgs e)
+        {
+            RevertHashEmbedded(listBoxHashUbiosEmbedded, listHashUbiosString, bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1);
+        }
+
+        private void buttonRevertHashUbc_Click(object sender, EventArgs e)
+        {
+            RevertHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString, bytesImageUbc, OFFSET_HASH_LIST_START_UBC, OFFSET_HASH_LIST_END_PLUS1_UBC);
+        }
+
+        private void buttonHashEmbeddedUbcRemove_Click(object sender, EventArgs e)
+        {
+            RemoveSelectedHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString);
+        }
+    }
 }
