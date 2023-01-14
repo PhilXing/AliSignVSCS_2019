@@ -375,6 +375,9 @@ namespace AliSign
             buttonUbcPublicKey.Enabled = isValid;
             textBoxBootLoaderPublicKey.Enabled = isValid;
             buttonBootLoaderPublicKey.Enabled = isValid;
+            buttonRevertHashUbios.Enabled = isValid;
+            buttonHashEmbeddedRemove.Enabled = isValid;
+            listBoxHashUbiosEmbedded.Enabled = isValid;
             buttonHashAdd.Enabled = isValid;
             buttonHashRemove.Enabled = isValid;
             listBoxHashUbios.Enabled = isValid;
@@ -427,6 +430,9 @@ namespace AliSign
             buttonSignedImageUbc.Enabled = isValid;
             textBoxUbiosVersionUbc.Enabled = isValid;
             textBoxUbcVersion.Enabled = isValid;
+            buttonRevertHashUbc.Enabled = isValid;
+            buttonHashEmbeddedUbcRemove.Enabled = isValid;
+            listBoxHashUbcEmbedded.Enabled = isValid;
             buttonHashAddUbc.Enabled = isValid;
             buttonHashRemoveUbc.Enabled = isValid;
             listBoxHashUbc.Enabled = isValid;
@@ -1064,7 +1070,7 @@ namespace AliSign
             }
         }
 
-        private void listBoxHashUbios_SelectedIndexChanged(object sender, EventArgs e)
+        private void SetTooltip(object sender)
         {
             System.Windows.Forms.ListBox listBox = (System.Windows.Forms.ListBox)sender;
             int index = listBox.SelectedIndex;
@@ -1078,6 +1084,11 @@ namespace AliSign
                     toolTip1.SetToolTip(listBox, hexString);
                 }
             }
+        }
+
+        private void listBoxHashUbios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetTooltip(sender);
         }
 
         private void RemoveSelectedHashEmbedded(ListBox listBoxHashEmbedded, List<string> listHashString)
@@ -1114,6 +1125,11 @@ namespace AliSign
         private void buttonHashEmbeddedUbcRemove_Click(object sender, EventArgs e)
         {
             RemoveSelectedHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString);
+        }
+
+        private void listBoxHashUbc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetTooltip(sender);
         }
     }
 }

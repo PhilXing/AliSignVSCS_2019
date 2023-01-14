@@ -438,7 +438,7 @@ namespace AliSign
             this.textBoxImageUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.textBoxImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxImageUbc.Location = new System.Drawing.Point(113, 22);
+            this.textBoxImageUbc.Location = new System.Drawing.Point(113, 11);
             this.textBoxImageUbc.Name = "textBoxImageUbc";
             this.textBoxImageUbc.Size = new System.Drawing.Size(287, 21);
             this.textBoxImageUbc.TabIndex = 1;
@@ -451,7 +451,7 @@ namespace AliSign
             this.textBoxSignedImageUbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.textBoxSignedImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.textBoxSignedImageUbc.Enabled = false;
-            this.textBoxSignedImageUbc.Location = new System.Drawing.Point(113, 87);
+            this.textBoxSignedImageUbc.Location = new System.Drawing.Point(113, 54);
             this.textBoxSignedImageUbc.Name = "textBoxSignedImageUbc";
             this.textBoxSignedImageUbc.Size = new System.Drawing.Size(287, 21);
             this.textBoxSignedImageUbc.TabIndex = 3;
@@ -461,7 +461,7 @@ namespace AliSign
             // 
             this.textBoxUbiosVersionUbc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUbiosVersionUbc.Enabled = false;
-            this.textBoxUbiosVersionUbc.Location = new System.Drawing.Point(113, 152);
+            this.textBoxUbiosVersionUbc.Location = new System.Drawing.Point(113, 97);
             this.textBoxUbiosVersionUbc.MaxLength = 24;
             this.textBoxUbiosVersionUbc.Name = "textBoxUbiosVersionUbc";
             this.textBoxUbiosVersionUbc.Size = new System.Drawing.Size(287, 21);
@@ -472,7 +472,7 @@ namespace AliSign
             // 
             this.textBoxUbcVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUbcVersion.Enabled = false;
-            this.textBoxUbcVersion.Location = new System.Drawing.Point(113, 217);
+            this.textBoxUbcVersion.Location = new System.Drawing.Point(113, 140);
             this.textBoxUbcVersion.MaxLength = 6;
             this.textBoxUbcVersion.Name = "textBoxUbcVersion";
             this.textBoxUbcVersion.Size = new System.Drawing.Size(287, 21);
@@ -485,7 +485,7 @@ namespace AliSign
             this.buttonImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.buttonImageUbc.Location = new System.Drawing.Point(3, 3);
             this.buttonImageUbc.Name = "buttonImageUbc";
-            this.buttonImageUbc.Size = new System.Drawing.Size(104, 59);
+            this.buttonImageUbc.Size = new System.Drawing.Size(104, 37);
             this.buttonImageUbc.TabIndex = 0;
             this.buttonImageUbc.Text = "UBC Image";
             this.buttonImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -498,9 +498,9 @@ namespace AliSign
             this.buttonSignedImageUbc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSignedImageUbc.Enabled = false;
             this.buttonSignedImageUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSignedImageUbc.Location = new System.Drawing.Point(3, 68);
+            this.buttonSignedImageUbc.Location = new System.Drawing.Point(3, 46);
             this.buttonSignedImageUbc.Name = "buttonSignedImageUbc";
-            this.buttonSignedImageUbc.Size = new System.Drawing.Size(104, 59);
+            this.buttonSignedImageUbc.Size = new System.Drawing.Size(104, 37);
             this.buttonSignedImageUbc.TabIndex = 2;
             this.buttonSignedImageUbc.Text = "Output Image";
             this.buttonSignedImageUbc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -548,6 +548,7 @@ namespace AliSign
             this.listBoxHashUbc.Size = new System.Drawing.Size(257, 150);
             this.listBoxHashUbc.TabIndex = 3;
             this.toolTip1.SetToolTip(this.listBoxHashUbc, "Hash values binary file list.");
+            this.listBoxHashUbc.SelectedIndexChanged += new System.EventHandler(this.listBoxHashUbc_SelectedIndexChanged);
             // 
             // buttonSignUbc
             // 
@@ -756,6 +757,7 @@ namespace AliSign
             // listBoxHashUbiosEmbedded
             // 
             this.listBoxHashUbiosEmbedded.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHashUbiosEmbedded.Enabled = false;
             this.listBoxHashUbiosEmbedded.FormattingEnabled = true;
             this.listBoxHashUbiosEmbedded.ItemHeight = 15;
             this.listBoxHashUbiosEmbedded.Location = new System.Drawing.Point(83, 3);
@@ -795,6 +797,7 @@ namespace AliSign
             // buttonHashEmbeddedRemove
             // 
             this.buttonHashEmbeddedRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashEmbeddedRemove.Enabled = false;
             this.buttonHashEmbeddedRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.buttonHashEmbeddedRemove.Location = new System.Drawing.Point(3, 67);
             this.buttonHashEmbeddedRemove.Name = "buttonHashEmbeddedRemove";
@@ -807,6 +810,7 @@ namespace AliSign
             // buttonRevertHashUbios
             // 
             this.buttonRevertHashUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRevertHashUbios.Enabled = false;
             this.buttonRevertHashUbios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.buttonRevertHashUbios.Location = new System.Drawing.Point(3, 33);
             this.buttonRevertHashUbios.Name = "buttonRevertHashUbios";
@@ -907,7 +911,6 @@ namespace AliSign
             this.tableLayoutPanel12.ColumnCount = 2;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Controls.Add(this.label14, 0, 2);
             this.tableLayoutPanel12.Controls.Add(this.label15, 0, 3);
             this.tableLayoutPanel12.Controls.Add(this.textBoxImageUbc, 1, 0);
@@ -919,11 +922,12 @@ namespace AliSign
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 4;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.RowCount = 5;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.32667F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(403, 260);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
@@ -931,7 +935,7 @@ namespace AliSign
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(19, 155);
+            this.label14.Location = new System.Drawing.Point(19, 100);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(88, 15);
             this.label14.TabIndex = 4;
@@ -941,7 +945,7 @@ namespace AliSign
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(31, 220);
+            this.label15.Location = new System.Drawing.Point(31, 143);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 15);
             this.label15.TabIndex = 6;
@@ -968,6 +972,7 @@ namespace AliSign
             // listBoxHashUbcEmbedded
             // 
             this.listBoxHashUbcEmbedded.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHashUbcEmbedded.Enabled = false;
             this.listBoxHashUbcEmbedded.FormattingEnabled = true;
             this.listBoxHashUbcEmbedded.ItemHeight = 15;
             this.listBoxHashUbcEmbedded.Location = new System.Drawing.Point(83, 3);
@@ -1025,6 +1030,7 @@ namespace AliSign
             // buttonHashEmbeddedUbcRemove
             // 
             this.buttonHashEmbeddedUbcRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonHashEmbeddedUbcRemove.Enabled = false;
             this.buttonHashEmbeddedUbcRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.buttonHashEmbeddedUbcRemove.Location = new System.Drawing.Point(3, 67);
             this.buttonHashEmbeddedUbcRemove.Name = "buttonHashEmbeddedUbcRemove";
@@ -1048,6 +1054,7 @@ namespace AliSign
             // buttonRevertHashUbc
             // 
             this.buttonRevertHashUbc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRevertHashUbc.Enabled = false;
             this.buttonRevertHashUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.buttonRevertHashUbc.Location = new System.Drawing.Point(3, 33);
             this.buttonRevertHashUbc.Name = "buttonRevertHashUbc";
