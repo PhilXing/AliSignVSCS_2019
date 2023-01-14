@@ -21,7 +21,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7DDBA1A64495D803B1CE37702698E3BA"
+        "MsmKey" = "8:_9694DAC4DAF24236A482F345CBFAD7A9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D5A84B428215AE3F9E803EF97A93D4AF"
         "OwnerKey" = "8:_00146A21AE8D494BB6C68AAA02C42759"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -40,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7DDBA1A64495D803B1CE37702698E3BA"
+        "OwnerKey" = "8:_D5A84B428215AE3F9E803EF97A93D4AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -74,6 +80,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -98,6 +112,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -128,14 +150,34 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7DDBA1A64495D803B1CE37702698E3BA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9694DAC4DAF24236A482F345CBFAD7A9"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\digital-signature.ico"
+            "TargetName" = "8:digital-signature.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_8F09B99F7CEA477181E6A1D8DB614C51"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D5A84B428215AE3F9E803EF97A93D4AF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942"
                 "ScatterAssemblies"
                 {
-                    "_7DDBA1A64495D803B1CE37702698E3BA"
+                    "_D5A84B428215AE3F9E803EF97A93D4AF"
                     {
                     "Name" = "8:BouncyCastle.Crypto.dll"
                     "Attributes" = "3:512"
@@ -247,7 +289,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ALISign"
         "ProductCode" = "8:{8FA1632C-9EC7-450E-B79F-11004D40BE55}"
-        "PackageCode" = "8:{A1555AA0-8E80-4190-9713-AD8A06FD3CBE}"
+        "PackageCode" = "8:{C850D047-597C-4AF6-A3DD-044DF36B256B}"
         "UpgradeCode" = "8:{EB58B5D9-B0DC-46A4-BC96-40962418FBE0}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -378,7 +420,7 @@
             "Target" = "8:_00146A21AE8D494BB6C68AAA02C42759"
             "Folder" = "8:_E0CD5D1C5C634581B331404FEEFA6B2B"
             "WorkingFolder" = "8:_8F09B99F7CEA477181E6A1D8DB614C51"
-            "Icon" = "8:"
+            "Icon" = "8:_9694DAC4DAF24236A482F345CBFAD7A9"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E2292678C33B4B8ABD53DC8CA03036E8"
@@ -392,7 +434,7 @@
             "Target" = "8:_00146A21AE8D494BB6C68AAA02C42759"
             "Folder" = "8:_F8D991EF346F4FC7BA847F0AC353830A"
             "WorkingFolder" = "8:_8F09B99F7CEA477181E6A1D8DB614C51"
-            "Icon" = "8:"
+            "Icon" = "8:_9694DAC4DAF24236A482F345CBFAD7A9"
             "Feature" = "8:"
             }
         }
