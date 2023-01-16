@@ -36,7 +36,7 @@ namespace AliSign
             this.textBoxWorkingFolder = new System.Windows.Forms.TextBox();
             this.textBoxDsaPrivateKey = new System.Windows.Forms.TextBox();
             this.buttonDsaPrivateKey = new System.Windows.Forms.Button();
-            this.textBoxImageBios = new System.Windows.Forms.TextBox();
+            this.textBoxImageUbios = new System.Windows.Forms.TextBox();
             this.textBoxSignedImageBios = new System.Windows.Forms.TextBox();
             this.textBoxUbiosVersion = new System.Windows.Forms.TextBox();
             this.textBoxUbiosPublicKey = new System.Windows.Forms.TextBox();
@@ -70,15 +70,18 @@ namespace AliSign
             this.checkBoxUbcPublicKey = new System.Windows.Forms.CheckBox();
             this.checkBoxBootLoaderPublicKey = new System.Windows.Forms.CheckBox();
             this.checkBoxUbiosVersion = new System.Windows.Forms.CheckBox();
+            this.checkBoxUbiosVersionUbc = new System.Windows.Forms.CheckBox();
+            this.checkBoxUbcVersion = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonWorkingFolder = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlSign = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonClearFilesUbios = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -88,7 +91,6 @@ namespace AliSign
             this.buttonHashEmbeddedRemove = new System.Windows.Forms.Button();
             this.buttonRevertHashUbios = new System.Windows.Forms.Button();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonClearFilesUbios = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -98,8 +100,7 @@ namespace AliSign
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.checkBoxUbiosVersionUbc = new System.Windows.Forms.CheckBox();
-            this.checkBoxUbcVersion = new System.Windows.Forms.CheckBox();
+            this.buttonClearFilesUbc = new System.Windows.Forms.Button();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.listBoxHashUbc = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
@@ -109,10 +110,9 @@ namespace AliSign
             this.label3 = new System.Windows.Forms.Label();
             this.buttonRevertHashUbc = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonClearFilesUbc = new System.Windows.Forms.Button();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlSign.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -147,7 +147,7 @@ namespace AliSign
             this.textBoxWorkingFolder.Size = new System.Drawing.Size(1296, 22);
             this.textBoxWorkingFolder.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBoxWorkingFolder, "All fields below will be guessed thru this folder if is blank.");
-            this.textBoxWorkingFolder.TextChanged += new System.EventHandler(this.textBoxWorkingFolder_TextChanged);
+            this.textBoxWorkingFolder.Leave += new System.EventHandler(this.textBoxWorkingFolder_Leave);
             // 
             // textBoxDsaPrivateKey
             // 
@@ -175,17 +175,17 @@ namespace AliSign
             this.buttonDsaPrivateKey.UseVisualStyleBackColor = true;
             this.buttonDsaPrivateKey.Click += new System.EventHandler(this.buttonDsaPrivateKey_Click);
             // 
-            // textBoxImageBios
+            // textBoxImageUbios
             // 
-            this.textBoxImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxImageBios.Location = new System.Drawing.Point(143, 11);
-            this.textBoxImageBios.Name = "textBoxImageBios";
-            this.textBoxImageBios.Size = new System.Drawing.Size(605, 21);
-            this.textBoxImageBios.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.textBoxImageBios, "A ADLink ALI BIOS image will enable all functions.");
-            this.textBoxImageBios.TextChanged += new System.EventHandler(this.textBoxImageBios_TextChanged);
+            this.textBoxImageUbios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageUbios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxImageUbios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxImageUbios.Location = new System.Drawing.Point(143, 11);
+            this.textBoxImageUbios.Name = "textBoxImageUbios";
+            this.textBoxImageUbios.Size = new System.Drawing.Size(605, 21);
+            this.textBoxImageUbios.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.textBoxImageUbios, "A ADLink ALI BIOS image will enable all functions.");
+            this.textBoxImageUbios.TextChanged += new System.EventHandler(this.textBoxWorkingFolder_TextChanged);
             // 
             // textBoxSignedImageBios
             // 
@@ -624,13 +624,35 @@ namespace AliSign
             this.toolTip1.SetToolTip(this.checkBoxUbiosVersion, "Will be unchecked if equal to image content.");
             this.checkBoxUbiosVersion.UseVisualStyleBackColor = true;
             // 
+            // checkBoxUbiosVersionUbc
+            // 
+            this.checkBoxUbiosVersionUbc.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.checkBoxUbiosVersionUbc.AutoSize = true;
+            this.checkBoxUbiosVersionUbc.Location = new System.Drawing.Point(3, 100);
+            this.checkBoxUbiosVersionUbc.Name = "checkBoxUbiosVersionUbc";
+            this.checkBoxUbiosVersionUbc.Size = new System.Drawing.Size(14, 14);
+            this.checkBoxUbiosVersionUbc.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.checkBoxUbiosVersionUbc, "Will be unchecked if equal to image content.");
+            this.checkBoxUbiosVersionUbc.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUbcVersion
+            // 
+            this.checkBoxUbcVersion.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.checkBoxUbcVersion.AutoSize = true;
+            this.checkBoxUbcVersion.Location = new System.Drawing.Point(3, 143);
+            this.checkBoxUbcVersion.Name = "checkBoxUbcVersion";
+            this.checkBoxUbcVersion.Size = new System.Drawing.Size(14, 14);
+            this.checkBoxUbcVersion.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.checkBoxUbcVersion, "Will be unchecked if equal to image content.");
+            this.checkBoxUbcVersion.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tabControl1, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.tabControlSign, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -672,18 +694,18 @@ namespace AliSign
             this.buttonWorkingFolder.UseVisualStyleBackColor = true;
             this.buttonWorkingFolder.Click += new System.EventHandler(this.buttonWorkingFolder_Click);
             // 
-            // tabControl1
+            // tabControlSign
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 83);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1422, 375);
-            this.tabControl1.TabIndex = 0;
+            this.tabControlSign.Controls.Add(this.tabPage1);
+            this.tabControlSign.Controls.Add(this.tabPage2);
+            this.tabControlSign.Controls.Add(this.tabPage3);
+            this.tabControlSign.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.tabControlSign.Location = new System.Drawing.Point(3, 83);
+            this.tabControlSign.Name = "tabControlSign";
+            this.tabControlSign.SelectedIndex = 0;
+            this.tabControlSign.Size = new System.Drawing.Size(1422, 375);
+            this.tabControlSign.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -734,7 +756,7 @@ namespace AliSign
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.label1, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.buttonClearFilesUbios, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBoxImageBios, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxImageUbios, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBoxSignedImageBios, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.textBoxUbiosVersion, 2, 2);
             this.tableLayoutPanel4.Controls.Add(this.textBoxUbiosPublicKey, 2, 3);
@@ -773,6 +795,18 @@ namespace AliSign
             this.label1.TabIndex = 5;
             this.label1.Text = "UBIOS Version";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // buttonClearFilesUbios
+            // 
+            this.buttonClearFilesUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonClearFilesUbios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.buttonClearFilesUbios.Location = new System.Drawing.Point(3, 3);
+            this.buttonClearFilesUbios.Name = "buttonClearFilesUbios";
+            this.buttonClearFilesUbios.Size = new System.Drawing.Size(14, 37);
+            this.buttonClearFilesUbios.TabIndex = 2;
+            this.buttonClearFilesUbios.Text = "Clear Files";
+            this.buttonClearFilesUbios.UseVisualStyleBackColor = true;
+            this.buttonClearFilesUbios.Click += new System.EventHandler(this.buttonClearFilesUbios_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -901,18 +935,6 @@ namespace AliSign
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel17.Size = new System.Drawing.Size(1402, 63);
             this.tableLayoutPanel17.TabIndex = 1;
-            // 
-            // buttonClearFilesUbios
-            // 
-            this.buttonClearFilesUbios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonClearFilesUbios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.buttonClearFilesUbios.Location = new System.Drawing.Point(3, 3);
-            this.buttonClearFilesUbios.Name = "buttonClearFilesUbios";
-            this.buttonClearFilesUbios.Size = new System.Drawing.Size(14, 37);
-            this.buttonClearFilesUbios.TabIndex = 2;
-            this.buttonClearFilesUbios.Text = "Clear Files";
-            this.buttonClearFilesUbios.UseVisualStyleBackColor = true;
-            this.buttonClearFilesUbios.Click += new System.EventHandler(this.buttonClearFilesUbios_Click);
             // 
             // tabPage2
             // 
@@ -1049,27 +1071,16 @@ namespace AliSign
             this.label15.TabIndex = 8;
             this.label15.Text = "UBC Version";
             // 
-            // checkBoxUbiosVersionUbc
+            // buttonClearFilesUbc
             // 
-            this.checkBoxUbiosVersionUbc.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.checkBoxUbiosVersionUbc.AutoSize = true;
-            this.checkBoxUbiosVersionUbc.Location = new System.Drawing.Point(3, 100);
-            this.checkBoxUbiosVersionUbc.Name = "checkBoxUbiosVersionUbc";
-            this.checkBoxUbiosVersionUbc.Size = new System.Drawing.Size(14, 14);
-            this.checkBoxUbiosVersionUbc.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.checkBoxUbiosVersionUbc, "Will be unchecked if equal to image content.");
-            this.checkBoxUbiosVersionUbc.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxUbcVersion
-            // 
-            this.checkBoxUbcVersion.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.checkBoxUbcVersion.AutoSize = true;
-            this.checkBoxUbcVersion.Location = new System.Drawing.Point(3, 143);
-            this.checkBoxUbcVersion.Name = "checkBoxUbcVersion";
-            this.checkBoxUbcVersion.Size = new System.Drawing.Size(14, 14);
-            this.checkBoxUbcVersion.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.checkBoxUbcVersion, "Will be unchecked if equal to image content.");
-            this.checkBoxUbcVersion.UseVisualStyleBackColor = true;
+            this.buttonClearFilesUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.buttonClearFilesUbc.Location = new System.Drawing.Point(3, 3);
+            this.buttonClearFilesUbc.Name = "buttonClearFilesUbc";
+            this.buttonClearFilesUbc.Size = new System.Drawing.Size(14, 37);
+            this.buttonClearFilesUbc.TabIndex = 10;
+            this.buttonClearFilesUbc.Text = "Clear Files";
+            this.buttonClearFilesUbc.UseVisualStyleBackColor = true;
+            this.buttonClearFilesUbc.Click += new System.EventHandler(this.buttonClearFilesUbc_Click);
             // 
             // tableLayoutPanel13
             // 
@@ -1185,17 +1196,6 @@ namespace AliSign
             this.buttonRevertHashUbc.UseVisualStyleBackColor = true;
             this.buttonRevertHashUbc.Click += new System.EventHandler(this.buttonRevertHashUbc_Click);
             // 
-            // buttonClearFilesUbc
-            // 
-            this.buttonClearFilesUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.buttonClearFilesUbc.Location = new System.Drawing.Point(3, 3);
-            this.buttonClearFilesUbc.Name = "buttonClearFilesUbc";
-            this.buttonClearFilesUbc.Size = new System.Drawing.Size(14, 37);
-            this.buttonClearFilesUbc.TabIndex = 10;
-            this.buttonClearFilesUbc.Text = "Clear Files";
-            this.buttonClearFilesUbc.UseVisualStyleBackColor = true;
-            this.buttonClearFilesUbc.Click += new System.EventHandler(this.buttonClearFilesUbc_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1211,7 +1211,7 @@ namespace AliSign
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlSign.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -1247,7 +1247,7 @@ namespace AliSign
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlSign;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -1287,7 +1287,7 @@ namespace AliSign
         private System.Windows.Forms.Button buttonSignUbc;
         private System.Windows.Forms.TextBox textBoxWorkingFolder;
         private System.Windows.Forms.TextBox textBoxDsaPrivateKey;
-        private System.Windows.Forms.TextBox textBoxImageBios;
+        private System.Windows.Forms.TextBox textBoxImageUbios;
         private System.Windows.Forms.TextBox textBoxSignedImageBios;
         private System.Windows.Forms.TextBox textBoxUbiosVersion;
         private System.Windows.Forms.TextBox textBoxUbiosPublicKey;

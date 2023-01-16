@@ -17,7 +17,7 @@
     <Setting Name="textBoxWorkingFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="textBoxImageBios" Type="System.String" Scope="User">
+    <Setting Name="textBoxImageUbios" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="textBoxSignedImageBios" Type="System.String" Scope="User">
@@ -55,6 +55,9 @@
     </Setting>
     <Setting Name="textBoxUbcVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="tabControlSignSelectedIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

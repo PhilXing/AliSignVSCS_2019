@@ -114,13 +114,15 @@ namespace AliSign
             textBoxWorkingFolder.Text = Properties.Settings.Default.textBoxWorkingFolder;
             textBoxDsaPrivateKey.Text = Properties.Settings.Default.textBoxDsaPrivateKey;
 
+            tabControlSign.SelectedIndex = Properties.Settings.Default.tabControlSignSelectedIndex;
+
             textBoxSignedImageBios.Text = Properties.Settings.Default.textBoxSignedImageBios;
             textBoxUbiosVersion.Text = Properties.Settings.Default.textBoxUbiosVersion;
             textBoxUbiosPublicKey.Text = Properties.Settings.Default.textBoxUbiosPublicKey;
             textBoxUbcPublicKey.Text = Properties.Settings.Default.textBoxUbcPublicKey;
             textBoxBootLoaderPublicKey.Text = Properties.Settings.Default.textBoxBootLoaderPublicKey;
             // this filed must restore last to the tab page
-            textBoxImageBios.Text = Properties.Settings.Default.textBoxImageBios;
+            textBoxImageUbios.Text = Properties.Settings.Default.textBoxImageUbios;
 
             textBoxSignedImageDisk.Text = Properties.Settings.Default.textBoxSignedImageDisk;
             // this filed must restore last to the tab page
@@ -154,7 +156,9 @@ namespace AliSign
             Properties.Settings.Default.textBoxWorkingFolder = textBoxWorkingFolder.Text;
             Properties.Settings.Default.textBoxDsaPrivateKey = textBoxDsaPrivateKey.Text;
 
-            Properties.Settings.Default.textBoxImageBios = textBoxImageBios.Text;
+            Properties.Settings.Default.tabControlSignSelectedIndex = tabControlSign.SelectedIndex;
+
+            Properties.Settings.Default.textBoxImageUbios = textBoxImageUbios.Text;
             Properties.Settings.Default.textBoxSignedImageBios = textBoxSignedImageBios.Text;
             Properties.Settings.Default.textBoxUbiosVersion = textBoxUbiosVersion.Text;
             Properties.Settings.Default.textBoxUbiosPublicKey = textBoxUbiosPublicKey.Text;
@@ -235,13 +239,27 @@ namespace AliSign
 
         private void textBoxWorkingFolder_TextChanged(object sender, EventArgs e)
         {
+           //System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
+           //string text = textBox.Text;
+
+           // // Check if the specified folder exists
+           // if (Directory.Exists(text))
+           // {
+           //     ResetInputFiles();
+           // }
+        }
+
+        public string CurrentWorkingFolder = "";
+        private void textBoxWorkingFolder_Leave(object sender, EventArgs e)
+        {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
-           string text = textBox.Text;
+            string text = textBox.Text;
 
             // Check if the specified folder exists
-            if (Directory.Exists(text))
+            if (Directory.Exists(text) && (text!=CurrentWorkingFolder))
             {
                 ResetInputFiles();
+                CurrentWorkingFolder = text;
             }
         }
 
@@ -255,8 +273,15 @@ namespace AliSign
             textBoxImageDisk.Text = string.Empty;
             ClearInputFilesUbc();
 
-            var files = Directory.GetFiles(textBoxWorkingFolder.Text, "*.*", SearchOption.AllDirectories);
-
+            string[] files;
+            try
+            {
+                files = Directory.GetFiles(textBoxWorkingFolder.Text, "*.*", SearchOption.AllDirectories);
+            }
+            catch
+            {
+                return;
+            }
             foreach (string file in files)
             {
                 var info = new FileInfo(file);
@@ -303,9 +328,9 @@ namespace AliSign
                 //
                 // this must be the last guessing onf the tab pag UBIOS, to refine the other file settings
                 //
-                if (info.Length == SIZE_FILE_BIOS && string.IsNullOrEmpty(textBoxImageBios.Text))
+                if (info.Length == SIZE_FILE_BIOS && string.IsNullOrEmpty(textBoxImageUbios.Text))
                 {
-                    textBoxImageBios.Text = info.FullName;
+                    textBoxImageUbios.Text = info.FullName;
                     continue;
                 }
                 if (info.Length == SIZE_FILE_DISK && string.IsNullOrEmpty(textBoxImageDisk.Text))
@@ -318,6 +343,21 @@ namespace AliSign
                     textBoxImageUbc.Text = info.FullName;
                     continue;
                 }
+            }
+            //
+            // check if image files empty
+            //
+            if (string.IsNullOrEmpty(textBoxImageUbios.Text))
+            {
+                enableControlsUbios(false);
+            }
+            if (string.IsNullOrEmpty(textBoxImageDisk.Text))
+            {
+                enableControlsDisk(false);
+            }
+            if (string.IsNullOrEmpty(textBoxImageUbc.Text))
+            {
+                enableControlsUbc(false);
             }
             return;
         }
@@ -344,18 +384,20 @@ namespace AliSign
 
         private void EnableControlsDsa(bool isValid)
         {
-            textBoxImageBios.Enabled = isValid;
+            //
+            // diable images input without DSA private key
+            //
+            textBoxImageUbios.Enabled = isValid;
             buttonImageBios.Enabled = isValid;
-            EnableControlsBios(isValid);
+
             textBoxImageDisk.Enabled = isValid;
             buttonImageDisk.Enabled = isValid;
-            enableControlsDisk(isValid);
+
             textBoxImageUbc.Enabled = isValid;
             buttonImageUbc.Enabled = isValid;
-            enableControlsUbc(isValid);
         }
 
-        private void EnableControlsBios(bool isValid)
+        private void enableControlsUbios(bool isValid)
         {
             textBoxSignedImageBios.Enabled = isValid;
             buttonSignedImageBios.Enabled = isValid;
@@ -505,6 +547,7 @@ namespace AliSign
 
         private void RevertHashEmbedded(ListBox listBoxHash, List<string> listHashString, byte[] bytesImage, int OffsetStart, int OffsetEnd)
         {
+            if (bytesImage == null) return;
             // clear data source
             listBoxHash.DataSource = null;
             // rebuild data source
@@ -562,7 +605,7 @@ namespace AliSign
             }
         }
 
-        private void textBoxImageBios_TextChanged(object sender, EventArgs e)
+        private void textBoxImageUbios_TextChanged(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
             string text = textBox.Text;
@@ -600,11 +643,11 @@ namespace AliSign
                     textBoxUbiosVersion.Text = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbios, OFFSET_UBIOS_VERSION, (OFFSET_UBIOS_VERSION + textBoxUbiosVersion.MaxLength))).Replace("\0", string.Empty);
                 }
 
-                EnableControlsBios(isValidImageBios());
+                enableControlsUbios(isValidImageBios());
             }
             else
             {
-                EnableControlsBios(false);
+                enableControlsUbios(false);
             }
         }
 
@@ -679,7 +722,7 @@ namespace AliSign
         private void buttonImageBios_Click(object sender, EventArgs e)
         {
             this.openFileDialog1.InitialDirectory = textBoxWorkingFolder.Text;
-            textBoxImageBios.Text = buttonFilePath_Click(textBoxImageBios.Text);
+            textBoxImageUbios.Text = buttonFilePath_Click(textBoxImageUbios.Text);
         }
 
         private void buttonSignedImageBios_Click(object sender, EventArgs e)
@@ -800,6 +843,7 @@ namespace AliSign
 
         private void buttonSignUbc_Click(object sender, EventArgs e)
         {
+            if (bytesImageUbc == null) return;
             //
             // 0. clear 
             //
@@ -932,6 +976,7 @@ namespace AliSign
 
         private void buttonSignDisk_Click(object sender, EventArgs e)
         {
+            if (bytesImageDisk == null) return;
             byte[] signature;
             byte[] hash;
             int retryCount;
@@ -1227,7 +1272,7 @@ namespace AliSign
 
         private void ClearInputFilesUbios()
         {
-            textBoxImageBios.Text = string.Empty;
+            textBoxImageUbios.Text = string.Empty;
             textBoxSignedImageBios.Text = string.Empty;
             textBoxUbiosPublicKey.Text = string.Empty;
             textBoxUbcPublicKey.Text = string.Empty;

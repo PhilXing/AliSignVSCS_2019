@@ -86,12 +86,12 @@ namespace AliSign.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string textBoxImageBios {
+        public string textBoxImageUbios {
             get {
-                return ((string)(this["textBoxImageBios"]));
+                return ((string)(this["textBoxImageUbios"]));
             }
             set {
-                this["textBoxImageBios"] = value;
+                this["textBoxImageUbios"] = value;
             }
         }
         
@@ -236,6 +236,18 @@ namespace AliSign.Properties {
             }
             set {
                 this["textBoxUbcVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int tabControlSignSelectedIndex {
+            get {
+                return ((int)(this["tabControlSignSelectedIndex"]));
+            }
+            set {
+                this["tabControlSignSelectedIndex"] = value;
             }
         }
     }
