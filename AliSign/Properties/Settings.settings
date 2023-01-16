@@ -8,10 +8,10 @@
     <Setting Name="F1Size" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="listBoxHashUbios" Type="System.String" Scope="User">
+    <Setting Name="listBoxHashFileUbios" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="listBoxHashUbc" Type="System.String" Scope="User">
+    <Setting Name="listBoxHashFileUbc" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="textBoxWorkingFolder" Type="System.String" Scope="User">

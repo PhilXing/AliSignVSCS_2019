@@ -108,8 +108,8 @@ namespace AliSign
             this.Location = Properties.Settings.Default.F1Location;
             this.Size = Properties.Settings.Default.F1Size;
 
-            RestoreListBoxFromSettings(listBoxHashUbios, "listBoxHashUbios");
-            RestoreListBoxFromSettings(listBoxHashUbc, "listBoxHashUbc");
+            RestoreListBoxFromSettings(listBoxHashFileUbios, "listBoxHashFileUbios");
+            RestoreListBoxFromSettings(listBoxHashFileUbc, "listBoxHashFileUbc");
 
             textBoxWorkingFolder.Text = Properties.Settings.Default.textBoxWorkingFolder;
             textBoxDsaPrivateKey.Text = Properties.Settings.Default.textBoxDsaPrivateKey;
@@ -148,8 +148,8 @@ namespace AliSign
                 Properties.Settings.Default.F1Size = this.RestoreBounds.Size;
             }
 
-            SaveListBoxToSettings(listBoxHashUbios, "listBoxHashUbios");
-            SaveListBoxToSettings(listBoxHashUbc, "listBoxHashUbc");
+            SaveListBoxToSettings(listBoxHashFileUbios, "listBoxHashFileUbios");
+            SaveListBoxToSettings(listBoxHashFileUbc, "listBoxHashFileUbc");
 
             Properties.Settings.Default.textBoxWorkingFolder = textBoxWorkingFolder.Text;
             Properties.Settings.Default.textBoxDsaPrivateKey = textBoxDsaPrivateKey.Text;
@@ -188,7 +188,7 @@ namespace AliSign
 
         private void buttonHashAdd_Click(object sender, EventArgs e)
         {
-            if (listBoxHashUbios.Items.Count == 0)
+            if (listBoxHashFileUbios.Items.Count == 0)
             {
                 var files = Directory.GetFiles(textBoxWorkingFolder.Text, "*.*", SearchOption.AllDirectories);
 
@@ -197,7 +197,7 @@ namespace AliSign
                     var info = new FileInfo(file);
                     if (info.Length == HASH_SIZE)
                     {
-                        listBoxHashUbios.Items.Add(info.FullName);
+                        listBoxHashFileUbios.Items.Add(info.FullName);
                     }
                 }
             }
@@ -210,7 +210,7 @@ namespace AliSign
                     var info = new FileInfo(hash_fp);
                     if (info.Length == HASH_SIZE)
                     {
-                        listBoxHashUbios.Items.Add(hash_fp);
+                        listBoxHashFileUbios.Items.Add(hash_fp);
                     }
                     else
                     {
@@ -221,8 +221,6 @@ namespace AliSign
 
         }
 
-        public string currentWorkingFolder;
-
         private void buttonWorkingFolder_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(textBoxWorkingFolder.Text))
@@ -232,14 +230,13 @@ namespace AliSign
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxWorkingFolder.Text = folderBrowserDialog1.SelectedPath;
-                ResetInputFiles();
             }
         }
 
-        private void textBoxWorkingFolder_Validating(object sender, CancelEventArgs e)
+        private void textBoxWorkingFolder_TextChanged(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
-            string text = textBox.Text;
+           string text = textBox.Text;
 
             // Check if the specified folder exists
             if (Directory.Exists(text))
@@ -250,22 +247,13 @@ namespace AliSign
 
         private void ResetInputFiles()
         {
-            if (textBoxWorkingFolder.Text == currentWorkingFolder)
-            {
-                return;
-            }
-            currentWorkingFolder = textBoxWorkingFolder.Text;
-
-            textBoxImageBios.Text = string.Empty;
+            //
+            // clear input files in all tab pages
+            //
             textBoxDsaPrivateKey.Text = string.Empty;
-            textBoxUbcPublicKey.Text = string.Empty;
-            textBoxBootLoaderPublicKey.Text = string.Empty;
-
+            ClearInputFilesUbios();
             textBoxImageDisk.Text = string.Empty;
-
-            textBoxImageUbc.Text = string.Empty;
-
-            listBoxHashUbios.Items.Clear();
+            ClearInputFilesUbc();
 
             var files = Directory.GetFiles(textBoxWorkingFolder.Text, "*.*", SearchOption.AllDirectories);
 
@@ -284,45 +272,48 @@ namespace AliSign
                 //
                 if (info.Length == HASH_SIZE)
                 {
-                    listBoxHashUbios.Items.Add(info.FullName);
+                    listBoxHashFileUbios.Items.Add(info.FullName);
                     continue;
                 }
                 // TODO: confirm the size of the private key
-                if (info.Length == PRIVATE_KEY_SIZE || info.Length == PRIVATE_KEY_SIZE_2)
+                if ((info.Length == PRIVATE_KEY_SIZE || info.Length == PRIVATE_KEY_SIZE_2) && string.IsNullOrEmpty(textBoxDsaPrivateKey.Text))
                 {
                     textBoxDsaPrivateKey.Text = info.FullName;
                     continue;
                 }
                 if (info.Length == PUBLIC_KEY_SIZE)
                 {
-                    if (info.Name.ToUpper().Contains("UBC"))
+                    if (info.Name.ToUpper().Contains("UBC") && string.IsNullOrEmpty(textBoxUbcPublicKey.Text))
                     {
                         textBoxUbcPublicKey.Text = info.FullName;
                         continue;
                     }
-                    if (info.Name.ToUpper().Contains("UBIOS"))
+                    if (info.Name.ToUpper().Contains("UBIOS") && string.IsNullOrEmpty(textBoxUbiosPublicKey.Text))
                     {
                         textBoxUbiosPublicKey.Text = info.FullName;
                         continue;
                     }
-                    if (info.Name.ToUpper().Contains("MBR"))
+                    if (info.Name.ToUpper().Contains("MBR") && string.IsNullOrEmpty(textBoxBootLoaderPublicKey.Text))
                     {
                         textBoxBootLoaderPublicKey.Text = info.FullName;
                         //continue;
                     }
                     continue;
                 }
-                if (info.Length == SIZE_FILE_BIOS)
+                //
+                // this must be the last guessing onf the tab pag UBIOS, to refine the other file settings
+                //
+                if (info.Length == SIZE_FILE_BIOS && string.IsNullOrEmpty(textBoxImageBios.Text))
                 {
                     textBoxImageBios.Text = info.FullName;
                     continue;
                 }
-                if (info.Length == SIZE_FILE_DISK)
+                if (info.Length == SIZE_FILE_DISK && string.IsNullOrEmpty(textBoxImageDisk.Text))
                 {
                     textBoxImageDisk.Text = info.FullName;
                     continue;
                 }
-                if (info.Length == SIZE_FILE_UBC)
+                if (info.Length == SIZE_FILE_UBC && string.IsNullOrEmpty(textBoxImageUbc.Text))
                 {
                     textBoxImageUbc.Text = info.FullName;
                     continue;
@@ -377,10 +368,10 @@ namespace AliSign
             buttonBootLoaderPublicKey.Enabled = isValid;
             buttonRevertHashUbios.Enabled = isValid;
             buttonHashEmbeddedRemove.Enabled = isValid;
-            listBoxHashUbiosEmbedded.Enabled = isValid;
+            listBoxHashUbios.Enabled = isValid;
             buttonHashAdd.Enabled = isValid;
             buttonHashRemove.Enabled = isValid;
-            listBoxHashUbios.Enabled = isValid;
+            listBoxHashFileUbios.Enabled = isValid;
             buttonSignBios.Enabled = isValid;
         }
 
@@ -432,10 +423,10 @@ namespace AliSign
             textBoxUbcVersion.Enabled = isValid;
             buttonRevertHashUbc.Enabled = isValid;
             buttonHashEmbeddedUbcRemove.Enabled = isValid;
-            listBoxHashUbcEmbedded.Enabled = isValid;
+            listBoxHashUbc.Enabled = isValid;
             buttonHashAddUbc.Enabled = isValid;
             buttonHashRemoveUbc.Enabled = isValid;
-            listBoxHashUbc.Enabled = isValid;
+            listBoxHashFileUbc.Enabled = isValid;
             buttonSignUbc.Enabled = isValid;
         }
 
@@ -461,7 +452,7 @@ namespace AliSign
             //
             // read embedded hashes
             //
-            RevertHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString, bytesImageUbc, OFFSET_HASH_LIST_START_UBC, OFFSET_HASH_LIST_END_PLUS1_UBC);
+            RevertHashEmbedded(listBoxHashUbc, listHashUbcString, bytesImageUbc, OFFSET_HASH_LIST_START_UBC, OFFSET_HASH_LIST_END_PLUS1_UBC);
             //
             // default output file name
             //
@@ -505,6 +496,7 @@ namespace AliSign
 
         private byte[] subByteArray(byte[] originalArray, int startIndex, int endIndex_1)
         {
+            if (originalArray == null) return null;
             int length = endIndex_1 - startIndex;
             byte[] subsetArray = new byte[length];
             Array.Copy(originalArray, startIndex, subsetArray, 0, length);
@@ -546,6 +538,30 @@ namespace AliSign
             listBoxHash.DataSource = listHashString;
         }
 
+        private void FilterHashFiles(ListBox listBoxHashEmbedded, ListBox listBoxHashFile)
+        {
+            if (listBoxHashFile.Items.Count == 0) return;
+            foreach (string hexString in listBoxHashEmbedded.Items)
+            {
+                string[] hexArray = hexString.Split('-');
+                byte[] hashEmbedded = hexArray.Select(s => byte.Parse(s, System.Globalization.NumberStyles.HexNumber)).ToArray();
+                // remove duplicate hash files
+                for (int i = listBoxHashFile.Items.Count - 1; i >= 0; i--)
+                {
+                    if (String.IsNullOrEmpty(listBoxHashFile.Items[i].ToString()))
+                    {
+                        listBoxHashFile.Items.RemoveAt(i);
+                        continue;
+                    }
+                    byte[] hash = File.ReadAllBytes(listBoxHashFile.Items[i].ToString());
+                    if (hashEmbedded.SequenceEqual(hash))
+                    {
+                        listBoxHashFile.Items.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
         private void textBoxImageBios_TextChanged(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
@@ -560,7 +576,7 @@ namespace AliSign
                 //
                 // read embedded hashes
                 //
-                RevertHashEmbedded(listBoxHashUbiosEmbedded, listHashUbiosString, bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1);
+                RevertHashEmbedded(listBoxHashUbios, listHashUbiosString, bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1);
                 //
                 // support old project which size is 4MB and the identification is not 16 bytes aligned
                 //
@@ -583,6 +599,7 @@ namespace AliSign
                 {
                     textBoxUbiosVersion.Text = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbios, OFFSET_UBIOS_VERSION, (OFFSET_UBIOS_VERSION + textBoxUbiosVersion.MaxLength))).Replace("\0", string.Empty);
                 }
+
                 EnableControlsBios(isValidImageBios());
             }
             else
@@ -698,7 +715,7 @@ namespace AliSign
 
         private void buttonHashRemove_Click(object sender, EventArgs e)
         {
-            ListBoxRemoveSelected(listBoxHashUbios);
+            ListBoxRemoveSelected(listBoxHashFileUbios);
         }
 
         private void buttonImageDisk_Click(object sender, EventArgs e)
@@ -723,7 +740,7 @@ namespace AliSign
 
         private void buttonHashAddUbc_Click(object sender, EventArgs e)
         {
-            if (listBoxHashUbc.Items.Count == 0)
+            if (listBoxHashFileUbc.Items.Count == 0)
             {
                 var files = Directory.GetFiles(textBoxWorkingFolder.Text, "*.*", SearchOption.AllDirectories);
 
@@ -732,7 +749,7 @@ namespace AliSign
                     var info = new FileInfo(file);
                     if (info.Length == HASH_SIZE)
                     {
-                        listBoxHashUbc.Items.Add(info.FullName);
+                        listBoxHashFileUbc.Items.Add(info.FullName);
                     }
                 }
             }
@@ -745,7 +762,7 @@ namespace AliSign
                     var info = new FileInfo(hash_fp);
                     if (info.Length == HASH_SIZE)
                     {
-                        listBoxHashUbc.Items.Add(hash_fp);
+                        listBoxHashFileUbc.Items.Add(hash_fp);
                     }
                     else
                     {
@@ -757,7 +774,7 @@ namespace AliSign
 
         private void buttonHashRemoveUbc_Click(object sender, EventArgs e)
         {
-            ListBoxRemoveSelected(listBoxHashUbc);
+            ListBoxRemoveSelected(listBoxHashFileUbc);
         }
 
         private byte[] bigIntegersToBytes(Org.BouncyCastle.Math.BigInteger[] bigIntArray)
@@ -793,7 +810,7 @@ namespace AliSign
             byte[] hash;
             int offsetRomImage = OFFSET_HASH_LIST_START_UBC;
             // patch embbedded hashes
-            foreach (string hexString in listBoxHashUbcEmbedded.Items)
+            foreach (string hexString in listBoxHashUbc.Items)
             {
                 string[] hexArray = hexString.Split('-');
                 hash = hexArray.Select(s => byte.Parse(s, System.Globalization.NumberStyles.HexNumber)).ToArray();
@@ -801,7 +818,7 @@ namespace AliSign
                 offsetRomImage += hash.Length;
             }
             // patch input hash files
-            foreach (string hashFile in listBoxHashUbc.Items)
+            foreach (string hashFile in listBoxHashFileUbc.Items)
             {
                 if (File.Exists(hashFile))
                 {
@@ -815,21 +832,27 @@ namespace AliSign
             //
             // 2.  patch UBIOS version string @ OFFSET_UBIOS_VERSION_UBC (length 0x18)
             //
-            byte[] VersionString = new byte[0x18];
-            byte[] VersionStringInput = Encoding.ASCII.GetBytes(textBoxUbiosVersionUbc.Text);
-            // copy input to target array
-            Buffer.BlockCopy(VersionStringInput, 0, VersionString, 0, VersionStringInput.Length);
-            // override to Image buffer
-            Buffer.BlockCopy(VersionString, 0, bytesImageUbc, OFFSET_UBIOS_VERSION_UBC, VersionString.Length);
+            if (checkBoxUbiosVersionUbc.Checked)
+            {
+                byte[] VersionString = new byte[0x18];
+                byte[] VersionStringInput = Encoding.ASCII.GetBytes(textBoxUbiosVersionUbc.Text);
+                // copy input to target array
+                Buffer.BlockCopy(VersionStringInput, 0, VersionString, 0, VersionStringInput.Length);
+                // override to Image buffer
+                Buffer.BlockCopy(VersionString, 0, bytesImageUbc, OFFSET_UBIOS_VERSION_UBC, VersionString.Length);
+            }
             //
             // 3. patch UBC version string @ OFFSET_UBC_VERSION (length 0x18)
             //
-            byte[] VersionStringUbc = new byte[6];
-            byte[] VersionStringInputUbc = Encoding.ASCII.GetBytes(textBoxUbcVersion.Text);
-            // copy input to target array
-            Buffer.BlockCopy(VersionStringInputUbc, 0, VersionStringUbc, 0, VersionStringInputUbc.Length);
-            // override to Image buffer
-            Buffer.BlockCopy(VersionStringUbc, 0, bytesImageUbc, OFFSET_UBC_VERSION, VersionStringUbc.Length);
+            if (checkBoxUbcVersion.Checked)
+            {
+                byte[] VersionStringUbc = new byte[6];
+                byte[] VersionStringInputUbc = Encoding.ASCII.GetBytes(textBoxUbcVersion.Text);
+                // copy input to target array
+                Buffer.BlockCopy(VersionStringInputUbc, 0, VersionStringUbc, 0, VersionStringInputUbc.Length);
+                // override to Image buffer
+                Buffer.BlockCopy(VersionStringUbc, 0, bytesImageUbc, OFFSET_UBC_VERSION, VersionStringUbc.Length);
+            }
             //
             // 4. Hash & Sign
             //
@@ -978,21 +1001,46 @@ namespace AliSign
         private void buttonSignBios_Click(object sender, EventArgs e)
         {
             //
-            // 1. patch UBC Public key @ 0x3c (Length 0x194)
+            // 1. patch UBIOS public key and it's double word - byte checksum to OFFSET_UBIOS_PUBLIC_KEY
             //
-            byte[] UbcPublicKey;
-            if (!File.Exists(textBoxUbcPublicKey.Text)) { return; }
-            UbcPublicKey = File.ReadAllBytes(textBoxUbcPublicKey.Text);
-            Buffer.BlockCopy(UbcPublicKey, 0, bytesImageUbios, OFFSET_UBC_PUBLIC_KEY, UbcPublicKey.Length);
+            if (checkBoxUbiosPublicKey.Checked)
+            {
+                byte[] UbiosPublicKey;
+                int checksum = 0;
+                if (!File.Exists(textBoxUbiosPublicKey.Text)) { return; }
+                UbiosPublicKey = File.ReadAllBytes(textBoxUbiosPublicKey.Text);
+                Buffer.BlockCopy(UbiosPublicKey, 0, bytesImageUbios, OFFSET_UBIOS_PUBLIC_KEY, UbiosPublicKey.Length);
+                for (int i = 0; i < UbiosPublicKey.Length; i++)
+                {
+                    bytesImageUbios[OFFSET_UBIOS_PUBLIC_KEY + i] = UbiosPublicKey[i];
+                    checksum += UbiosPublicKey[i];
+                }
+                // override checksum after UBIOS Public key
+                byte[] bytes = BitConverter.GetBytes(checksum);
+                Buffer.BlockCopy(bytes, 0, bytesImageUbios, OFFSET_UBIOS_PUBLIC_KEY + UbiosPublicKey.Length, sizeof(int));
+            }
             //
-            // 2. patch MBR_GPT_BL_PUBLIC_KEY Public key @ 0x1d0 (Length 0x194)
+            // 2. patch UBC Public key @ 0x3c (Length 0x194)
             //
-            byte[] BootLoaderPublicKey;
-            if (!File.Exists(textBoxBootLoaderPublicKey.Text)) { return; }
-            BootLoaderPublicKey = File.ReadAllBytes(textBoxBootLoaderPublicKey.Text);
-            Buffer.BlockCopy(BootLoaderPublicKey, 0, bytesImageUbios, OFFSET_BOOT_LOADER_PUBLIC_KEY, BootLoaderPublicKey.Length);
+            if (checkBoxUbcPublicKey.Checked)
+            {
+                byte[] UbcPublicKey;
+                if (!File.Exists(textBoxUbcPublicKey.Text)) { return; }
+                UbcPublicKey = File.ReadAllBytes(textBoxUbcPublicKey.Text);
+                Buffer.BlockCopy(UbcPublicKey, 0, bytesImageUbios, OFFSET_UBC_PUBLIC_KEY, UbcPublicKey.Length);
+            }
             //
-            // 3. patch UBIOS version string @ OFFSET_UBIOS_VERSION (length 0x18)
+            // 3. patch MBR_GPT_BL_PUBLIC_KEY Public key @ 0x1d0 (Length 0x194)
+            //
+            if (checkBoxBootLoaderPublicKey.Checked)
+            {
+                byte[] BootLoaderPublicKey;
+                if (!File.Exists(textBoxBootLoaderPublicKey.Text)) { return; }
+                BootLoaderPublicKey = File.ReadAllBytes(textBoxBootLoaderPublicKey.Text);
+                Buffer.BlockCopy(BootLoaderPublicKey, 0, bytesImageUbios, OFFSET_BOOT_LOADER_PUBLIC_KEY, BootLoaderPublicKey.Length);
+            }
+            //
+            // 4. patch UBIOS version string @ OFFSET_UBIOS_VERSION (length 0x18)
             //
             byte[] VersionString = new byte[0x18];
             byte[] VersionStringInput = Encoding.ASCII.GetBytes(textBoxUbiosVersion.Text);
@@ -1001,13 +1049,13 @@ namespace AliSign
             // override to Image buffer
             Buffer.BlockCopy(VersionString, 0, bytesImageUbios, OFFSET_UBIOS_VERSION, VersionString.Length);
             //
-            // 4. patch Hash list @OFFSET_HASH_LIST_START ~ OFFSET_HASH_LIST_END_PLUS1)
+            // 5. patch Hash list @OFFSET_HASH_LIST_START ~ OFFSET_HASH_LIST_END_PLUS1)
             //
             Array.Clear(bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1 - OFFSET_HASH_LIST_START);
             byte[] hash;
             int offsetRomImage = OFFSET_HASH_LIST_START;
             // patch embbedded hashes
-            foreach (string hexString in listBoxHashUbiosEmbedded.Items)
+            foreach (string hexString in listBoxHashUbios.Items)
             {
                 string[] hexArray = hexString.Split('-');
                 hash = hexArray.Select(s => byte.Parse(s, System.Globalization.NumberStyles.HexNumber)).ToArray();
@@ -1015,7 +1063,7 @@ namespace AliSign
                 offsetRomImage += hash.Length;
             }
             // patch input hash files
-            foreach (string hashFile in listBoxHashUbios.Items)
+            foreach (string hashFile in listBoxHashFileUbios.Items)
             {
                 if (!File.Exists(hashFile)) { return; }
                 hash = File.ReadAllBytes(hashFile);
@@ -1024,21 +1072,6 @@ namespace AliSign
                 // ignore hash files after offset OFFSET_HASH_LIST_END_PLUS1
                 if (offsetRomImage > OFFSET_HASH_LIST_END_PLUS1 - hash.Length) { break; }
             }
-            //
-            // 5. patch UBIOS public key and it's double word - byte checksum to OFFSET_UBIOS_PUBLIC_KEY
-            //
-            byte[] UbiosPublicKey;
-            int checksum = 0;
-            if (!File.Exists(textBoxUbiosPublicKey.Text)) { return; }
-            UbiosPublicKey = File.ReadAllBytes(textBoxUbiosPublicKey.Text);
-            for (int i = 0; i < UbiosPublicKey.Length; i++)
-            {
-                bytesImageUbios[OFFSET_UBIOS_PUBLIC_KEY + i] = UbiosPublicKey[i];
-                checksum += UbiosPublicKey[i];
-            }
-            // override checksum after UBIOS Public key
-            byte[] bytes = BitConverter.GetBytes(checksum);
-            Buffer.BlockCopy(bytes, 0, bytesImageUbios, OFFSET_UBIOS_PUBLIC_KEY + UbiosPublicKey.Length, sizeof(int));
             //
             // 6. get hash and sign the blob from offset 0x3c~EOF of the image.
             //
@@ -1061,8 +1094,8 @@ namespace AliSign
             //
             try
             {
-                MessageBox.Show("Write to " + textBoxSignedImageBios.Text);
                 File.WriteAllBytes(textBoxSignedImageBios.Text, bytesImageUbios);
+                MessageBox.Show("Write to " + textBoxSignedImageBios.Text);
             }
             catch (IOException ex)
             {
@@ -1086,11 +1119,6 @@ namespace AliSign
             }
         }
 
-        private void listBoxHashUbios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SetTooltip(sender);
-        }
-
         private void RemoveSelectedHashEmbedded(ListBox listBoxHashEmbedded, List<string> listHashString)
         {
             List<int> selectedIndices = new List<int>();
@@ -1109,27 +1137,135 @@ namespace AliSign
 
         private void buttonHashEmbeddedRemove_Click(object sender, EventArgs e)
         {
-            RemoveSelectedHashEmbedded(listBoxHashUbiosEmbedded, listHashUbiosString);
+            RemoveSelectedHashEmbedded(listBoxHashUbios, listHashUbiosString);
         }
 
         private void buttonRevertHashUbios_Click(object sender, EventArgs e)
         {
-            RevertHashEmbedded(listBoxHashUbiosEmbedded, listHashUbiosString, bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1);
+            RevertHashEmbedded(listBoxHashUbios, listHashUbiosString, bytesImageUbios, OFFSET_HASH_LIST_START, OFFSET_HASH_LIST_END_PLUS1);
         }
 
         private void buttonRevertHashUbc_Click(object sender, EventArgs e)
         {
-            RevertHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString, bytesImageUbc, OFFSET_HASH_LIST_START_UBC, OFFSET_HASH_LIST_END_PLUS1_UBC);
+            RevertHashEmbedded(listBoxHashUbc, listHashUbcString, bytesImageUbc, OFFSET_HASH_LIST_START_UBC, OFFSET_HASH_LIST_END_PLUS1_UBC);
         }
 
         private void buttonHashEmbeddedUbcRemove_Click(object sender, EventArgs e)
         {
-            RemoveSelectedHashEmbedded(listBoxHashUbcEmbedded, listHashUbcString);
+            RemoveSelectedHashEmbedded(listBoxHashUbc, listHashUbcString);
+        }
+
+
+        private void listBoxHashUbios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterHashFiles(listBoxHashUbios, listBoxHashFileUbios);
+        }
+
+        private void listBoxHashFileUbios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetTooltip(sender);
         }
 
         private void listBoxHashUbc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FilterHashFiles(listBoxHashUbc, listBoxHashFileUbc);
+        }
+
+        private void listBoxHashFileUbc_SelectedIndexChanged(object sender, EventArgs e)
+        {
             SetTooltip(sender);
+        }
+
+        private void textBoxUbiosVersion_TextChanged(object sender, EventArgs e)
+        {
+            if (bytesImageUbios == null) return;
+            string VersionString = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbios, OFFSET_UBIOS_VERSION, (OFFSET_UBIOS_VERSION + textBoxUbiosVersion.MaxLength))).Replace("\0", string.Empty);
+            checkBoxUbiosVersion.Checked = !(string.Compare(VersionString, textBoxUbiosVersion.Text) == 0);
+        }
+
+        private void textBoxUbiosPublicKey_TextChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(textBoxUbiosPublicKey.Text) && bytesImageUbios != null)
+            {
+                byte[] UbiosPublicKeyInFile = File.ReadAllBytes(textBoxUbiosPublicKey.Text);
+                byte[] UbiosPublicKey = subByteArray(bytesImageUbios, OFFSET_UBIOS_PUBLIC_KEY, OFFSET_UBIOS_PUBLIC_KEY + UbiosPublicKeyInFile.Length);
+                checkBoxUbiosPublicKey.Checked = !UbiosPublicKey.SequenceEqual(UbiosPublicKeyInFile);
+            }
+            else
+            {
+                checkBoxUbiosPublicKey.Checked = false;
+            }
+        }
+
+        private void textBoxUbcPublicKey_TextChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(textBoxUbcPublicKey.Text) && bytesImageUbios != null)
+            {
+                byte[] UbcPublicKeyInFile = File.ReadAllBytes(textBoxUbcPublicKey.Text);
+                byte[] UbcPublicKey = subByteArray(bytesImageUbios, OFFSET_UBC_PUBLIC_KEY, OFFSET_UBC_PUBLIC_KEY + UbcPublicKeyInFile.Length);
+                checkBoxUbcPublicKey.Checked = !UbcPublicKey.SequenceEqual(UbcPublicKeyInFile);
+            }
+            else
+            {
+                checkBoxUbiosPublicKey.Checked = false;
+            }
+        }
+
+        private void textBoxBootLoaderPublicKey_TextChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(textBoxBootLoaderPublicKey.Text) && bytesImageUbios != null)
+            {
+                byte[] BootLoaderPublicKeyInFile = File.ReadAllBytes(textBoxBootLoaderPublicKey.Text);
+                byte[] BootLoaderPublicKey = subByteArray(bytesImageUbios, OFFSET_BOOT_LOADER_PUBLIC_KEY, OFFSET_BOOT_LOADER_PUBLIC_KEY + BootLoaderPublicKeyInFile.Length);
+                checkBoxBootLoaderPublicKey.Checked = !BootLoaderPublicKey.SequenceEqual(BootLoaderPublicKeyInFile);
+            }
+            else
+            {
+                checkBoxBootLoaderPublicKey.Checked = false;
+            }
+        }
+
+        private void ClearInputFilesUbios()
+        {
+            textBoxImageBios.Text = string.Empty;
+            textBoxSignedImageBios.Text = string.Empty;
+            textBoxUbiosPublicKey.Text = string.Empty;
+            textBoxUbcPublicKey.Text = string.Empty;
+            textBoxBootLoaderPublicKey.Text = string.Empty;
+            listBoxHashUbios.DataSource = null;
+            listBoxHashFileUbios.Items.Clear();
+        }
+
+        private void ClearInputFilesUbc()
+        {
+            textBoxImageUbc.Text = string.Empty;
+            textBoxSignedImageUbc.Text = string.Empty;
+            listBoxHashUbc.DataSource = null;
+            listBoxHashFileUbc.Items.Clear();
+        }
+
+        private void textBoxUbiosVersionUbc_TextChanged(object sender, EventArgs e)
+        {
+            if (bytesImageUbc == null) return;
+            string VersionString = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbc, OFFSET_UBIOS_VERSION_UBC, (OFFSET_UBIOS_VERSION_UBC + textBoxUbiosVersionUbc.MaxLength))).Replace("\0", string.Empty);
+            checkBoxUbiosVersionUbc.Checked = !(string.Compare(VersionString, textBoxUbiosVersionUbc.Text) == 0);
+        }
+
+        private void textBoxUbcVersion_TextChanged(object sender, EventArgs e)
+        {
+            if (bytesImageUbc == null) return;
+            string VersionString = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbc, OFFSET_UBC_VERSION, (OFFSET_UBC_VERSION + textBoxUbcVersion.MaxLength))).Replace("\0", string.Empty);
+            checkBoxUbcVersion.Checked = !(string.Compare(VersionString, textBoxUbcVersion.Text) == 0);
+        }
+
+        private void buttonClearFilesUbc_Click(object sender, EventArgs e)
+        {
+            ClearInputFilesUbc();
+        }
+
+        private void buttonClearFilesUbios_Click(object sender, EventArgs e)
+        {
+            ClearInputFilesUbios();
         }
     }
 }

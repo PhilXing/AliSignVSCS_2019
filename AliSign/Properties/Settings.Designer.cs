@@ -50,24 +50,24 @@ namespace AliSign.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string listBoxHashUbios {
+        public string listBoxHashFileUbios {
             get {
-                return ((string)(this["listBoxHashUbios"]));
+                return ((string)(this["listBoxHashFileUbios"]));
             }
             set {
-                this["listBoxHashUbios"] = value;
+                this["listBoxHashFileUbios"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string listBoxHashUbc {
+        public string listBoxHashFileUbc {
             get {
-                return ((string)(this["listBoxHashUbc"]));
+                return ((string)(this["listBoxHashFileUbc"]));
             }
             set {
-                this["listBoxHashUbc"] = value;
+                this["listBoxHashFileUbc"] = value;
             }
         }
         
