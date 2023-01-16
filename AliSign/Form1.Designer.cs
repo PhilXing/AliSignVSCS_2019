@@ -185,7 +185,7 @@ namespace AliSign
             this.textBoxImageUbios.Size = new System.Drawing.Size(605, 21);
             this.textBoxImageUbios.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBoxImageUbios, "A ADLink ALI BIOS image will enable all functions.");
-            this.textBoxImageUbios.TextChanged += new System.EventHandler(this.textBoxWorkingFolder_TextChanged);
+            this.textBoxImageUbios.TextChanged += new System.EventHandler(this.textBoxImageUbios_TextChanged);
             // 
             // textBoxSignedImageBios
             // 

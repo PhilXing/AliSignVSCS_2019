@@ -249,17 +249,17 @@ namespace AliSign
            // }
         }
 
-        public string CurrentWorkingFolder = "";
+        //public string CurrentWorkingFolder = "";
         private void textBoxWorkingFolder_Leave(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
             string text = textBox.Text;
 
             // Check if the specified folder exists
-            if (Directory.Exists(text) && (text!=CurrentWorkingFolder))
+            if (Directory.Exists(text)) // && (text!=CurrentWorkingFolder))
             {
                 ResetInputFiles();
-                CurrentWorkingFolder = text;
+                //CurrentWorkingFolder = text;
             }
         }
 
