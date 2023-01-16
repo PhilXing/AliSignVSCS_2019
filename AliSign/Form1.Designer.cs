@@ -1057,6 +1057,7 @@ namespace AliSign
             this.checkBoxUbiosVersionUbc.Name = "checkBoxUbiosVersionUbc";
             this.checkBoxUbiosVersionUbc.Size = new System.Drawing.Size(14, 14);
             this.checkBoxUbiosVersionUbc.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.checkBoxUbiosVersionUbc, "Will be unchecked if equal to image content.");
             this.checkBoxUbiosVersionUbc.UseVisualStyleBackColor = true;
             // 
             // checkBoxUbcVersion
@@ -1067,6 +1068,7 @@ namespace AliSign
             this.checkBoxUbcVersion.Name = "checkBoxUbcVersion";
             this.checkBoxUbcVersion.Size = new System.Drawing.Size(14, 14);
             this.checkBoxUbcVersion.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.checkBoxUbcVersion, "Will be unchecked if equal to image content.");
             this.checkBoxUbcVersion.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel13
