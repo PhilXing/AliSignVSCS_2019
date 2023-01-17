@@ -37,20 +37,20 @@ namespace AliSign
             this.textBoxDsaPrivateKey = new System.Windows.Forms.TextBox();
             this.buttonDsaPrivateKey = new System.Windows.Forms.Button();
             this.textBoxImageUbios = new System.Windows.Forms.TextBox();
-            this.textBoxSignedImageBios = new System.Windows.Forms.TextBox();
+            this.textBoxSignedImageUbios = new System.Windows.Forms.TextBox();
             this.textBoxUbiosVersion = new System.Windows.Forms.TextBox();
             this.textBoxUbiosPublicKey = new System.Windows.Forms.TextBox();
             this.textBoxUbcPublicKey = new System.Windows.Forms.TextBox();
             this.textBoxBootLoaderPublicKey = new System.Windows.Forms.TextBox();
-            this.buttonImageBios = new System.Windows.Forms.Button();
-            this.buttonSignedImageBios = new System.Windows.Forms.Button();
+            this.buttonImageUbios = new System.Windows.Forms.Button();
+            this.buttonSignedImageUbios = new System.Windows.Forms.Button();
             this.buttonUbiosPublicKey = new System.Windows.Forms.Button();
             this.buttonUbcPublicKey = new System.Windows.Forms.Button();
             this.buttonBootLoaderPublicKey = new System.Windows.Forms.Button();
             this.buttonHashAdd = new System.Windows.Forms.Button();
             this.buttonHashRemove = new System.Windows.Forms.Button();
             this.listBoxHashFileUbios = new System.Windows.Forms.ListBox();
-            this.buttonSignBios = new System.Windows.Forms.Button();
+            this.buttonSignUbios = new System.Windows.Forms.Button();
             this.textBoxImageDisk = new System.Windows.Forms.TextBox();
             this.textBoxSignedImageDisk = new System.Windows.Forms.TextBox();
             this.buttonImageDisk = new System.Windows.Forms.Button();
@@ -187,17 +187,17 @@ namespace AliSign
             this.toolTip1.SetToolTip(this.textBoxImageUbios, "A ADLink ALI BIOS image will enable all functions.");
             this.textBoxImageUbios.TextChanged += new System.EventHandler(this.textBoxImageUbios_TextChanged);
             // 
-            // textBoxSignedImageBios
+            // textBoxSignedImageUbios
             // 
-            this.textBoxSignedImageBios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSignedImageBios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxSignedImageBios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.textBoxSignedImageBios.Enabled = false;
-            this.textBoxSignedImageBios.Location = new System.Drawing.Point(143, 54);
-            this.textBoxSignedImageBios.Name = "textBoxSignedImageBios";
-            this.textBoxSignedImageBios.Size = new System.Drawing.Size(257, 21);
-            this.textBoxSignedImageBios.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.textBoxSignedImageBios, "Will be enabled with a valid UBIOS Image assigned.");
+            this.textBoxSignedImageUbios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSignedImageUbios.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxSignedImageUbios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.textBoxSignedImageUbios.Enabled = false;
+            this.textBoxSignedImageUbios.Location = new System.Drawing.Point(143, 54);
+            this.textBoxSignedImageUbios.Name = "textBoxSignedImageUbios";
+            this.textBoxSignedImageUbios.Size = new System.Drawing.Size(257, 21);
+            this.textBoxSignedImageUbios.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.textBoxSignedImageUbios, "Will be enabled with a valid UBIOS Image assigned.");
             // 
             // textBoxUbiosVersion
             // 
@@ -250,34 +250,34 @@ namespace AliSign
             this.toolTip1.SetToolTip(this.textBoxBootLoaderPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
             this.textBoxBootLoaderPublicKey.TextChanged += new System.EventHandler(this.textBoxBootLoaderPublicKey_TextChanged);
             // 
-            // buttonImageBios
+            // buttonImageUbios
             // 
-            this.buttonImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonImageBios.Location = new System.Drawing.Point(23, 3);
-            this.buttonImageBios.Name = "buttonImageBios";
-            this.buttonImageBios.Size = new System.Drawing.Size(114, 37);
-            this.buttonImageBios.TabIndex = 0;
-            this.buttonImageBios.Text = "UBIOS Image";
-            this.buttonImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.buttonImageBios, "A ADLink ALI BIOS image will enable all functions.");
-            this.buttonImageBios.UseVisualStyleBackColor = true;
-            this.buttonImageBios.Click += new System.EventHandler(this.buttonImageBios_Click);
+            this.buttonImageUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonImageUbios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonImageUbios.Location = new System.Drawing.Point(23, 3);
+            this.buttonImageUbios.Name = "buttonImageUbios";
+            this.buttonImageUbios.Size = new System.Drawing.Size(114, 37);
+            this.buttonImageUbios.TabIndex = 0;
+            this.buttonImageUbios.Text = "UBIOS Image";
+            this.buttonImageUbios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonImageUbios, "A ADLink ALI BIOS image will enable all functions.");
+            this.buttonImageUbios.UseVisualStyleBackColor = true;
+            this.buttonImageUbios.Click += new System.EventHandler(this.buttonImageUbios_Click);
             // 
-            // buttonSignedImageBios
+            // buttonSignedImageUbios
             // 
-            this.buttonSignedImageBios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignedImageBios.Enabled = false;
-            this.buttonSignedImageBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSignedImageBios.Location = new System.Drawing.Point(23, 46);
-            this.buttonSignedImageBios.Name = "buttonSignedImageBios";
-            this.buttonSignedImageBios.Size = new System.Drawing.Size(114, 37);
-            this.buttonSignedImageBios.TabIndex = 2;
-            this.buttonSignedImageBios.Text = "Output Image";
-            this.buttonSignedImageBios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.buttonSignedImageBios, "Will be enabled with a valid UBIOS Image assigned.");
-            this.buttonSignedImageBios.UseVisualStyleBackColor = true;
-            this.buttonSignedImageBios.Click += new System.EventHandler(this.buttonSignedImageBios_Click);
+            this.buttonSignedImageUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignedImageUbios.Enabled = false;
+            this.buttonSignedImageUbios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSignedImageUbios.Location = new System.Drawing.Point(23, 46);
+            this.buttonSignedImageUbios.Name = "buttonSignedImageUbios";
+            this.buttonSignedImageUbios.Size = new System.Drawing.Size(114, 37);
+            this.buttonSignedImageUbios.TabIndex = 2;
+            this.buttonSignedImageUbios.Text = "Output Image";
+            this.buttonSignedImageUbios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonSignedImageUbios, "Will be enabled with a valid UBIOS Image assigned.");
+            this.buttonSignedImageUbios.UseVisualStyleBackColor = true;
+            this.buttonSignedImageUbios.Click += new System.EventHandler(this.buttonSignedImageUbios_Click);
             // 
             // buttonUbiosPublicKey
             // 
@@ -366,19 +366,19 @@ namespace AliSign
             this.toolTip1.SetToolTip(this.listBoxHashFileUbios, "Hash values binary file list.");
             this.listBoxHashFileUbios.SelectedIndexChanged += new System.EventHandler(this.listBoxHashFileUbios_SelectedIndexChanged);
             // 
-            // buttonSignBios
+            // buttonSignUbios
             // 
-            this.buttonSignBios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSignBios.Enabled = false;
-            this.buttonSignBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.buttonSignBios.Location = new System.Drawing.Point(3, 3);
-            this.buttonSignBios.Name = "buttonSignBios";
-            this.buttonSignBios.Size = new System.Drawing.Size(752, 57);
-            this.buttonSignBios.TabIndex = 1;
-            this.buttonSignBios.Text = "Sign";
-            this.toolTip1.SetToolTip(this.buttonSignBios, "Sign image with input data.");
-            this.buttonSignBios.UseVisualStyleBackColor = true;
-            this.buttonSignBios.Click += new System.EventHandler(this.buttonSignBios_Click);
+            this.buttonSignUbios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSignUbios.Enabled = false;
+            this.buttonSignUbios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonSignUbios.Location = new System.Drawing.Point(3, 3);
+            this.buttonSignUbios.Name = "buttonSignUbios";
+            this.buttonSignUbios.Size = new System.Drawing.Size(752, 57);
+            this.buttonSignUbios.TabIndex = 1;
+            this.buttonSignUbios.Text = "Sign";
+            this.toolTip1.SetToolTip(this.buttonSignUbios, "Sign image with input data.");
+            this.buttonSignUbios.UseVisualStyleBackColor = true;
+            this.buttonSignUbios.Click += new System.EventHandler(this.buttonSignUbios_Click);
             // 
             // textBoxImageDisk
             // 
@@ -757,13 +757,13 @@ namespace AliSign
             this.tableLayoutPanel4.Controls.Add(this.label1, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.buttonClearFilesUbios, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBoxImageUbios, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBoxSignedImageBios, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBoxSignedImageUbios, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.textBoxUbiosVersion, 2, 2);
             this.tableLayoutPanel4.Controls.Add(this.textBoxUbiosPublicKey, 2, 3);
             this.tableLayoutPanel4.Controls.Add(this.textBoxUbcPublicKey, 2, 4);
             this.tableLayoutPanel4.Controls.Add(this.textBoxBootLoaderPublicKey, 2, 5);
-            this.tableLayoutPanel4.Controls.Add(this.buttonImageBios, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.buttonSignedImageBios, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.buttonImageUbios, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.buttonSignedImageUbios, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.buttonUbiosPublicKey, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.buttonUbcPublicKey, 1, 4);
             this.tableLayoutPanel4.Controls.Add(this.buttonBootLoaderPublicKey, 1, 5);
@@ -927,7 +927,7 @@ namespace AliSign
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel17.Controls.Add(this.buttonSignBios, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.buttonSignUbios, 0, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 275);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
@@ -1256,8 +1256,8 @@ namespace AliSign
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button buttonImageBios;
-        private System.Windows.Forms.Button buttonSignedImageBios;
+        private System.Windows.Forms.Button buttonImageUbios;
+        private System.Windows.Forms.Button buttonSignedImageUbios;
         private System.Windows.Forms.Button buttonBootLoaderPublicKey;
         private System.Windows.Forms.Button buttonUbcPublicKey;
         private System.Windows.Forms.Button buttonUbiosPublicKey;
@@ -1266,7 +1266,7 @@ namespace AliSign
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button buttonHashAdd;
         private System.Windows.Forms.Button buttonHashRemove;
-        private System.Windows.Forms.Button buttonSignBios;
+        private System.Windows.Forms.Button buttonSignUbios;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Button buttonImageDisk;
@@ -1288,7 +1288,7 @@ namespace AliSign
         private System.Windows.Forms.TextBox textBoxWorkingFolder;
         private System.Windows.Forms.TextBox textBoxDsaPrivateKey;
         private System.Windows.Forms.TextBox textBoxImageUbios;
-        private System.Windows.Forms.TextBox textBoxSignedImageBios;
+        private System.Windows.Forms.TextBox textBoxSignedImageUbios;
         private System.Windows.Forms.TextBox textBoxUbiosVersion;
         private System.Windows.Forms.TextBox textBoxUbiosPublicKey;
         private System.Windows.Forms.TextBox textBoxUbcPublicKey;

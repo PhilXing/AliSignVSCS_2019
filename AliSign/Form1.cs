@@ -123,7 +123,7 @@ namespace AliSign
 
             tabControlSign.SelectedIndex = Properties.Settings.Default.tabControlSignSelectedIndex;
 
-            textBoxSignedImageBios.Text = Properties.Settings.Default.textBoxSignedImageBios;
+            textBoxSignedImageUbios.Text = Properties.Settings.Default.textBoxSignedImageUbios;
             textBoxUbiosVersion.Text = Properties.Settings.Default.textBoxUbiosVersion;
             textBoxUbiosPublicKey.Text = Properties.Settings.Default.textBoxUbiosPublicKey;
             textBoxUbcPublicKey.Text = Properties.Settings.Default.textBoxUbcPublicKey;
@@ -166,7 +166,7 @@ namespace AliSign
             Properties.Settings.Default.tabControlSignSelectedIndex = tabControlSign.SelectedIndex;
 
             Properties.Settings.Default.textBoxImageUbios = textBoxImageUbios.Text;
-            Properties.Settings.Default.textBoxSignedImageBios = textBoxSignedImageBios.Text;
+            Properties.Settings.Default.textBoxSignedImageUbios = textBoxSignedImageUbios.Text;
             Properties.Settings.Default.textBoxUbiosVersion = textBoxUbiosVersion.Text;
             Properties.Settings.Default.textBoxUbiosPublicKey = textBoxUbiosPublicKey.Text;
             Properties.Settings.Default.textBoxUbcPublicKey = textBoxUbcPublicKey.Text;
@@ -398,7 +398,7 @@ namespace AliSign
             // diable images input without DSA private key
             //
             textBoxImageUbios.Enabled = isValidDsa;
-            buttonImageBios.Enabled = isValidDsa;
+            buttonImageUbios.Enabled = isValidDsa;
             enableControlsUbios();
 
             textBoxImageDisk.Enabled = isValidDsa;
@@ -413,8 +413,8 @@ namespace AliSign
         private void enableControlsUbios()
         {
             var isValid = isValidUbios && isValidDsa;
-            textBoxSignedImageBios.Enabled = isValid;
-            buttonSignedImageBios.Enabled = isValid;
+            textBoxSignedImageUbios.Enabled = isValid;
+            buttonSignedImageUbios.Enabled = isValid;
             textBoxUbiosVersion.Enabled = isValid;
             textBoxUbiosPublicKey.Enabled = isValid;
             buttonUbiosPublicKey.Enabled = isValid;
@@ -428,7 +428,7 @@ namespace AliSign
             buttonHashAdd.Enabled = isValid;
             buttonHashRemove.Enabled = isValid;
             listBoxHashFileUbios.Enabled = isValid;
-            buttonSignBios.Enabled = isValid;
+            buttonSignUbios.Enabled = isValid;
         }
 
         private bool isValidImageUbios()
@@ -649,9 +649,9 @@ namespace AliSign
                 //{
                 //    identificationAlignment = 1;
                 //}
-                if (textBoxSignedImageBios.Text.Length == 0)
+                if (textBoxSignedImageUbios.Text.Length == 0)
                 {
-                    textBoxSignedImageBios.Text = Path.GetDirectoryName(text) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(text) + "_signed" + Path.GetExtension(text); ;
+                    textBoxSignedImageUbios.Text = Path.GetDirectoryName(text) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(text) + "_signed" + Path.GetExtension(text); ;
                 }
                 //
                 // retrueve version nubers from image
@@ -741,15 +741,15 @@ namespace AliSign
             textBoxDsaPrivateKey.Text = buttonFilePath_Click(textBoxDsaPrivateKey.Text);
         }
 
-        private void buttonImageBios_Click(object sender, EventArgs e)
+        private void buttonImageUbios_Click(object sender, EventArgs e)
         {
             this.openFileDialog1.InitialDirectory = textBoxWorkingFolder.Text;
             textBoxImageUbios.Text = buttonFilePath_Click(textBoxImageUbios.Text);
         }
 
-        private void buttonSignedImageBios_Click(object sender, EventArgs e)
+        private void buttonSignedImageUbios_Click(object sender, EventArgs e)
         {
-            textBoxSignedImageBios.Text = buttonFilePath_Click(textBoxSignedImageBios.Text);
+            textBoxSignedImageUbios.Text = buttonFilePath_Click(textBoxSignedImageUbios.Text);
         }
 
         private void buttonUbiosPublicKey_Click(object sender, EventArgs e)
@@ -1067,7 +1067,7 @@ namespace AliSign
             }
         }
 
-        private void buttonSignBios_Click(object sender, EventArgs e)
+        private void buttonSignUbios_Click(object sender, EventArgs e)
         {
             //
             // 1. patch UBIOS public key and it's double word - byte checksum to OFFSET_UBIOS_PUBLIC_KEY
@@ -1163,8 +1163,8 @@ namespace AliSign
             //
             try
             {
-                File.WriteAllBytes(textBoxSignedImageBios.Text, bytesImageUbios);
-                MessageBox.Show("Write to " + textBoxSignedImageBios.Text);
+                File.WriteAllBytes(textBoxSignedImageUbios.Text, bytesImageUbios);
+                MessageBox.Show("Write to " + textBoxSignedImageUbios.Text);
             }
             catch (IOException ex)
             {
@@ -1297,7 +1297,7 @@ namespace AliSign
         private void ClearInputFilesUbios()
         {
             textBoxImageUbios.Text = string.Empty;
-            textBoxSignedImageBios.Text = string.Empty;
+            textBoxSignedImageUbios.Text = string.Empty;
             textBoxUbiosPublicKey.Text = string.Empty;
             textBoxUbcPublicKey.Text = string.Empty;
             textBoxBootLoaderPublicKey.Text = string.Empty;

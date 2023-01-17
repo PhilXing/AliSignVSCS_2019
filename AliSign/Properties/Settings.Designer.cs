@@ -98,12 +98,12 @@ namespace AliSign.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string textBoxSignedImageBios {
+        public string textBoxSignedImageUbios {
             get {
-                return ((string)(this["textBoxSignedImageBios"]));
+                return ((string)(this["textBoxSignedImageUbios"]));
             }
             set {
-                this["textBoxSignedImageBios"] = value;
+                this["textBoxSignedImageUbios"] = value;
             }
         }
         

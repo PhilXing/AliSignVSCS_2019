@@ -20,7 +20,7 @@
     <Setting Name="textBoxImageUbios" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="textBoxSignedImageBios" Type="System.String" Scope="User">
+    <Setting Name="textBoxSignedImageUbios" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="textBoxDsaPrivateKey" Type="System.String" Scope="User">
