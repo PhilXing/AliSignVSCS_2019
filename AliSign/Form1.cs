@@ -417,24 +417,21 @@ namespace AliSign
             // Validation ADLink identifications
             //
             byte[] AdlinkBiosIdentification1 = Encoding.ASCII.GetBytes("BIOS_MADE_BY_ADLINK");
-            //byte[] AdlinkBiosIdentification1 = Encoding.ASCII.GetBytes("BIOS_MADE_BY_ADLINX");
             var AdlinkBiosIdentification2 = new byte[] { 0x0e, 0x0e, 0x15, 0x23, 0x3e, 0x25, 0x1e, 0x5f, 0x04, 0x58, 0x01, 0x44, 0x57, 0x18, 0x14, 0x61 };
-            //var AdlinkBiosIdentification2 = new byte[] { 0x0e, 0x0e, 0x15, 0x23, 0x3e, 0x25, 0x1e, 0x5f, 0x04, 0x58, 0x01, 0x44, 0x57, 0x18, 0x14, 0x60 };
             if (SearchBytes(AdlinkBiosIdentification1) == -1)
             {
-                //MessageBox.Show("This ROM image is not supported 1.");
+                MessageBox.Show("This tool works with ADLink image only(1).");
                 return false;
             }
             if (SearchBytes(AdlinkBiosIdentification2) == -1)
             {
-                //MessageBox.Show("This ROM image is not supported 2.");
+                MessageBox.Show("This tool works with ADLink image only(2).");
                 return false;
             }
             //
             // Validate signature 90 90 E9
             //
             byte[] validSignature = new byte[] { 0x90, 0x90, 0xe9 };
-            //byte[] validSignature = new byte[] { 0x90, 0x90, 0xe8 };
             var len = validSignature.Length;
             var validSignarueOffset = bytesImageUbios.Length - 16;
             var i = 0;
@@ -444,7 +441,7 @@ namespace AliSign
             }
             if (i < len)
             {
-                //MessageBox.Show("Incorrect file format: ROM Image not ended with 90 90 E9 ....");
+                MessageBox.Show("This Image is not ended with 90 90 E9 ....");
                 return false;
             }
 
