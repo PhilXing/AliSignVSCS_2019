@@ -144,7 +144,7 @@ namespace AliSign
             this.textBoxWorkingFolder.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.textBoxWorkingFolder.Location = new System.Drawing.Point(123, 7);
             this.textBoxWorkingFolder.Name = "textBoxWorkingFolder";
-            this.textBoxWorkingFolder.Size = new System.Drawing.Size(1296, 22);
+            this.textBoxWorkingFolder.Size = new System.Drawing.Size(652, 22);
             this.textBoxWorkingFolder.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBoxWorkingFolder, "All fields below will be guessed thru this folder if is blank.");
             this.textBoxWorkingFolder.Leave += new System.EventHandler(this.textBoxWorkingFolder_Leave);
@@ -156,7 +156,7 @@ namespace AliSign
             this.textBoxDsaPrivateKey.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.textBoxDsaPrivateKey.Location = new System.Drawing.Point(123, 44);
             this.textBoxDsaPrivateKey.Name = "textBoxDsaPrivateKey";
-            this.textBoxDsaPrivateKey.Size = new System.Drawing.Size(1296, 22);
+            this.textBoxDsaPrivateKey.Size = new System.Drawing.Size(652, 22);
             this.textBoxDsaPrivateKey.TabIndex = 3;
             this.toolTip1.SetToolTip(this.textBoxDsaPrivateKey, "Input a valid DSA private key file.");
             this.textBoxDsaPrivateKey.TextChanged += new System.EventHandler(this.textBoxDsaPrivateKey_TextChanged);
@@ -182,7 +182,7 @@ namespace AliSign
             this.textBoxImageUbios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.textBoxImageUbios.Location = new System.Drawing.Point(143, 11);
             this.textBoxImageUbios.Name = "textBoxImageUbios";
-            this.textBoxImageUbios.Size = new System.Drawing.Size(605, 21);
+            this.textBoxImageUbios.Size = new System.Drawing.Size(257, 21);
             this.textBoxImageUbios.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBoxImageUbios, "A ADLink ALI BIOS image will enable all functions.");
             this.textBoxImageUbios.TextChanged += new System.EventHandler(this.textBoxImageUbios_TextChanged);
@@ -195,7 +195,7 @@ namespace AliSign
             this.textBoxSignedImageBios.Enabled = false;
             this.textBoxSignedImageBios.Location = new System.Drawing.Point(143, 54);
             this.textBoxSignedImageBios.Name = "textBoxSignedImageBios";
-            this.textBoxSignedImageBios.Size = new System.Drawing.Size(605, 21);
+            this.textBoxSignedImageBios.Size = new System.Drawing.Size(257, 21);
             this.textBoxSignedImageBios.TabIndex = 3;
             this.toolTip1.SetToolTip(this.textBoxSignedImageBios, "Will be enabled with a valid UBIOS Image assigned.");
             // 
@@ -206,7 +206,7 @@ namespace AliSign
             this.textBoxUbiosVersion.Location = new System.Drawing.Point(143, 97);
             this.textBoxUbiosVersion.MaxLength = 24;
             this.textBoxUbiosVersion.Name = "textBoxUbiosVersion";
-            this.textBoxUbiosVersion.Size = new System.Drawing.Size(605, 21);
+            this.textBoxUbiosVersion.Size = new System.Drawing.Size(257, 21);
             this.textBoxUbiosVersion.TabIndex = 6;
             this.toolTip1.SetToolTip(this.textBoxUbiosVersion, "Will be enabled with a valid UBIOS Image assigned.");
             this.textBoxUbiosVersion.TextChanged += new System.EventHandler(this.textBoxUbiosVersion_TextChanged);
@@ -219,7 +219,7 @@ namespace AliSign
             this.textBoxUbiosPublicKey.Enabled = false;
             this.textBoxUbiosPublicKey.Location = new System.Drawing.Point(143, 140);
             this.textBoxUbiosPublicKey.Name = "textBoxUbiosPublicKey";
-            this.textBoxUbiosPublicKey.Size = new System.Drawing.Size(605, 21);
+            this.textBoxUbiosPublicKey.Size = new System.Drawing.Size(257, 21);
             this.textBoxUbiosPublicKey.TabIndex = 9;
             this.toolTip1.SetToolTip(this.textBoxUbiosPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
             this.textBoxUbiosPublicKey.TextChanged += new System.EventHandler(this.textBoxUbiosPublicKey_TextChanged);
@@ -232,7 +232,7 @@ namespace AliSign
             this.textBoxUbcPublicKey.Enabled = false;
             this.textBoxUbcPublicKey.Location = new System.Drawing.Point(143, 183);
             this.textBoxUbcPublicKey.Name = "textBoxUbcPublicKey";
-            this.textBoxUbcPublicKey.Size = new System.Drawing.Size(605, 21);
+            this.textBoxUbcPublicKey.Size = new System.Drawing.Size(257, 21);
             this.textBoxUbcPublicKey.TabIndex = 12;
             this.toolTip1.SetToolTip(this.textBoxUbcPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
             this.textBoxUbcPublicKey.TextChanged += new System.EventHandler(this.textBoxUbcPublicKey_TextChanged);
@@ -245,7 +245,7 @@ namespace AliSign
             this.textBoxBootLoaderPublicKey.Enabled = false;
             this.textBoxBootLoaderPublicKey.Location = new System.Drawing.Point(143, 227);
             this.textBoxBootLoaderPublicKey.Name = "textBoxBootLoaderPublicKey";
-            this.textBoxBootLoaderPublicKey.Size = new System.Drawing.Size(605, 21);
+            this.textBoxBootLoaderPublicKey.Size = new System.Drawing.Size(257, 21);
             this.textBoxBootLoaderPublicKey.TabIndex = 15;
             this.toolTip1.SetToolTip(this.textBoxBootLoaderPublicKey, "Will be enabled with a valid UBIOS Image assigned.");
             this.textBoxBootLoaderPublicKey.TextChanged += new System.EventHandler(this.textBoxBootLoaderPublicKey_TextChanged);
@@ -361,7 +361,7 @@ namespace AliSign
             this.listBoxHashFileUbios.Location = new System.Drawing.Point(83, 107);
             this.listBoxHashFileUbios.Name = "listBoxHashFileUbios";
             this.listBoxHashFileUbios.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxHashFileUbios.Size = new System.Drawing.Size(553, 150);
+            this.listBoxHashFileUbios.Size = new System.Drawing.Size(257, 150);
             this.listBoxHashFileUbios.TabIndex = 3;
             this.toolTip1.SetToolTip(this.listBoxHashFileUbios, "Hash values binary file list.");
             this.listBoxHashFileUbios.SelectedIndexChanged += new System.EventHandler(this.listBoxHashFileUbios_SelectedIndexChanged);
@@ -373,7 +373,7 @@ namespace AliSign
             this.buttonSignBios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonSignBios.Location = new System.Drawing.Point(3, 3);
             this.buttonSignBios.Name = "buttonSignBios";
-            this.buttonSignBios.Size = new System.Drawing.Size(1396, 57);
+            this.buttonSignBios.Size = new System.Drawing.Size(752, 57);
             this.buttonSignBios.TabIndex = 1;
             this.buttonSignBios.Text = "Sign";
             this.toolTip1.SetToolTip(this.buttonSignBios, "Sign image with input data.");
@@ -387,7 +387,7 @@ namespace AliSign
             this.textBoxImageDisk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.textBoxImageDisk.Location = new System.Drawing.Point(123, 10);
             this.textBoxImageDisk.Name = "textBoxImageDisk";
-            this.textBoxImageDisk.Size = new System.Drawing.Size(1276, 21);
+            this.textBoxImageDisk.Size = new System.Drawing.Size(632, 21);
             this.textBoxImageDisk.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBoxImageDisk, "A Valid Disk sectors file will enable all functions.");
             this.textBoxImageDisk.TextChanged += new System.EventHandler(this.textBoxImageDisk_TextChanged);
@@ -400,7 +400,7 @@ namespace AliSign
             this.textBoxSignedImageDisk.Enabled = false;
             this.textBoxSignedImageDisk.Location = new System.Drawing.Point(123, 52);
             this.textBoxSignedImageDisk.Name = "textBoxSignedImageDisk";
-            this.textBoxSignedImageDisk.Size = new System.Drawing.Size(1276, 21);
+            this.textBoxSignedImageDisk.Size = new System.Drawing.Size(632, 21);
             this.textBoxSignedImageDisk.TabIndex = 3;
             this.toolTip1.SetToolTip(this.textBoxSignedImageDisk, "Will be enabled with a valid Disk sectors Image assigned.");
             // 
@@ -440,7 +440,7 @@ namespace AliSign
             this.buttonSignDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonSignDisk.Location = new System.Drawing.Point(3, 93);
             this.buttonSignDisk.Name = "buttonSignDisk";
-            this.buttonSignDisk.Size = new System.Drawing.Size(1402, 245);
+            this.buttonSignDisk.Size = new System.Drawing.Size(758, 245);
             this.buttonSignDisk.TabIndex = 0;
             this.buttonSignDisk.Text = "Sign";
             this.toolTip1.SetToolTip(this.buttonSignDisk, "Will be enabled with a valid Disk sectors Image assigned.");
@@ -454,7 +454,7 @@ namespace AliSign
             this.textBoxImageUbc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.textBoxImageUbc.Location = new System.Drawing.Point(133, 11);
             this.textBoxImageUbc.Name = "textBoxImageUbc";
-            this.textBoxImageUbc.Size = new System.Drawing.Size(615, 21);
+            this.textBoxImageUbc.Size = new System.Drawing.Size(267, 21);
             this.textBoxImageUbc.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBoxImageUbc, "A valid UBC image will enable all functions.");
             this.textBoxImageUbc.TextChanged += new System.EventHandler(this.textBoxImageUbc_TextChanged);
@@ -467,7 +467,7 @@ namespace AliSign
             this.textBoxSignedImageUbc.Enabled = false;
             this.textBoxSignedImageUbc.Location = new System.Drawing.Point(133, 54);
             this.textBoxSignedImageUbc.Name = "textBoxSignedImageUbc";
-            this.textBoxSignedImageUbc.Size = new System.Drawing.Size(615, 21);
+            this.textBoxSignedImageUbc.Size = new System.Drawing.Size(267, 21);
             this.textBoxSignedImageUbc.TabIndex = 3;
             this.toolTip1.SetToolTip(this.textBoxSignedImageUbc, "Will be enabled with a valid UBC Image assigned.");
             // 
@@ -478,7 +478,7 @@ namespace AliSign
             this.textBoxUbiosVersionUbc.Location = new System.Drawing.Point(133, 97);
             this.textBoxUbiosVersionUbc.MaxLength = 24;
             this.textBoxUbiosVersionUbc.Name = "textBoxUbiosVersionUbc";
-            this.textBoxUbiosVersionUbc.Size = new System.Drawing.Size(615, 21);
+            this.textBoxUbiosVersionUbc.Size = new System.Drawing.Size(267, 21);
             this.textBoxUbiosVersionUbc.TabIndex = 6;
             this.toolTip1.SetToolTip(this.textBoxUbiosVersionUbc, "Up to 24 bytes.");
             this.textBoxUbiosVersionUbc.TextChanged += new System.EventHandler(this.textBoxUbiosVersionUbc_TextChanged);
@@ -490,7 +490,7 @@ namespace AliSign
             this.textBoxUbcVersion.Location = new System.Drawing.Point(133, 140);
             this.textBoxUbcVersion.MaxLength = 6;
             this.textBoxUbcVersion.Name = "textBoxUbcVersion";
-            this.textBoxUbcVersion.Size = new System.Drawing.Size(615, 21);
+            this.textBoxUbcVersion.Size = new System.Drawing.Size(267, 21);
             this.textBoxUbcVersion.TabIndex = 9;
             this.toolTip1.SetToolTip(this.textBoxUbcVersion, "Up to 6 bytes.");
             this.textBoxUbcVersion.TextChanged += new System.EventHandler(this.textBoxUbcVersion_TextChanged);
@@ -561,7 +561,7 @@ namespace AliSign
             this.listBoxHashFileUbc.Location = new System.Drawing.Point(83, 107);
             this.listBoxHashFileUbc.Name = "listBoxHashFileUbc";
             this.listBoxHashFileUbc.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxHashFileUbc.Size = new System.Drawing.Size(553, 150);
+            this.listBoxHashFileUbc.Size = new System.Drawing.Size(257, 150);
             this.listBoxHashFileUbc.TabIndex = 3;
             this.toolTip1.SetToolTip(this.listBoxHashFileUbc, "Hash values binary file list.");
             this.listBoxHashFileUbc.SelectedIndexChanged += new System.EventHandler(this.listBoxHashFileUbc_SelectedIndexChanged);
@@ -573,7 +573,7 @@ namespace AliSign
             this.buttonSignUbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSignUbc.Location = new System.Drawing.Point(3, 275);
             this.buttonSignUbc.Name = "buttonSignUbc";
-            this.buttonSignUbc.Size = new System.Drawing.Size(1402, 63);
+            this.buttonSignUbc.Size = new System.Drawing.Size(758, 63);
             this.buttonSignUbc.TabIndex = 1;
             this.buttonSignUbc.Text = "Sign";
             this.toolTip1.SetToolTip(this.buttonSignUbc, "Sign image with input data.");
@@ -659,7 +659,7 @@ namespace AliSign
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1428, 461);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(784, 461);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -678,7 +678,7 @@ namespace AliSign
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1422, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 74);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // buttonWorkingFolder
@@ -704,7 +704,7 @@ namespace AliSign
             this.tabControlSign.Location = new System.Drawing.Point(3, 83);
             this.tabControlSign.Name = "tabControlSign";
             this.tabControlSign.SelectedIndex = 0;
-            this.tabControlSign.Size = new System.Drawing.Size(1422, 375);
+            this.tabControlSign.Size = new System.Drawing.Size(778, 375);
             this.tabControlSign.TabIndex = 0;
             // 
             // tabPage1
@@ -713,7 +713,7 @@ namespace AliSign
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1414, 347);
+            this.tabPage1.Size = new System.Drawing.Size(770, 347);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "UBIOS";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -730,7 +730,7 @@ namespace AliSign
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1408, 341);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(764, 341);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -745,7 +745,7 @@ namespace AliSign
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1402, 266);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(758, 266);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -781,7 +781,7 @@ namespace AliSign
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(751, 260);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(403, 260);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
@@ -818,12 +818,12 @@ namespace AliSign
             this.tableLayoutPanel5.Controls.Add(this.listBoxHashUbios, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel15, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(760, 3);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(412, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(639, 260);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(343, 260);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -863,7 +863,7 @@ namespace AliSign
             this.listBoxHashUbios.Location = new System.Drawing.Point(83, 3);
             this.listBoxHashUbios.Name = "listBoxHashUbios";
             this.listBoxHashUbios.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxHashUbios.Size = new System.Drawing.Size(553, 98);
+            this.listBoxHashUbios.Size = new System.Drawing.Size(257, 98);
             this.listBoxHashUbios.TabIndex = 1;
             this.listBoxHashUbios.SelectedValueChanged += new System.EventHandler(this.listBoxHashUbios_SelectedIndexChanged);
             // 
@@ -933,7 +933,7 @@ namespace AliSign
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 1;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(1402, 63);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(758, 63);
             this.tableLayoutPanel17.TabIndex = 1;
             // 
             // tabPage2
@@ -942,7 +942,7 @@ namespace AliSign
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1414, 347);
+            this.tabPage2.Size = new System.Drawing.Size(770, 347);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Disk";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -959,7 +959,7 @@ namespace AliSign
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1408, 341);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(764, 341);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // tableLayoutPanel9
@@ -977,7 +977,7 @@ namespace AliSign
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1402, 84);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(758, 84);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // tabPage3
@@ -986,7 +986,7 @@ namespace AliSign
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1414, 347);
+            this.tabPage3.Size = new System.Drawing.Size(770, 347);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "UBC";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1003,7 +1003,7 @@ namespace AliSign
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(1408, 341);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(764, 341);
             this.tableLayoutPanel10.TabIndex = 0;
             // 
             // tableLayoutPanel11
@@ -1019,7 +1019,7 @@ namespace AliSign
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 266F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(1402, 266);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(758, 266);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // tableLayoutPanel12
@@ -1048,7 +1048,7 @@ namespace AliSign
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.32668F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(751, 260);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(403, 260);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
             // label14
@@ -1092,12 +1092,12 @@ namespace AliSign
             this.tableLayoutPanel13.Controls.Add(this.listBoxHashFileUbc, 1, 1);
             this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel16, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(760, 3);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(412, 3);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(639, 260);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(343, 260);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
             // listBoxHashUbc
@@ -1109,7 +1109,7 @@ namespace AliSign
             this.listBoxHashUbc.Location = new System.Drawing.Point(83, 3);
             this.listBoxHashUbc.Name = "listBoxHashUbc";
             this.listBoxHashUbc.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxHashUbc.Size = new System.Drawing.Size(553, 98);
+            this.listBoxHashUbc.Size = new System.Drawing.Size(257, 98);
             this.listBoxHashUbc.TabIndex = 1;
             this.listBoxHashUbc.SelectedIndexChanged += new System.EventHandler(this.listBoxHashUbc_SelectedIndexChanged);
             // 
@@ -1200,7 +1200,7 @@ namespace AliSign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1428, 461);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.tableLayoutPanel6);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 500);

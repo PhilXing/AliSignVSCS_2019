@@ -19,13 +19,13 @@ namespace AliSign
 {
     public partial class Form1 : Form
     {
-        public const int HASH_SIZE = 20;
-        public const int SIGNATURE_SIZE = 40;
+        public const int SIZE_HASH = 20;
+        public const int SIZE_SIGNATURE = 40;
         public const int RETRY_SIGN = 10;
         // TODO: confirm the size of the DSA private key
-        public const int PRIVATE_KEY_SIZE = 684;
-        public const int PRIVATE_KEY_SIZE_2 = 672;
-        public const int PUBLIC_KEY_SIZE = 404;
+        public const int SIZE_PRIVATE_KEY = 684;
+        public const int SIZE_PRIVATE_KEY_2 = 672;
+        public const int SIZE_PUBLIC_KEY = 404;
         public const int SIZE_FILE_BIOS = 0x800000;
 
         public const int OFFSET_HASH_LIST_START = 0x37c;
@@ -35,7 +35,7 @@ namespace AliSign
         public const int OFFSET_UBIOS_VERSION = 0x364;
         public const int OFFSET_UBIOS_PUBLIC_KEY = 0x7f8020;
 
-        public const int MAX_HASH_PATH_COUNT = (OFFSET_HASH_LIST_END_PLUS1 - OFFSET_HASH_LIST_START) / HASH_SIZE;
+        public const int MAX_HASH_PATH_COUNT = (OFFSET_HASH_LIST_END_PLUS1 - OFFSET_HASH_LIST_START) / SIZE_HASH;
 
         public const int SIZE_FILE_DISK = 0x100000;
 
@@ -46,6 +46,8 @@ namespace AliSign
         public const int OFFSET_UBC_VERSION = 0x7fbe;
 
         public const int SIZE_DISK_SECTOR = 512;
+        public const int SIZE_VERSION_UBIOS = 0x18;
+        public const int SIZE_VERSION_UBC = 0x06;
 
         // Common encripto variables
         IDigest hashFunction;
@@ -60,6 +62,11 @@ namespace AliSign
         // for UBC sign
         public byte[] bytesImageUbc;
         public List<string> listHashUbcString = new List<string>();
+
+        public bool isValidDsa = false;
+        public bool isValidUbios = false;
+        public bool isValidDisk = false;
+        public bool isValidUbc = false;
 
         public Form1()
         {
@@ -199,7 +206,7 @@ namespace AliSign
                 foreach (string file in files)
                 {
                     var info = new FileInfo(file);
-                    if (info.Length == HASH_SIZE)
+                    if (info.Length == SIZE_HASH)
                     {
                         listBoxHashFileUbios.Items.Add(info.FullName);
                     }
@@ -212,7 +219,7 @@ namespace AliSign
                 if (!String.IsNullOrEmpty(hash_fp))
                 {
                     var info = new FileInfo(hash_fp);
-                    if (info.Length == HASH_SIZE)
+                    if (info.Length == SIZE_HASH)
                     {
                         listBoxHashFileUbios.Items.Add(hash_fp);
                     }
@@ -295,18 +302,18 @@ namespace AliSign
                 //
                 // Guess input files
                 //
-                if (info.Length == HASH_SIZE)
+                if (info.Length == SIZE_HASH)
                 {
                     listBoxHashFileUbios.Items.Add(info.FullName);
                     continue;
                 }
                 // TODO: confirm the size of the private key
-                if ((info.Length == PRIVATE_KEY_SIZE || info.Length == PRIVATE_KEY_SIZE_2) && string.IsNullOrEmpty(textBoxDsaPrivateKey.Text))
+                if ((info.Length == SIZE_PRIVATE_KEY || info.Length == SIZE_PRIVATE_KEY_2) && string.IsNullOrEmpty(textBoxDsaPrivateKey.Text))
                 {
                     textBoxDsaPrivateKey.Text = info.FullName;
                     continue;
                 }
-                if (info.Length == PUBLIC_KEY_SIZE)
+                if (info.Length == SIZE_PUBLIC_KEY)
                 {
                     if (info.Name.ToUpper().Contains("UBC") && string.IsNullOrEmpty(textBoxUbcPublicKey.Text))
                     {
@@ -349,15 +356,18 @@ namespace AliSign
             //
             if (string.IsNullOrEmpty(textBoxImageUbios.Text))
             {
-                enableControlsUbios(false);
+                isValidUbios = false;
+                enableControlsUbios();
             }
             if (string.IsNullOrEmpty(textBoxImageDisk.Text))
             {
-                enableControlsDisk(false);
+                isValidDisk = false;
+                enableControlsDisk();
             }
             if (string.IsNullOrEmpty(textBoxImageUbc.Text))
             {
-                enableControlsUbc(false);
+                isValidUbc = true;
+                enableControlsUbc();
             }
             return;
         }
@@ -382,23 +392,27 @@ namespace AliSign
             return -1;
         }
 
-        private void EnableControlsDsa(bool isValid)
+        private void EnableControlsDsa()
         {
             //
             // diable images input without DSA private key
             //
-            textBoxImageUbios.Enabled = isValid;
-            buttonImageBios.Enabled = isValid;
+            textBoxImageUbios.Enabled = isValidDsa;
+            buttonImageBios.Enabled = isValidDsa;
+            enableControlsUbios();
 
-            textBoxImageDisk.Enabled = isValid;
-            buttonImageDisk.Enabled = isValid;
+            textBoxImageDisk.Enabled = isValidDsa;
+            buttonImageDisk.Enabled = isValidDsa;
+            enableControlsDisk();
 
-            textBoxImageUbc.Enabled = isValid;
-            buttonImageUbc.Enabled = isValid;
+            textBoxImageUbc.Enabled = isValidDsa;
+            buttonImageUbc.Enabled = isValidDsa;
+            enableControlsUbc();
         }
 
-        private void enableControlsUbios(bool isValid)
+        private void enableControlsUbios()
         {
+            var isValid = isValidUbios && isValidDsa;
             textBoxSignedImageBios.Enabled = isValid;
             buttonSignedImageBios.Enabled = isValid;
             textBoxUbiosVersion.Enabled = isValid;
@@ -417,7 +431,7 @@ namespace AliSign
             buttonSignBios.Enabled = isValid;
         }
 
-        private bool isValidImageBios()
+        private bool isValidImageUbios()
         {
             //
             // Validation ADLink identifications
@@ -457,8 +471,9 @@ namespace AliSign
             return true;
         }
 
-        private void enableControlsUbc(bool isValid)
+        private void enableControlsUbc()
         {
+            var isValid = isValidUbc && isValidDsa;
             textBoxSignedImageUbc.Enabled = isValid;
             buttonSignedImageUbc.Enabled = isValid;
             textBoxUbiosVersionUbc.Enabled = isValid;
@@ -479,7 +494,8 @@ namespace AliSign
 
             if (!File.Exists(text))
             {
-                enableControlsUbc(false);
+                isValidUbc = false;
+                enableControlsUbc();
                 return;
             }
             //
@@ -488,7 +504,8 @@ namespace AliSign
             bytesImageUbc = File.ReadAllBytes(text);
             if (bytesImageUbc.Length != SIZE_FILE_UBC)
             {
-                enableControlsUbc(false);
+                isValidUbc = false;
+                enableControlsUbc();
                 return;
             }
             //
@@ -533,7 +550,8 @@ namespace AliSign
                 textBoxUbcVersion.Text = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbc, OFFSET_UBC_VERSION, OFFSET_UBC_VERSION + textBoxUbcVersion.MaxLength)).Replace("\0", string.Empty);
             }
 
-            enableControlsUbc(true);
+            isValidUbc = true;
+            enableControlsUbc();
         }
 
         private byte[] subByteArray(byte[] originalArray, int startIndex, int endIndex_1)
@@ -553,11 +571,11 @@ namespace AliSign
             // rebuild data source
             listHashString.Clear();
             // hash by hash
-            for (int i = OffsetStart; i < OffsetEnd - HASH_SIZE + 1; i += HASH_SIZE)
+            for (int i = OffsetStart; i < OffsetEnd - SIZE_HASH + 1; i += SIZE_HASH)
             {
                 // if all 0?
                 int j;
-                for (j = 0; j < HASH_SIZE; j++)
+                for (j = 0; j < SIZE_HASH; j++)
                 {
                     if (bytesImage[i + j] != 0 && bytesImage[i + j] != 0xff)
                     {
@@ -565,10 +583,10 @@ namespace AliSign
                     }
                 }
 
-                if (j < HASH_SIZE) // if not all 0
+                if (j < SIZE_HASH) // if not all 0
                 {
-                    byte[] hash = new byte[HASH_SIZE];
-                    Buffer.BlockCopy(bytesImage, i, hash, 0, HASH_SIZE);
+                    byte[] hash = new byte[SIZE_HASH];
+                    Buffer.BlockCopy(bytesImage, i, hash, 0, SIZE_HASH);
                     string hexString = BitConverter.ToString(hash);
                     listHashString.Add(hexString);
                 }
@@ -642,13 +660,13 @@ namespace AliSign
                 {
                     textBoxUbiosVersion.Text = System.Text.Encoding.UTF8.GetString(subByteArray(bytesImageUbios, OFFSET_UBIOS_VERSION, (OFFSET_UBIOS_VERSION + textBoxUbiosVersion.MaxLength))).Replace("\0", string.Empty);
                 }
-
-                enableControlsUbios(isValidImageBios());
+                isValidUbios = isValidImageUbios();
             }
             else
             {
-                enableControlsUbios(false);
+                isValidUbios = false;
             }
+            enableControlsUbios();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -675,8 +693,9 @@ namespace AliSign
 
         }
 
-        private void enableControlsDisk(bool isValid)
+        private void enableControlsDisk()
         {
+            var isValid = isValidDisk && isValidDsa;
             textBoxSignedImageDisk.Enabled = isValid;
             buttonSignedImageDisk.Enabled = isValid;
             buttonSignDisk.Enabled = isValid;
@@ -689,7 +708,8 @@ namespace AliSign
 
             if (!File.Exists(textBoxImageDisk.Text))
             {
-                enableControlsDisk(false);
+                isValidDisk = false;
+                enableControlsDisk();
                 return;
             }
 
@@ -700,7 +720,8 @@ namespace AliSign
 
             if (bytesImageDisk.Length != SIZE_FILE_DISK)
             {
-                enableControlsDisk(false);
+                isValidDisk = false;
+                enableControlsDisk();
                 return;
             }
 
@@ -711,7 +732,8 @@ namespace AliSign
             {
                 textBoxSignedImageDisk.Text = Path.GetDirectoryName(text) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(text) + "_signed" + Path.GetExtension(text); ;
             }
-            enableControlsDisk(true);
+            isValidDisk = true;
+            enableControlsDisk();
         }
 
         private void buttonDsaPrivateKey_Click(object sender, EventArgs e)
@@ -790,7 +812,7 @@ namespace AliSign
                 foreach (string file in files)
                 {
                     var info = new FileInfo(file);
-                    if (info.Length == HASH_SIZE)
+                    if (info.Length == SIZE_HASH)
                     {
                         listBoxHashFileUbc.Items.Add(info.FullName);
                     }
@@ -803,7 +825,7 @@ namespace AliSign
                 if (!String.IsNullOrEmpty(hash_fp))
                 {
                     var info = new FileInfo(hash_fp);
-                    if (info.Length == HASH_SIZE)
+                    if (info.Length == SIZE_HASH)
                     {
                         listBoxHashFileUbc.Items.Add(hash_fp);
                     }
@@ -878,7 +900,7 @@ namespace AliSign
             //
             if (checkBoxUbiosVersionUbc.Checked)
             {
-                byte[] VersionString = new byte[0x18];
+                byte[] VersionString = new byte[SIZE_VERSION_UBIOS];
                 byte[] VersionStringInput = Encoding.ASCII.GetBytes(textBoxUbiosVersionUbc.Text);
                 // copy input to target array
                 Buffer.BlockCopy(VersionStringInput, 0, VersionString, 0, VersionStringInput.Length);
@@ -886,11 +908,11 @@ namespace AliSign
                 Buffer.BlockCopy(VersionString, 0, bytesImageUbc, OFFSET_UBIOS_VERSION_UBC, VersionString.Length);
             }
             //
-            // 3. patch UBC version string @ OFFSET_UBC_VERSION (length 0x18)
+            // 3. patch UBC version string @ OFFSET_UBC_VERSION (length 0x06)
             //
             if (checkBoxUbcVersion.Checked)
             {
-                byte[] VersionStringUbc = new byte[6];
+                byte[] VersionStringUbc = new byte[SIZE_VERSION_UBC];
                 byte[] VersionStringInputUbc = Encoding.ASCII.GetBytes(textBoxUbcVersion.Text);
                 // copy input to target array
                 Buffer.BlockCopy(VersionStringInputUbc, 0, VersionStringUbc, 0, VersionStringInputUbc.Length);
@@ -900,7 +922,7 @@ namespace AliSign
             //
             // 4. Hash & Sign
             //
-            byte[] blobUbc = subByteArray(bytesImageUbc, 0, (bytesImageUbc.Length - (HASH_SIZE + SIGNATURE_SIZE)));
+            byte[] blobUbc = subByteArray(bytesImageUbc, 0, (bytesImageUbc.Length - (SIZE_HASH + SIZE_SIGNATURE)));
 
             // Compute the hash of the blobUbc
             hashFunction.BlockUpdate(blobUbc, 0, blobUbc.Length);
@@ -950,7 +972,8 @@ namespace AliSign
 
                 if (keyPair == null)
                 {
-                    EnableControlsDsa(false);
+                    isValidDsa = false;
+                    EnableControlsDsa();
                     return;
                 }
 
@@ -966,12 +989,13 @@ namespace AliSign
                 // Initialize the signer with the DSA private key
                 signer.Init(true, dsaPrivateKey);
 
-                EnableControlsDsa(true);
+                isValidDsa = true;
             }
             else
             {
-                EnableControlsDsa(false);
+                isValidDsa = false; ;
             }
+            EnableControlsDsa();
         }
 
         private void buttonSignDisk_Click(object sender, EventArgs e)
